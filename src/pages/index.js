@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import localFont from "next/font/local";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 // Load custom fonts
 const geistSans = localFont({
@@ -20,12 +21,18 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>William Kelly Portfolio</title>
+        <title>William Kelly</title>
         <meta name="description" content="Portfolio of William Trey Kelly" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="tabicon" href="/public/icons/dollar.svg" />
       </Head>
 
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
       <div className={`${geistSans.variable} ${geistMono.variable} bg-white min-h-screen flex flex-col`}>
         {/* Render the Header */}
         <Header />
@@ -40,6 +47,7 @@ export default function Home() {
           <p>© {new Date().getFullYear()} William "Trey" Kelly | All rights reserved.</p>
         </footer>
       </div>
+      </ThemeProvider>
     </>
   );
 }

@@ -1,6 +1,6 @@
 // tailwind.config.js
 module.exports = {
-    darkMode: ["class"],
+    darkMode: 'class',
     content: [
     "./src/**/*.{js,jsx,ts,tsx}", // Adjust this if your files are in a different directory
   ],

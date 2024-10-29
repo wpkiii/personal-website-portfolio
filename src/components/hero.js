@@ -1,45 +1,48 @@
-//hero.js
 // src/components/Hero.js
 import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="flex items-center space-x-8 p-6">
+    <section className="flex flex-col md:flex-row items-center space-x-0 md:space-x-8 space-y-6 md:space-y-0 p-6 max-w-7xl mx-auto">
       {/* Profile Image */}
       <div className="relative">
         <Image
           src="/ForbesShot.JPG"
           alt="William Kelly"
-          width={250}
-          height={250}
+          width={1000}
+          height={1000}
           className="rounded-lg"
         />
-        <span className="absolute top-2 left-2 bg-black text-white text-sm px-3 py-1 rounded-full">
-          🏅 $9k hackathon winnings
+        <span className="absolute top-2 left-2 bg-black text-white text-sm px-3 py-1 rounded-full shadow-md">
+        🏅 GEM Fellow
         </span>
+
       </div>
 
       {/* Hero Text */}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Hey there! I'm William.</h1>
+      <div className="text-center md:text-left">
+        <h1 className="text-3xl font-bold text-gray-900">Hey there! I'm William (Trey)</h1>
         <p className="mt-4 text-lg text-gray-600">
-          I'm a scrappy builder of innovative apps. <br />
-          Developer, engineer, and designer passionate about building products and solving problems.
+        I'm a dedicated developer, engineer, and designer passionate about crafting innovative solutions that make a difference.  <br /><br />
+        A critical thinker and adaptable team player, I thrive on solving complex problems and building innovative products that push technology forward.
         </p>
+        <br />
+
         
-        {/* Social Media Links */}
-        <div className="flex space-x-4 mt-6">
-          <a href="https://github.com" target="_blank" rel="noreferrer">
-            <Image src="/icons/github.svg" alt="GitHub" width={24} height={24} />
+        {/* Social Media Links 
+            - Only takes relative paths*/}
+        <div className="flex justify-center md:justify-start space-x-4 mt-6">
+          <a href="mailto:treypkelly@gmail.com">
+            <Image src="/icons/mail.svg" alt="Email" width={40} height={40} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-            <Image src="/icons/linkedin.svg" alt="LinkedIn" width={24} height={24} />
+          <a href="https://github.com/wpkiii" target="_blank" rel="noreferrer">
+            <Image src="/icons/github.svg" alt="GitHub" width={40} height={40}  />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            <Image src="/icons/twitter.svg" alt="Twitter" width={24} height={24} />
+          <a href="https://www.linkedin.com/in/william-kelly-748409194/" target="_blank" rel="noreferrer">
+            <Image src="/icons/LinkedIn_icon.svg" alt="LinkedIn" width={40} height={40}  /> 
           </a>
-          <a href="mailto:example@gmail.com">
-            <Image src="/icons/email.svg" alt="Email" width={24} height={24} />
+          <a href="https://www.youtube.com/@trickswithtrey" target="_blank" rel="noreferrer">
+            <Image src="/icons/youtube.svg" alt="Twitter" width={40} height={40}  />
           </a>
         </div>
       </div>
