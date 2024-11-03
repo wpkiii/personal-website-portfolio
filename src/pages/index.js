@@ -4,6 +4,8 @@ import Header from "@/components/header";
 import Hero from "@/components/hero";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Experience from "@/components/experience";
+import ProjectSection from "@/components/projectsection";
 
 // Load custom fonts
 const geistSans = localFont({
@@ -40,6 +42,8 @@ export default function Home() {
         {/* Main Hero Section */}
         <main className="flex-grow pt-24">
           <Hero />
+          <Experience />  {/* Render Experience section here */}
+          <ProjectSection />
         </main>
 
         {/* Footer */}

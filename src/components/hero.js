@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto">
+    <section id="hero" className="flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto">
       {/* Profile and Hero Text */}
       <div className="flex flex-col md:flex-row items-center md:space-x-8">
         

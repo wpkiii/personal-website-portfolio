@@ -15,7 +15,7 @@ export default function Header() {
 
         {/* Navigation Links */}
         <nav className="flex space-x-8 text-lg font-medium">
-          <Link href="/#home" className="hover:text-blue-600 transition-colors">Home</Link>
+          <Link href="/#hero" className="hover:text-blue-600 transition-colors">Home</Link>
           <Link href="/#experience" className="hover:text-blue-600 transition-colors">Experience</Link>
           <Link href="/#projects" className="hover:text-blue-600 transition-colors">Projects</Link>
         </nav>
