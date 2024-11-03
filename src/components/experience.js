@@ -66,9 +66,13 @@ export default function Experience() {
                   <p className="text-gray-600">
                     During my time at The Aerospace Corporation, I worked on several data pipelines and infrastructure projects. These involved creating scalable analytics solutions, working with AI models to optimize data flow, and managing sensitive data across various systems. My work also included integrating machine learning models into existing systems and developing tools for pipeline automation.
                   </p>
+                
+                    {/* Original Line */}
                   <p className="mt-4">
-                    Additionally, I contributed to the company's AI strategy by analyzing datasets and providing insights for predictive analysis, enhancing the company's decision-making process.
+  I&apos;m currently working as a systems engineer completing many data management, data insights and analytics, pipelining, and artificial intelligence-related tasks.
                   </p>
+
+                  
                 </div>
                 <div className="mt-6 flex justify-end">
                   <button

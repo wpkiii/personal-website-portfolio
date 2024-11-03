@@ -50,7 +50,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="text-center py-6 bg-gray-100 text-gray-500">
-          <p>© {new Date().getFullYear()} William "Trey" Kelly | All rights reserved.</p>
+          <p>© {new Date().getFullYear()} William (Trey) Kelly | All rights reserved.</p>
         </footer>
       </div>
       </ThemeProvider>

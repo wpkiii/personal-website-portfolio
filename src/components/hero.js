@@ -23,9 +23,9 @@ export default function Hero() {
 
         {/* Hero Text */}
         <div className="text-center md:text-left mt-6 md:mt-0">
-          <h1 className="text-3xl font-bold text-gray-900">Hey there! I'm William (Trey)</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Hey there! I&apos;m William (Trey)</h1>
           <p className="mt-4 text-lg text-gray-600">
-            I'm a dedicated developer, engineer, and designer passionate about crafting innovative solutions that make a difference. <br /><br />
+          I&apos;m a dedicated developer, engineer, and designer passionate about crafting innovative solutions that make a difference. <br /><br />
             A critical thinker and adaptable team player, I thrive on solving complex problems and building innovative products that push technology forward.
           </p>
           
