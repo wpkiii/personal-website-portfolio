@@ -42,6 +42,8 @@ export default function Home() {
         {/* Main Hero Section */}
         <main className="flex-grow pt-24">
           <Hero />
+          <br/>
+          <br />
           <Experience />  {/* Render Experience section here */}
           <ProjectSection />
         </main>

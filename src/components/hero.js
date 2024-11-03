@@ -48,6 +48,7 @@ export default function Hero() {
       </div>
 <br/>
 <br/>
+<br/>
 
       {/* Tech Stack Section with Hover Animations */}
       <div className="mt-10 w-full text-center">

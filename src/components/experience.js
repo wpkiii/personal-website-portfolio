@@ -2,7 +2,7 @@
 
 export default function Experience() {
     return (
-      <section id="experience" className="py-12 bg-gray-100">
+      <section id="experience" className="bg-white p-6 max-w-7xl mx-auto">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">Experience</h2>
           <p className="text-lg text-gray-700 mb-4">
