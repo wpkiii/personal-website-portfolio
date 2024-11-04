@@ -161,7 +161,7 @@ export default function Experience() {
     <span className="text-gray-500 dark:text-gray-400">Seattle, WA</span><br />
     <span className="text-gray-500 dark:text-gray-400">June – August 2022</span>
     <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-      Conducted penetration testing using tools like BurpSuite and Metasploit to enhance Nordstrom's application security and optimize cybersecurity protocols.
+      Conducted penetration testing using tools like BurpSuite and Metasploit to enhance Nordstrom&apos;s application security and optimize cybersecurity protocols.
     </p>
 
     {/* Bottom Section with Links */}
