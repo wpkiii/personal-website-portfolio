@@ -152,6 +152,132 @@ export default function Experience() {
   </div>
 ) : null}
 
+{/* Nordstrom Work Experience */}
+<div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700 p-5 relative">
+  <div>
+    <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <a href="#">Nordstrom Corporate – Cyber Security Intern (Penetration Tester)</a>
+    </h3>
+    <span className="text-gray-500 dark:text-gray-400">Seattle, WA</span><br />
+    <span className="text-gray-500 dark:text-gray-400">June – August 2022</span>
+    <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+      Conducted penetration testing using tools like BurpSuite and Metasploit to enhance Nordstrom's application security and optimize cybersecurity protocols.
+    </p>
+
+    {/* Bottom Section with Links */}
+    <div className="flex justify-between items-center mt-4">
+      {/* Left: Company Website Link */}
+      <a href="https://www.nordstrom.com/" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-500 hover:underline">
+        Visit Website
+      </a>
+
+      {/* Right: More Information Modal Trigger */}
+      <button
+        className="text-blue-500 text-xs hover:underline"
+        onClick={() => setShowModal(true)}
+      >
+        More Information
+      </button>
+    </div>
+  </div>
+</div>
+
+{/* Modal */}
+{showModal ? (
+  <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+    <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+      <div className="flex justify-between items-center">
+        <h3 className="text-2xl font-semibold">More About My Role</h3>
+        <button
+          className="text-black"
+          onClick={() => setShowModal(false)}
+        >
+          ✖
+        </button>
+      </div>
+      <div className="mt-4">
+        <p className="text-gray-600">
+          During my internship at Nordstrom, I leveraged tools such as BurpSuite, Metasploit, and Hydra to identify and resolve vulnerabilities in critical applications. I developed a Python-based automation script with Selenium, which saved over 10+ hours of manual data extraction per month.
+        </p>
+        <p className="mt-4">
+          I also provided comprehensive documentation for each vulnerability, along with recommended solutions, improving the overall security posture of the organization.
+        </p>
+      </div>
+      <div className="mt-6 flex justify-end">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          onClick={() => setShowModal(false)}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+) : null}
+
+{/* Procter & Gamble Work Experience */}
+<div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700 p-5 relative">
+  <div>
+    <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <a href="#">Procter & Gamble – IT Data and Analytics Intern</a>
+    </h3>
+    <span className="text-gray-500 dark:text-gray-400">Boston, MA</span><br />
+    <span className="text-gray-500 dark:text-gray-400">May – August 2021</span>
+    <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+      Engineered data migration processes and API-based solutions to connect global production facilities and improve real-time access to operational data.
+    </p>
+
+    {/* Bottom Section with Links */}
+    <div className="flex justify-between items-center mt-4">
+      {/* Left: Company Website Link */}
+      <a href="https://us.pg.com/" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-500 hover:underline">
+        Visit Website
+      </a>
+
+      {/* Right: More Information Modal Trigger */}
+      <button
+        className="text-blue-500 text-xs hover:underline"
+        onClick={() => setShowModal(true)}
+      >
+        More Information
+      </button>
+    </div>
+  </div>
+</div>
+
+{/* Modal */}
+{showModal ? (
+  <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+    <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+      <div className="flex justify-between items-center">
+        <h3 className="text-2xl font-semibold">More About My Role</h3>
+        <button
+          className="text-black"
+          onClick={() => setShowModal(false)}
+        >
+          ✖
+        </button>
+      </div>
+      <div className="mt-4">
+        <p className="text-gray-600">
+          At Procter & Gamble, I developed a process to migrate production data to Azure Cloud, utilizing REST APIs and MQTT to enhance data accessibility and improve operational insights across 4 global plants.
+        </p>
+        <p className="mt-4">
+          I also engineered API-based data solutions, connecting distributed facilities and enabling real-time access to critical production data, which improved organizational efficiency and decision-making.
+        </p>
+      </div>
+      <div className="mt-6 flex justify-end">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          onClick={() => setShowModal(false)}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+) : null}
+
 
           {/* Add more team members as necessary */}
         </div>  
