@@ -86,38 +86,73 @@ export default function Experience() {
             </div>
           ) : null}
 
-          {/* Second Team Member */}
-          <div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-            </a>
-            <div className="p-5">
-              <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <a href="#">Jese Leos</a>
-              </h3>
-              <span className="text-gray-500 dark:text-gray-400">CTO</span>
-              <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                Jese drives the technical strategy of the flowbite platform and brand.
-              </p>
-              {/* Social Icons */}
-              <ul className="flex space-x-4">
-                <li>
-                  <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2..." clipRule="evenodd" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8.29 20.251c7.547 0 11.675..." />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
+        {/* Second Work Experience */}
+<div className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700 p-5 relative">
+  <div>
+    <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <a href="#">CampusCore – CoFounder & CTO</a>
+    </h3>
+    <span className="text-gray-500 dark:text-gray-400">Remote</span><br />
+    <span className="text-gray-500 dark:text-gray-400">May 2024 – Present</span>
+    <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+    Co-founded and developed an AI-powered educational platform that enhances student-advisor communication and support, while streamlining university processes.
+    </p>
+ 
+    <br/>
+
+    {/* Bottom Section with Links */}
+    <div className="flex justify-between items-center mt-4">
+      {/* Left: Company Website Link */}
+      <a href="https://campus-core.com/" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-500 hover:underline">
+        Visit Website
+      </a>
+
+      {/* Right: More Information Modal Trigger */}
+      <button
+        className="text-blue-500 text-xs hover:underline"
+        onClick={() => setShowModal(true)}
+      >
+        More Information
+      </button>
+    </div>
+  </div>
+</div>
+
+{/* Modal */}
+{showModal ? (
+  <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+    <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+      <div className="flex justify-between items-center">
+        <h3 className="text-2xl font-semibold">More About My Role</h3>
+        <button
+          className="text-black"
+          onClick={() => setShowModal(false)}
+        >
+          ✖
+        </button>
+      </div>
+      <div className="mt-4">
+        <p className="text-gray-600">
+          As CoFounder & CTO, I led the creation of CampusCore, a platform built with React, React Native, Tailwind CSS, Node.js, Azure, and MySQL. The platform integrates AI-driven features to enhance student success and advisor support.
+        </p>
+        <p className="mt-4">
+        The platform integrates AI-driven tools that provide personalized support to students and assist advisors in making data-driven decisions. We prioritized inclusivity and accessibility, ensuring the platform is easy to use for all.<br/><br/> More than 75+ reponses from students and advisors nationwide allowed us to continually improve and address common challenges faced by universities.
+        
+        </p>
+      </div>
+      <div className="mt-6 flex justify-end">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          onClick={() => setShowModal(false)}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+) : null}
+
+
           {/* Add more team members as necessary */}
         </div>  
       </div>
