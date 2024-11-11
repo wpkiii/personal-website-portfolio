@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Experience from "@/components/experience";
 import ProjectSection from "@/components/projectsection";
+import Education from "@/components/education";
 
 // Load custom fonts
 const geistSans = localFont({
@@ -35,7 +36,8 @@ export default function Home() {
         enableSystem
         disableTransitionOnChange
       >
-      <div className={`${geistSans.variable} ${geistMono.variable} bg-white min-h-screen flex flex-col`}>
+            <div className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col`}>
+            {/* Render the Header */}
         {/* Render the Header */}
         <Header />
 
@@ -44,6 +46,7 @@ export default function Home() {
           <Hero />
           <br/>
           <br />
+          <Education /> {/* Render Education section here */}
           <Experience />  {/* Render Experience section here */}
           <ProjectSection />
         </main>

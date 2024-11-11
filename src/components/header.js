@@ -19,6 +19,7 @@ export default function Header() {
         {/* Navigation Links */}
         <nav className="flex space-x-8 text-lg font-medium">
           <Link href="/#hero" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</Link>
+          <Link href="/#education" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Education</Link>
           <Link href="/#experience" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</Link>
           <Link href="/#projects" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</Link>
         </nav>
