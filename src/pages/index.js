@@ -1,4 +1,3 @@
-// src/pages/index.js
 import Head from "next/head";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
@@ -27,7 +26,7 @@ export default function Home() {
         <title>William Kelly</title>
         <meta name="description" content="Portfolio of William Trey Kelly" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="tabicon" href="/public/icons/dollar.svg" />
+        <link rel="icon" href="/icons/dollar.svg" />
       </Head>
 
       <ThemeProvider
@@ -36,26 +35,30 @@ export default function Home() {
         enableSystem
         disableTransitionOnChange
       >
-            <div className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col`}>
-            {/* Render the Header */}
-        {/* Render the Header */}
-        <Header />
+        <div
+          className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col`}
+        >
+          {/* Render the Header */}
+          <Header />
 
-        {/* Main Hero Section */}
-        <main className="flex-grow pt-24">
-          <Hero />
-          <br/>
-          <br />
-          <Education /> {/* Render Education section here */}
-          <Experience />  {/* Render Experience section here */}
-          <ProjectSection />
-        </main>
+          {/* Main Hero Section */}
+          <main className="flex-grow pt-24 px-4 sm:px-6 lg:px-8">
+            <Hero />
+            <br />
+            <br />
+            <Education /> {/* Render Education section here */}
+            <Experience /> {/* Render Experience section here */}
+            <ProjectSection />
+          </main>
 
-        {/* Footer */}
-        <footer className="text-center py-6 bg-gray-100 text-gray-500">
-          <p>© {new Date().getFullYear()} William (Trey) Kelly | All rights reserved.</p>
-        </footer>
-      </div>
+          {/* Footer */}
+          <footer className="text-center py-6 bg-gray-100 dark:bg-gray-800 text-gray-500">
+            <p>
+              © {new Date().getFullYear()} William (Trey) Kelly | All rights
+              reserved.
+            </p>
+          </footer>
+        </div>
       </ThemeProvider>
     </>
   );

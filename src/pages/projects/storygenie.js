@@ -27,7 +27,7 @@ export default function StoryGenie() {
           />
         </div>
 
-                {/* Technologies Used Section */}
+        {/* Technologies Used Section */}
         <h2 className="text-2xl font-semibold mt-8">Technologies Used</h2>
         <div className="flex space-x-2 mt-4">
           <span className="px-3 py-1 bg-blue-500 text-white rounded-full">Next.js</span>
