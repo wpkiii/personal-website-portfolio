@@ -72,7 +72,7 @@ export default function CVProject() {
         {/* Process Section */}
         <h2 className="text-2xl font-semibold mt-8">Process</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
-          Using Python and OpenCV, I built a gesture recognition model that detects hand positions and sends signals to control the robotic hand's servos. The DE-Nano10 FPGA board allowed precise control of the servo motors, while Arduino was used to manage LED indicators for each gesture.
+          Using Python and OpenCV, I built a gesture recognition model that detects hand positions and sends signals to control the robotic hand&apos;s servos. The DE-Nano10 FPGA board allowed precise control of the servo motors, while Arduino was used to manage LED indicators for each gesture.
         </p>
 
         {/* Outcome Section */}
