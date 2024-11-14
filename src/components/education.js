@@ -38,8 +38,8 @@ export default function Education() {
             <Image
               src="/ncat2.png" // Replace with actual logo path
               alt="North Carolina A&T State University"
-              width={400}
-              height={400}
+              width={250}
+              height={250}
               className="rounded-md"
             />
             <div className="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">

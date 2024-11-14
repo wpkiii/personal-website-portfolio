@@ -1,9 +1,10 @@
 // src/components/Hero.js
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useMemo } from 'react';
+
 
 export default function Hero() {
-  const words = ["Hey", "there!", "I'm", "William", "Kelly", "(Trey)"];
+  const words = useMemo(() => ["Hey", "there!", "I'm", "William", "Kelly", "(Trey)"]);
   const [visibleWords, setVisibleWords] = useState([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 

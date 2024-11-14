@@ -1,27 +1,34 @@
 // src/components/ProjectLayout.js
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from 'next/link';
 
-export default function ProjectLayout({ title, description, year, techStack, link }) {
+export default function ProjectLayout({ title, description, year, techStack, link, imageSrc }) {
   const content = (
-    <Card className="rounded-lg bg-gradient-to-r from-green-400 to-blue-500 dark:from-gray-800 dark:to-gray-700 p-6 shadow-md mb-6 cursor-pointer">
-      <CardHeader className="flex justify-between items-center">
-        <CardTitle className="text-white text-3xl dark:text-gray-200">{title}</CardTitle>
-        <div className="text-white text-lg dark:text-gray-300">{year}</div>
-      </CardHeader>
-      <CardContent>
-        <p className="text-white mt-4 dark:text-gray-300">{description}</p>
+    <Card className="flex flex-col md:flex-row bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-6 cursor-pointer">
+      <div className="md:w-1/2 flex-shrink-0 h-48 md:h-64 overflow-hidden">
+        <img
+          src={imageSrc}
+          alt={`${title} preview`}
+          className="rounded-lg object-cover w-full h-full"
+        />
+      </div>
+      <div className="md:w-1/2 p-4">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
+          <span className="text-gray-500 dark:text-gray-300">{year}</span>
+        </div>
+        <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
         {techStack && (
           <div className="flex space-x-2 mt-4">
             {techStack.map((tech, index) => (
-              <Badge key={index} className="bg-black text-white dark:bg-gray-600 dark:text-gray-200">
+              <Badge key={index} className="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
                 {tech}
               </Badge>
             ))}
           </div>
         )}
-      </CardContent>
+      </div>
     </Card>
   );
 

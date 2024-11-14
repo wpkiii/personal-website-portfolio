@@ -1,5 +1,5 @@
 // src/components/ProjectsSection.js
-import ProjectLayout from "@/components/projectlayout"; // Change to PascalCase
+import ProjectLayout from "@/components/projectlayout"; // Make sure to match the case
 
 export default function ProjectsSection() {
   const projects = [
@@ -9,21 +9,23 @@ export default function ProjectsSection() {
       year: "2024",
       techStack: ["Next.js", "AI", "Video Generation"],
       link: "projects/storygenie",
+      imageSrc: "/storygeniegif.gif", // Add image source
     },
     {
-      title: "Robotic Hand CV Project",
+      title: "CV-Powered Robotic Hand",
       description: "Synchronized a robotic hand to mirror real-time hand movements from a camera using OpenCV and VHDL.",
       year: "2024",
       techStack: ["OpenCV", "VHDL", "Computer Vision"],
       link: "projects/cvproject",
-
+      imageSrc: "/gesturedetection.mov", // Add image source
     },
     {
       title: "Climate Change Analysis and Prediction",
       description: "Visualized climate data and used ML techniques to predict future outcomes, achieving 90% accuracy on sea rise predictions.",
       year: "2024",
       techStack: ["Machine Learning", "Jupyter", "NASA GISTEMP"],
-      link:"",
+      link: "",
+      imageSrc: "/climate.mp4", // Add image source
     },
     {
       title: "IoT Automated Garden Project",
@@ -31,6 +33,7 @@ export default function ProjectsSection() {
       year: "2023",
       techStack: ["IoT", "React Native", "Sensors"],
       link: "",
+      imageSrc: "/images/iot-garden-preview.jpg", // Add image source
     },
     {
       title: "Machine Learning & Data Analyst Researcher",
@@ -38,6 +41,7 @@ export default function ProjectsSection() {
       year: "2020-2022",
       techStack: ["TensorFlow", "Machine Learning"],
       link: "",
+      imageSrc: "/images/ml-data-analyst-preview.jpg", // Add image source
     },
   ];
 
@@ -45,7 +49,7 @@ export default function ProjectsSection() {
     <section id="projects" className="bg-white dark:bg-gray-900 p-6 max-w-7xl mx-auto">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-white">Projects</h2><br/>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <ProjectLayout
               key={index}
@@ -54,6 +58,7 @@ export default function ProjectsSection() {
               year={project.year}
               techStack={project.techStack}
               link={project.link}
+              imageSrc={project.imageSrc} // Pass image source
             />
           ))}
         </div>
