@@ -1,18 +1,32 @@
-// src/components/ProjectLayout.js
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function ProjectLayout({ title, description, year, techStack, link, imageSrc }) {
+  const isVideo = imageSrc.endsWith('.mp4') || imageSrc.endsWith('.mov');
+
   const content = (
     <Card className="flex flex-col md:flex-row bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-6 cursor-pointer">
       <div className="md:w-1/2 flex-shrink-0 h-48 md:h-64 overflow-hidden">
-        <Image
-          src={imageSrc}
-          alt={`${title} preview`}
-          className="rounded-lg object-cover w-full h-full"
-        />
+        {isVideo ? (
+          <video
+            src={imageSrc}
+            controls
+            width="500" // Specify consistent width
+            height="300" // Specify consistent height
+            className="rounded-lg object-cover w-full h-full"
+          />
+        ) : (
+          <Image
+            src={imageSrc}
+            alt={`${title} preview`}
+            width={500}
+            height={300}
+            unoptimized={imageSrc.endsWith('.gif')} // Only for gifs
+            className="rounded-lg object-cover w-full h-full"
+          />
+        )}
       </div>
       <div className="md:w-1/2 p-4">
         <div className="flex justify-between items-center mb-2">
