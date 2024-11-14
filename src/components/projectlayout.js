@@ -2,12 +2,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProjectLayout({ title, description, year, techStack, link, imageSrc }) {
   const content = (
     <Card className="flex flex-col md:flex-row bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-6 cursor-pointer">
       <div className="md:w-1/2 flex-shrink-0 h-48 md:h-64 overflow-hidden">
-        <img
+        <Image
           src={imageSrc}
           alt={`${title} preview`}
           className="rounded-lg object-cover w-full h-full"
