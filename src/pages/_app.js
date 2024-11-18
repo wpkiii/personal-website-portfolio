@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         {/* Use an SVG file as the favicon */}
-        <link rel="icon" href="/public/icons/dollar.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
         {/* Optionally add a title and meta description */}
         <title>William Kelly - Digital Portfolio</title>
         <meta name="description" content="Portfolio of William Kelly, specializing in AI and Computer Engineering." />
