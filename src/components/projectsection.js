@@ -24,7 +24,7 @@ export default function ProjectsSection() {
       description: "Visualized climate data and used ML techniques to predict future outcomes, achieving 90% accuracy on sea rise predictions.",
       year: "2024",
       techStack: ["Machine Learning", "Jupyter", "NASA GISTEMP"],
-      link: "",
+      link: "projects/climate",
       imageSrc: "/climate.mp4", // Add image source
     },
     {
