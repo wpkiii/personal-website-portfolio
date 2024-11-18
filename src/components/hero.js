@@ -1,10 +1,8 @@
-// src/components/Hero.js
 import Image from 'next/image';
-import { useEffect, useState,useMemo } from 'react';
-
+import { useEffect, useState, useMemo } from 'react';
 
 export default function Hero() {
-  const words = useMemo(() => ["Hey", "there!", "I'm", "William", "Kelly", "(Trey)"]);
+  const words = useMemo(() => ["Hey", "there!", "I'm", "William", "Kelly", "(Trey)"], []);
   const [visibleWords, setVisibleWords] = useState([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
@@ -12,7 +10,7 @@ export default function Hero() {
     const interval = setInterval(() => {
       setVisibleWords((prev) => [...prev, words[currentWordIndex]]);
       setCurrentWordIndex((prevIndex) => prevIndex + 1);
-    }, 350); // Adjust delay as needed
+    }, 350);
 
     if (currentWordIndex >= words.length) {
       clearInterval(interval);
@@ -22,14 +20,15 @@ export default function Hero() {
   }, [currentWordIndex, words]);
 
   return (
-    <section id="hero" className="flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto dark:bg-gray-900">
-      <div className="flex flex-col md:flex-row items-center md:space-x-8">
+    <section id="hero" className="flex flex-col items-center space-y-8 p-6 max-w-7xl mx-auto dark:bg-gray-900">
+      <div className="flex flex-col md:flex-row items-center md:space-x-8 space-y-6 md:space-y-0">
         
         {/* Profile Image */}
-        <div className="relative">
+        <div className="relative w-40 h-40 md:w-80 md:h-80">
           <Image
             src="/ForbesShot.JPG"
             alt="William Kelly"
+            layout="responsive"
             width={1000}
             height={1000}
             className="rounded-lg"
@@ -41,56 +40,54 @@ export default function Hero() {
 
         {/* Hero Text */}
         <div className="text-center md:text-left mt-6 md:mt-0">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex space-x-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white flex flex-wrap justify-center md:justify-start space-x-2">
             {visibleWords.map((word, index) => (
               <span key={index} className="animate-fadeInUp">
                 {word}
               </span>
             ))}
           </h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-md md:max-w-lg">
             I&apos;m a dedicated developer, engineer, and designer passionate about crafting innovative solutions that make a difference. <br /><br />
             A critical thinker and adaptable team player, I thrive on solving complex problems and building innovative products that push technology forward.
           </p>
           
-          {/* Social Media Links with Dark Mode */}
+          {/* Social Media Links */}
           <div className="flex justify-center md:justify-start space-x-4 mt-6">
             <div className="group">
               <a href="mailto:treypkelly@gmail.com">
-                <Image src="/icons/mail.svg" alt="Email" width={40} height={40} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
+                <Image src="/icons/mail.svg" alt="Email" width={32} height={32} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
               </a>
             </div>
             <div className="group">
               <a href="https://github.com/wpkiii" target="_blank" rel="noreferrer">
-                <Image src="/icons/github.svg" alt="GitHub" width={40} height={40} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
+                <Image src="/icons/github.svg" alt="GitHub" width={32} height={32} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
               </a>
             </div>
             <div className="group">
               <a href="https://www.linkedin.com/in/william-kelly-iii-748409194/" target="_blank" rel="noreferrer">
-                <Image src="/icons/LinkedIn_icon.svg" alt="LinkedIn" width={40} height={40} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" /> 
+                <Image src="/icons/LinkedIn_icon.svg" alt="LinkedIn" width={32} height={32} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" /> 
               </a>
             </div>
             <div className="group">
               <a href="https://www.youtube.com/@trickswithtrey" target="_blank" rel="noreferrer">
-                <Image src="/icons/youtube.svg" alt="YouTube" width={40} height={40} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
+                <Image src="/icons/youtube.svg" alt="YouTube" width={32} height={32} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Tech Stack Section with Dark Mode */}
+      {/* Tech Stack Section */}
       <div className="mt-10 w-full text-center">
-        <div className="flex space-x-6 py-4 justify-center items-center">
-          <h2 className="text-3xl font-semibold text-gray-800 dark:text-white whitespace-nowrap">My tech stack:</h2>
+        <div className="flex flex-wrap justify-center md:justify-start items-center space-x-4 md:space-x-6 py-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white whitespace-nowrap">My tech stack:</h2>
           {["python", "react", "next", "tailwindcss", "nodejs", "jupyternotebook"].map((icon) => (
             <div key={icon} className="group relative">
               <Image
                 src={`/icons/${icon}.svg`}
                 alt={icon.charAt(0).toUpperCase() + icon.slice(1)}
-                width={60}
-                height={60}
-                className="transition-transform transform group-hover:scale-150 duration-200 dark:filter dark:invert"
+                width={32} height={32} className="md:w-16 md:h-16 transition-transform transform group-hover:scale-150 duration-200 dark:filter dark:invert"
               />
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 dark:bg-white dark:text-black">
                 {icon.charAt(0).toUpperCase() + icon.slice(1)}
