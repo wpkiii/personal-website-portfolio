@@ -28,14 +28,29 @@ export default function StoryGenie() {
         </div>
 
         {/* Technologies Used Section */}
-        <h2 className="text-2xl font-semibold mt-8">Technologies Used</h2>
-        <div className="flex space-x-2 mt-4">
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full">Next.js</span>
-          <span className="px-3 py-1 bg-green-500 text-white rounded-full">RAG/LLM</span>
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full">Webscraping/API</span>
-          <span className="px-3 py-1 bg-green-500 text-white rounded-full">Google Cloud</span>
-          <span className="px-3 py-1 bg-purple-500 text-white rounded-full">Remotion</span>
+        {/* Technologies Used Section */}
+        <h2 className="text-xl sm:text-2xl font-semibold mt-6 sm:mt-8">Technologies Used</h2>
+        <div className="flex flex-wrap gap-2 mt-4">
+          <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+            Next.js
+          </span>
+          <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+            RAG/LLM
+          </span>
+          <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+            Webscraping
+          </span>
+          <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+            Google Cloud TTS
+          </span>
+          <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+            Remotion
+          </span>
+          <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+            AWS Rendering
+          </span>
         </div>
+
 
         {/* The Problem Section */}
         <h2 className="text-2xl font-semibold mt-8">The Problem</h2>
