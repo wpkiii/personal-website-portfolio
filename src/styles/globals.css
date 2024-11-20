@@ -67,3 +67,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* src/styles/globals.css */
+
+@media (max-width: 640px) {
+  .text-4xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  .px-8 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .py-16 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}

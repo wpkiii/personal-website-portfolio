@@ -5,14 +5,13 @@ export default function Education() {
   return (
     <section id="education" className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        
-        {/* Heading */}
-        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Education</h2>
-        </div> 
+  {/* Modify max-w-screen-sm to be more responsive */}
+  <div className="mx-auto text-center mb-8 lg:mb-16 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-screen-sm">
+    <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Education</h2>
+  </div>
 
-        {/* Grid Layout for Logos with Gradients */}
-        <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+  {/* Grid Layout for Logos with Gradients */}
+  <div className="grid gap-8 mb-6 lg:mb-16 grid-cols-1 md:grid-cols-2">
           
           {/* Northwestern University Logo with Purple-to-White Gradient */}
           <div className="relative group bg-northwestern-gradient rounded-lg shadow p-6 flex items-center justify-center">

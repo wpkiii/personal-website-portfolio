@@ -17,7 +17,7 @@ export default function ProjectsSection() {
       year: "2024",
       techStack: ["OpenCV", "VHDL", "Computer Vision"],
       link: "projects/cvproject",
-      imageSrc: "/gesturedetection.mov", // Add image source
+      imageSrc: "/detectiongif.gif", // Add image source
     },
     {
       title: "Climate Change Analysis and Prediction",

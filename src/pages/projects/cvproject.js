@@ -17,7 +17,7 @@ export default function CVProject() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       {/* Include Header */}
-      <Header /> <br/><br/>
+      <Header /> <br /><br />
 
       {/* Main Content */}
       <div className="pt-16 p-8 max-w-4xl mx-auto">
@@ -27,30 +27,26 @@ export default function CVProject() {
           In this project, I designed a system to control servos on each finger of a robotic hand, enabling eight distinct gestures and assigning an LED to each gesture using three switches on the DE-Nano10. Additionally, I developed gesture detection software using Python, enabling real-time gesture and movement detection.
         </p>
 
-        {/* Display two videos side-by-side */}
-        <div className="flex space-x-4 my-6">
+        {/* Display two videos */}
+        <div className="flex flex-col sm:flex-row sm:gap-4 my-6">
           <video
             ref={video1Ref}
             src="/gesturedetection.mov" // Replace with the path to your first video
-            width="400"
-            height="225"
             controls
             onEnded={handleVideoEnd}
-            className="rounded-lg shadow-lg"
+            className="w-full sm:w-1/2 h-auto rounded-lg shadow-lg mb-4 sm:mb-0"
           />
           <video
             ref={video2Ref}
             src="/robotichand.mov" // Replace with the path to your second video
-            width="400"
-            height="225"
             controls
-            className="rounded-lg shadow-lg"
+            className="w-full sm:w-1/2 h-auto rounded-lg shadow-lg"
           />
         </div>
 
         {/* Technologies Used Section */}
         <h2 className="text-2xl font-semibold mt-8">Technologies Used</h2>
-        <div className="flex space-x-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4">
           <span className="px-3 py-1 bg-blue-500 text-white rounded-full">Python</span>
           <span className="px-3 py-1 bg-green-500 text-white rounded-full">OpenCV</span>
           <span className="px-3 py-1 bg-blue-500 text-white rounded-full">Arduino</span>
