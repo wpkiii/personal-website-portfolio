@@ -29,20 +29,13 @@ export default function ProjectsSection() {
     },
     {
       title: "IoT Automated Garden Project",
-      description: "Built a hydroponic garden system with IoT sensors and an app for control, fully functional for remote watering and heating.",
+      description: "Built a hydroponic garden system with various sensors and actuators utilizing IoT technology via app for control. Fully functional app with remote/automatic watering, lighting, heating, humidity control, and ground temperature maintenence capabilities.",
       year: "2023",
       techStack: ["IoT", "React Native", "Sensors"],
-      link: "",
-      imageSrc: "/images/iot-garden-preview.jpg", // Add image source
+      link: "projects/garden",
+      imageSrc: "/gardengif.gif", // Add image source
     },
-    {
-      title: "Machine Learning & Data Analyst Researcher",
-      description: "Conducted image recognition research using TensorFlow, improving ethnic food identification accuracy by 80%.",
-      year: "2020-2022",
-      techStack: ["TensorFlow", "Machine Learning"],
-      link: "",
-      imageSrc: "/images/ml-data-analyst-preview.jpg", // Add image source
-    },
+  
   ];
 
   return (

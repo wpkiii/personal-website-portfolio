@@ -23,6 +23,15 @@ export default function CVProject() {
       <div className="pt-16 p-8 max-w-4xl mx-auto">
         <h1 className="text-4xl font-extrabold">AI-Powered Robotic Hand: Real-Time Gesture Detection and Control</h1>
         <p className="text-gray-600 dark:text-gray-300 my-4">2024</p>
+        <div className="group flex space-x-4">
+              <a href="https://github.com/wpkiii/HandGestureDetector" target="_blank" rel="noreferrer">
+                <Image src="/icons/github.svg" alt="GitHub" width={30} height={30} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
+              </a>
+              <a href="https://www.youtube.com/watch?v=LdwNM45wQ3ci" target="_blank" rel="noreferrer">
+                <Image src="/icons/youtube.svg" alt="Youtube" width={30} height={30} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
+              </a>
+            </div>
+            <br/>
         <p className="text-lg text-gray-700 dark:text-gray-300 my-4">
           In this project, I designed a system to control servos on each finger of a robotic hand, enabling eight distinct gestures and assigning an LED to each gesture using three switches on the DE-Nano10. Additionally, I developed gesture detection software using Python, enabling real-time gesture and movement detection.
         </p>

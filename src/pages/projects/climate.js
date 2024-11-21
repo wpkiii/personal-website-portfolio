@@ -12,6 +12,12 @@ export default function Climate() {
       <div className="pt-16 p-8 max-w-4xl mx-auto">
         <h1 className="text-4xl font-extrabold">Visualizing Climate Change Data using AI</h1>
         <p className="text-gray-600 dark:text-gray-300 my-4"> 2024</p>
+        <div className="group flex space-x-4">
+              <a href="https://github.com/wpkiii/AI4ClimateChange" target="_blank" rel="noreferrer">
+                <Image src="/icons/github.svg" alt="GitHub" width={30} height={30} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
+              </a>
+              
+            </div><br/>
         <p className="text-lg text-gray-700 dark:text-gray-300 my-4">
           Climate change is one of the most pressing global challenges of our time, affecting ecosystems, economies, and societies. As effects become increasingly evident, new insights into environmental data are crucial. This project utilizes AI to visualize temperature and sea level climate variability, using datasets like NASA’s GISTEMP and EPA’s sea level records to analyze changes from the 1880s onward.
         </p>

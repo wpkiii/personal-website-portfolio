@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider"; // Ensure ThemeProvider is imported
 import Head from "next/head"; // Import Head for favicon and other meta tags
 
+
 export default function App({ Component, pageProps }) {
   return (
     <>

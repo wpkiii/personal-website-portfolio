@@ -14,6 +14,12 @@ export default function StoryGenie() {
       <div className="pt-16 p-8 max-w-4xl mx-auto"> {/* Added pt-16 for padding */}
         <h1 className="text-4xl font-extrabold">StoryGenie</h1>
         <p className="text-gray-600 dark:text-gray-300 my-4">2024</p>
+        <div className="group flex space-x-4">
+              <a href="https://github.com/wpkiii/your--life" target="_blank" rel="noreferrer">
+                <Image src="/icons/github.svg" alt="GitHub" width={30} height={30} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
+              </a>
+              
+            </div><br/>
         <p className="text-lg text-gray-700 dark:text-gray-300 my-4">
           StoryGenie is a Next.js application that enables users to create a video biography of any person of notoriety with a single click. The platform uses AI to generate a script, select appropriate visuals, and create a cohesive, professional video. StoryGenie has achieved a 90% success rate, even with niche figures.
         </p>
