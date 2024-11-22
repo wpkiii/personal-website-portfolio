@@ -91,8 +91,8 @@ export default function Hero() {
           <Image
             src={`/icons/${icon}.svg`}
             alt={icon.charAt(0).toUpperCase() + icon.slice(1)}
-            width={40} // Reduced size for better mobile fit
-            height={40}
+            width={60} // Reduced size for better mobile fit
+            height={60}
             className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert"
           />
           <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-6 px-2 py-1 text-xs text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 dark:bg-white dark:text-black">

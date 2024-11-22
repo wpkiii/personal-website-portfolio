@@ -29,7 +29,7 @@ export default function ProjectsSection() {
     },
     {
       title: "IoT Automated Garden Project",
-      description: "Built a hydroponic garden system with various sensors and actuators utilizing IoT technology via app for control. Fully functional app with remote/automatic watering, lighting, heating, humidity control, and ground temperature maintenence capabilities.",
+      description: "Constructed a hydroponic garden system with various sensors and actuators utilizing IoT technology via app for control. Fully functional app with remote/automatic watering, lighting, heating, humidity control, and ground temperature maintenence capabilities.",
       year: "2023",
       techStack: ["IoT", "React Native", "Sensors"],
       link: "projects/garden",

@@ -5,10 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Link to your PNG favicon */}
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <title>William Kelly - Digital Portfolio</title>
-        <meta name="description" content="Portfolio of William Kelly, specializing in AI and Computer Engineering." />
+        {/* Global meta tags can go here if needed */}
       </Head>
       <body>
         <Main />

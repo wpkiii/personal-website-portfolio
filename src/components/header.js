@@ -15,8 +15,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         <div className="flex items-center space-x-2">
-          <Image src="/icons/dollar.svg" alt="Logo" width={24} height={24} />
-          <span className="text-xl font-semibold text-gray-900 dark:text-white">William Kelly</span>
+          <Image src="/ok.png" alt="Logo" width={24} height={24} />
+          <Link href="/#hero" className="hover:text-blue-600 font-semibold text-gray-900 dark:text-white">William Kelly</Link>
         </div>
 
         {/* Show the full nav on desktop */}
