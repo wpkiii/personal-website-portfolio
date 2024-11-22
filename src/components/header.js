@@ -1,30 +1,42 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Dynamically apply a white icon in dark mode
+  // Dynamically apply icons based on theme
   const menuIconSrc = theme === 'dark' ? '/icons/whitemenu.svg' : '/icons/menu.svg';
+  const logoSrc = theme === 'dark' ? '/ok.png' : '/ok.png';
 
   return (
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 py-4 px-8 fixed top-0 w-full z-50 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         <div className="flex items-center space-x-2">
-          <Image src="/ok.png" alt="Logo" width={24} height={24} />
-          <Link href="/#hero" className="hover:text-blue-600 font-semibold text-gray-900 dark:text-white">William Kelly</Link>
+          {/* Logo Image */}
+          <Image src={logoSrc} alt="Logo" width={24} height={24} />
+          <Link href="/#hero" className="hover:text-blue-600 font-semibold text-gray-900 dark:text-white">
+            William Kelly
+          </Link>
         </div>
 
         {/* Show the full nav on desktop */}
         <nav className="hidden sm:flex space-x-4">
-          <Link href="/#hero" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">Home</Link>
-          <Link href="/#education" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">Education</Link>
-          <Link href="/#experience" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">Experience</Link>
-          <Link href="/#projects" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">Projects</Link>
+          <Link href="/#hero" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">
+            Home
+          </Link>
+          <Link href="/#education" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">
+            Education
+          </Link>
+          <Link href="/#experience" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">
+            Experience
+          </Link>
+          <Link href="/#projects" className="hover:text-blue-600 font-semibold dark:hover:text-blue-400 transition-colors">
+            Projects
+          </Link>
         </nav>
         
         {/* Dark Mode and Mobile Menu Icons */}
@@ -52,10 +64,18 @@ export default function Header() {
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
         <nav className="sm:hidden mt-4 px-8">
-          <Link href="/#hero" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Home</Link>
-          <Link href="/#education" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Education</Link>
-          <Link href="/#experience" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Experience</Link>
-          <Link href="/#projects" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Projects</Link>
+          <Link href="/#hero" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
+            Home
+          </Link>
+          <Link href="/#education" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
+            Education
+          </Link>
+          <Link href="/#experience" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
+            Experience
+          </Link>
+          <Link href="/#projects" className="block py-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
+            Projects
+          </Link>
         </nav>
       )}
     </header>
