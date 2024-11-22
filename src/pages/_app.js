@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         {/* Favicon */}
-        <link rel="icon" href="/ok.png" type="image/png" />
+        <link rel="icon" href="/ok.svg" type="image/svg+xml" />
         {/* Global Meta Tags */}
         <title>William Kelly - Digital Portfolio</title>
         <meta

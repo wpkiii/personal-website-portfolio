@@ -9,7 +9,7 @@ export default function Header() {
 
   // Dynamically apply icons based on theme
   const menuIconSrc = theme === 'dark' ? '/icons/whitemenu.svg' : '/icons/menu.svg';
-  const logoSrc = theme === 'dark' ? '/ok.png' : '/ok.png';
+  const logoSrc = theme === 'dark' ? '/ok.svg' : '/darkok.svg';
 
   return (
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 py-4 px-8 fixed top-0 w-full z-50 shadow-sm">
