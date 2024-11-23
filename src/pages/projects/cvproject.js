@@ -15,7 +15,7 @@ export default function CVProject() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
       {/* Include Header */}
       <Header /> <br /><br />
 

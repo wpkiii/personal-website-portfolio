@@ -50,7 +50,7 @@ export default function Home() {
         </main>
 
         {/* Footer */}
-        <footer className="text-center py-6 bg-gray-100 dark:bg-gray-800 text-gray-500 relative">
+        <footer className="text-center py-6 bg-transparent dark:bg-transparent text-gray-500 relative">
           <p>
             © {new Date().getFullYear()} William (Trey) Kelly | All rights
             reserved.

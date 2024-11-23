@@ -9,7 +9,7 @@ export default function ProjectLayout({ title, description, year, techStack, lin
   const isVideo = imageSrc.endsWith('.mp4') || imageSrc.endsWith('.mov');
 
   const content = (
-    <Card className="flex flex-col md:flex-row bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md mb-6 cursor-pointer">
+    <Card className="flex flex-col md:flex-row bg-white dark:bg-black p-4 rounded-lg shadow-md mb-6 cursor-pointer">
       <div className="md:w-1/2 flex-shrink-0 h-48 md:h-64 overflow-hidden">
         {isVideo ? (
           <video

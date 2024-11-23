@@ -51,7 +51,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="bg-white dark:bg-gray-900 p-6 max-w-7xl mx-auto relative"
+      className="bg-transparent dark:transparent p-6 max-w-7xl mx-auto relative"
     >
       {showCursorText && (
         <div
@@ -76,7 +76,7 @@ export default function ProjectsSection() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-4 dark:bg-gray-800"
+              className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-4 dark:bg-black"
               style={{
                 cursor: "url(/middlefinger.png), auto",
               }}

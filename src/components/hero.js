@@ -21,7 +21,7 @@ export default function Hero() {
   }, [currentWordIndex, words]);
 
   return (
-    <section id="hero" className="flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto dark:bg-gray-900 overflow-hidden">
+    <section id="hero" className="flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto dark:transparent overflow-hidden">
       <div className="flex flex-col md:flex-row items-center md:space-x-8">
         
         {/* Profile Image */}

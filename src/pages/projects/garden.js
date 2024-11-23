@@ -6,7 +6,7 @@ import Header from "@/components/header"; // Adjust path if needed
 
 export default function Garden() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
       {/* Include Header */}
       <Header />
       <br />

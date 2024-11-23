@@ -12,7 +12,7 @@ export default function Header() {
   const logoSrc = theme === 'dark' ? '/ok.svg' : '/darkok.svg';
 
   return (
-    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 py-4 px-8 fixed top-0 w-full z-50 shadow-sm">
+    <header className="bg-white dark:bg-black border-b border-black-200 py-4 px-8 fixed top-0 w-full z-50 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         <div className="flex items-center space-x-2">

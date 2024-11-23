@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Education() {
   return (
-    <section id="education" className="bg-white dark:bg-gray-900">
+    <section id="education" className="bg-transparent dark:bg-transparent">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         {/* Title Section */}
         <div className="mx-auto text-center mb-8 lg:mb-16 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-screen-sm">
