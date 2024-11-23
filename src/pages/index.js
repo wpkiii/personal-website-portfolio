@@ -5,6 +5,8 @@ import localFont from "next/font/local";
 import Experience from "@/components/experience";
 import ProjectSection from "@/components/projectsection";
 import Education from "@/components/education";
+import ParticlesBackground from "@/components/particlesbackground";
+
 
 // Load custom fonts
 const geistSans = localFont({
@@ -29,13 +31,16 @@ export default function Home() {
       </Head>
 
       <div
-        className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col relative`}
       >
+        {/* Add the Particle Background */}
+        <ParticlesBackground />
+
         {/* Render the Header */}
         <Header />
 
         {/* Main Hero Section */}
-        <main className="flex-grow pt-24 px-4 sm:px-6 lg:px-8">
+        <main className="flex-grow pt-24 px-4 sm:px-6 lg:px-8 relative">
           <Hero />
           <br />
           <br />
@@ -45,7 +50,7 @@ export default function Home() {
         </main>
 
         {/* Footer */}
-        <footer className="text-center py-6 bg-gray-100 dark:bg-gray-800 text-gray-500">
+        <footer className="text-center py-6 bg-gray-100 dark:bg-gray-800 text-gray-500 relative">
           <p>
             © {new Date().getFullYear()} William (Trey) Kelly | All rights
             reserved.
