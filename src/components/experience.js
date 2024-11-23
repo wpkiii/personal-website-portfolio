@@ -1,6 +1,10 @@
-//experience.js
-
 import { useState } from "react";
+import { Press_Start_2P } from "next/font/google";
+
+const pressStart2P = Press_Start_2P({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default function Experience() {
   const [showModal, setShowModal] = useState(false);
@@ -26,11 +30,21 @@ export default function Experience() {
       moreInfo: (
         <>
           <ul className="list-disc ml-6">
-            <li>Built and automated 10+ data consolidation scripts/pipelines in Python, reducing data consolidation and structuring time by 50% and enhancing data visualization for real-time insights.</li>
-            <li>Designed an ML-driven image parsing and analysis system to process tables from large datasets, increasing data ingestion speed by 40% with automated JSON data transfer to diverse databases.</li>
-            <li>Recreated and enhanced a legacy flight and satellite information system, migrating 300,000+ records using Jira, Python, and SharePoint. Added advanced query functionalities with Python, Pandas, and Tableau, improving data accessibility by 45% and earning a performance bonus.</li>
-            <li>Developed a proprietary web application to streamline customer queries about launch vehicles and component requirements, reducing support queries by 20% across the company.</li>
-            <li>Leveraged AI to analyze historical flight data for a specific launch vehicle. Identified overlooked components with high fault frequencies, reducing inspection times by 25% for the company’s largest launch vehicle.</li>
+            <li>
+              Built and automated 10+ data consolidation scripts/pipelines in Python, reducing data consolidation and structuring time by 50% and enhancing data visualization for real-time insights.
+            </li>
+            <li>
+              Designed an ML-driven image parsing and analysis system to process tables from large datasets, increasing data ingestion speed by 40% with automated JSON data transfer to diverse databases.
+            </li>
+            <li>
+              Recreated and enhanced a legacy flight and satellite information system, migrating 300,000+ records using Jira, Python, and SharePoint. Added advanced query functionalities with Python, Pandas, and Tableau, improving data accessibility by 45% and earning a performance bonus.
+            </li>
+            <li>
+              Developed a proprietary web application to streamline customer queries about launch vehicles and component requirements, reducing support queries by 20% across the company.
+            </li>
+            <li>
+              Leveraged AI to analyze historical flight data for a specific launch vehicle. Identified overlooked components with high fault frequencies, reducing inspection times by 25% for the company’s largest launch vehicle.
+            </li>
           </ul>
         </>
       ),
@@ -45,9 +59,15 @@ export default function Experience() {
       moreInfo: (
         <>
           <ul className="list-disc ml-6">
-            <li>Conceptualized and developed a scalable educational platform for universities, enhancing student-advisor communications using React, React Native, Tailwind.css, Node.js, Azure, and MySQL.</li>
-            <li>Built backend services on Azure, providing secure, scalable, and real-time access to educational resources for up to 2,000 students.</li>
-            <li>Led a cross-functional team of 7, overseeing project milestones, feature implementation, and client feedback integration.</li>
+            <li>
+              Conceptualized and developed a scalable educational platform for universities, enhancing student-advisor communications using React, React Native, Tailwind.css, Node.js, Azure, and MySQL.
+            </li>
+            <li>
+              Built backend services on Azure, providing secure, scalable, and real-time access to educational resources for up to 2,000 students.
+            </li>
+            <li>
+              Led a cross-functional team of 7, overseeing project milestones, feature implementation, and client feedback integration.
+            </li>
           </ul>
         </>
       ),
@@ -62,9 +82,15 @@ export default function Experience() {
       moreInfo: (
         <>
           <ul className="list-disc ml-6">
-            <li>Employed penetration testing tools (BurpSuite, Metasploit, Hydra) to identify and secure vulnerabilities in Nordstrom applications, enhancing cybersecurity protocols.</li>
-            <li>Created a Python-based automation script with Selenium to increase data extraction efficiency, saving over 10 hours per month in manual processing time.</li>
-            <li>Provided comprehensive documentation with solutions for all identified vulnerabilities during penetration testing.</li>
+            <li>
+              Employed penetration testing tools (BurpSuite, Metasploit, Hydra) to identify and secure vulnerabilities in Nordstrom applications, enhancing cybersecurity protocols.
+            </li>
+            <li>
+              Created a Python-based automation script with Selenium to increase data extraction efficiency, saving over 10 hours per month in manual processing time.
+            </li>
+            <li>
+              Provided comprehensive documentation with solutions for all identified vulnerabilities during penetration testing.
+            </li>
           </ul>
         </>
       ),
@@ -79,8 +105,12 @@ export default function Experience() {
       moreInfo: (
         <>
           <ul className="list-disc ml-6">
-            <li>Engineered a process to migrate production data to Azure Cloud using REST APIs and MQTT, improving data accessibility and operational insights for 4 global plants.</li>
-            <li>Developed API-based data solutions to connect distributed facilities, enhancing access to vital real-time production data across the organization.</li>
+            <li>
+              Engineered a process to migrate production data to Azure Cloud using REST APIs and MQTT, improving data accessibility and operational insights for 4 global plants.
+            </li>
+            <li>
+              Developed API-based data solutions to connect distributed facilities, enhancing access to vital real-time production data across the organization.
+            </li>
           </ul>
         </>
       ),
@@ -93,7 +123,10 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="bg-transparent dark:bg-transparent py-8 px-4 lg:py-16 lg:px-6">
+    <section
+      id="experience"
+      className={`bg-transparent dark:bg-transparent py-8 px-4 lg:py-16 lg:px-6 ${pressStart2P.className}`}
+    >
       <div className="mx-auto max-w-screen-xl">
         <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
@@ -125,7 +158,9 @@ export default function Experience() {
               <span className="text-gray-500 dark:text-gray-400">{job.location}</span>
               <br />
               <span className="text-gray-500 dark:text-gray-400">{job.date}</span>
-              <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">{job.description}</p>
+              <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+                {job.description}
+              </p>
 
               <div className="flex justify-between items-center mt-4">
                 <a
@@ -150,7 +185,9 @@ export default function Experience() {
             <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg mx-auto">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-2xl font-semibold dark:text-white">More About My Role</h3>
+                  <h3 className="text-2xl font-semibold dark:text-white">
+                    More About My Role
+                  </h3>
                   <button
                     className="text-black dark:text-white"
                     onClick={() => setShowModal(false)}
@@ -159,7 +196,9 @@ export default function Experience() {
                   </button>
                 </div>
                 <div className="mt-4">
-                  <p className="text-gray-600 dark:text-gray-300">{modalContent}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {modalContent}
+                  </p>
                 </div>
                 <div className="mt-6 flex justify-end">
                   <button

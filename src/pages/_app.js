@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         {/* Favicon */}
         <link rel="icon" href="/ok.svg" type="image/svg+xml" />
+        
         {/* Global Meta Tags */}
         <title>William Kelly - Digital Portfolio</title>
         <meta
@@ -16,7 +17,7 @@ export default function App({ Component, pageProps }) {
           content="Portfolio of William Kelly, specializing in AI and Computer Engineering."
         />
       </Head>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <Component {...pageProps} />
       </ThemeProvider>
     </>
