@@ -26,15 +26,18 @@ const geistMono = localFont({
 const pressStart2P = Press_Start_2P({
   weight: '400', // Available weights for Press Start 2P
   subsets: ['latin'],
-  
+
 });
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>William Kelly</title>
-        <meta name="description" content="Portfolio of William 'Trey' Kelly" />
+        <title>William &quot;Trey&quot; Kelly | Computer Engineer &amp; AI Specialist</title>
+        <meta name="description" content="Explore the digital portfolio of William 'Trey' Kelly, a software engineer specializing in artificial intelligence, computer engineering,
+         and cutting-edge technologies. Discover projects, skills, freelance work, and experience." />
+        <meta name="keywords" content="William Kelly, Trey Kelly, software engineer, artificial intelligence, machine learning, computer engineering, AI, ML, software development, digital portfolio" />
+        <meta name="author" content="William Kelly III" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Remove the favicon link here */}
       </Head>
@@ -55,7 +58,7 @@ export default function Home() {
           <br />
           <Education /> {/* Render Education section here */}
           <Experience /> {/* Render Experience section here */}
-          <ProjectSection />
+          <ProjectSection /> {/* Render Projects section here */}
         </main>
 
         {/* Footer */}

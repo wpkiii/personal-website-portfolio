@@ -14,8 +14,10 @@ export default function App({ Component, pageProps }) {
         <title>William Kelly - Digital Portfolio</title>
         <meta
           name="description"
-          content="Portfolio of William Kelly, specializing in AI and Computer Engineering."
+          content="Welcome to the digital portfolio of William Kelly III (Trey), showcasing expertise in artificial intelligence, computer engineering, and software development."
         />
+        <meta name="keywords" content="William Kelly, Trey Kelly, software engineer, artificial intelligence, machine learning, computer engineering, AI, ML, software development, digital portfolio" />
+        <meta name="author" content="William Kelly III" />
       </Head>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <Component {...pageProps} />
