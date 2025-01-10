@@ -2,6 +2,7 @@
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Head from "next/head";
+import { DefaultSeo } from 'next-seo';
 
 export default function App({ Component, pageProps }) {
   return (
