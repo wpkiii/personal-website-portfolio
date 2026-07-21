@@ -38,9 +38,9 @@ export default function CVProject() {
 
         {/* Display two videos */}
         <div className="flex flex-col sm:flex-row sm:gap-4 my-6">
-          <video
+          <Image
             ref={video1Ref}
-            src="/gesturedetection.mov" // Replace with the path to your first video
+            src="/detectiongif.gif" // Replace with the path to your first video
             controls
             onEnded={handleVideoEnd}
             className="w-full sm:w-1/2 h-auto rounded-lg shadow-lg mb-4 sm:mb-0"

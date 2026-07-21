@@ -1,3 +1,5 @@
+//experience.js
+
 import { useState } from "react";
 import { Press_Start_2P } from "next/font/google";
 
@@ -142,15 +144,7 @@ export default function Experience() {
               onMouseLeave={handleMouseLeave}
               className={`relative p-6 rounded-lg shadow-lg transition transform ${
                 hoveredCardIndex === index ? "scale-105" : ""
-              } animate-colorShift ${
-                index === 0
-                  ? "bg-gradient-to-r from-yellow-400 to-pink-500 dark:from-orange-700 dark:to-pink-600"
-                  : index === 1
-                  ? "bg-gradient-to-r from-cyan-400 to-indigo-500 dark:from-gray-800 dark:to-blue-900"
-                  : index === 2
-                  ? "bg-gradient-to-r from-green-500 to-teal-400 dark:from-gray-800 dark:to-green-700"
-                  : "bg-gradient-to-r from-yellow-400 to-orange-500 dark:from-yellow-600 dark:to-orange-800"
-              }`}
+  } bg-[url('/experiencebackground.png')] bg-cover bg-center bg-no-repeat dark:bg-gray-800/80 backdrop-blur-md`}
             >
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {job.title}

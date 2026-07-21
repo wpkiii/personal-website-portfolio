@@ -64,6 +64,7 @@ export default function Home() {
         {/* Footer */}
         <footer className="text-center py-6 bg-transparent dark:bg-transparent text-gray-500 relative">
           <p>
+           Contact me (treypkelly@gmail.com) for all business related inquries  //
             © {new Date().getFullYear()} William (Trey) Kelly | All rights
             reserved.
           </p>
