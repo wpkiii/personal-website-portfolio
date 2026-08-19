@@ -42,7 +42,46 @@ export default function ProjectsSection() {
       link: "projects/garden",
       imageSrc: "/gardengif.gif",
     },
+    {
+      title: "Stock Prediction Using Social Media",
+      description:
+        "Used AI sentiment analysis techniques to analyze tweets and predict stock performance, achieving a 78% accuracy rate.",
+      year: "2024",
+      techStack: ["AI", "Sentiment Analysis", "Twitter API"],
+    },
+    {
+      title: "MIRA Chatbot",
+      description:
+        "Developed a Python-based chatbot for everyday computing tasks, with strong memory of past conversations.",
+      year: "2024",
+      techStack: ["Python", "Chatbot"],
+    },
+    {
+      title: "Breast Cancer Detection ML Project",
+      description:
+        "Developed an ML model using medical images to detect tumors, achieving 84% accuracy.",
+      year: "2023",
+      techStack: ["Machine Learning", "Medical Imaging"],
+    },
+    {
+      title: "ScholarshipSearcher",
+      description:
+        "Created a React Native app to help students find scholarships, helping 5 IEEE students secure funding.",
+      year: "2022",
+      techStack: ["React Native"],
+    },
   ];
+
+  const PROJECTS_PER_PAGE = 4;
+  const pages = [];
+  for (let i = 0; i < projects.length; i += PROJECTS_PER_PAGE) {
+    pages.push(projects.slice(i, i + PROJECTS_PER_PAGE));
+  }
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const goToPage = (index) => {
+    setCurrentPage((index + pages.length) % pages.length);
+  };
 
   const handleMouseMove = (e) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -67,37 +106,85 @@ export default function ProjectsSection() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto">
         {/* Playground Heading */}
         <h2
-          className="font-heading text-4xl font-bold text-left mb-4 text-gray-900 dark:text-white"
+          className="font-heading text-4xl font-bold text-left mb-8 lg:mb-16 text-gray-900 dark:text-white"
         >
           Playground
         </h2>
 
-        {/* Project Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-          {projects.map((project, index) => (
+        {/* Project Carousel */}
+        <div className="relative px-12 md:px-16">
+          <div className="overflow-hidden">
             <div
-              key={index}
-              className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-2 dark:bg-black"
-              style={{
-                cursor: "url(/middlefinger.png), auto",
-              }}
-              onMouseEnter={() => setShowCursorText(true)}
-              onMouseLeave={() => setShowCursorText(false)}
-              onMouseMove={handleMouseMove}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentPage * 100}%)` }}
             >
-              <ProjectLayout
-                title={project.title}
-                description={project.description}
-                year={project.year}
-                techStack={project.techStack}
-                link={project.link}
-                imageSrc={project.imageSrc}
-              />
+              {pages.map((pageProjects, pageIndex) => (
+                <div
+                  key={pageIndex}
+                  className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4"
+                >
+                  {pageProjects.map((project, index) => (
+                    <div
+                      key={index}
+                      className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-2 dark:bg-black"
+                      style={{
+                        cursor: "url(/middlefinger.png), auto",
+                      }}
+                      onMouseEnter={() => setShowCursorText(true)}
+                      onMouseLeave={() => setShowCursorText(false)}
+                      onMouseMove={handleMouseMove}
+                    >
+                      <ProjectLayout
+                        title={project.title}
+                        description={project.description}
+                        year={project.year}
+                        techStack={project.techStack}
+                        link={project.link}
+                        imageSrc={project.imageSrc}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {pages.length > 1 && (
+            <>
+              <button
+                aria-label="Previous projects"
+                onClick={() => goToPage(currentPage - 1)}
+                className="absolute top-1/2 left-0 -translate-y-1/2 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-600 text-white text-2xl leading-none shadow-lg hover:bg-blue-700 hover:scale-110 transition-all"
+              >
+                ‹
+              </button>
+              <button
+                aria-label="Next projects"
+                onClick={() => goToPage(currentPage + 1)}
+                className="absolute top-1/2 right-0 -translate-y-1/2 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-600 text-white text-2xl leading-none shadow-lg hover:bg-blue-700 hover:scale-110 transition-all"
+              >
+                ›
+              </button>
+
+              <div className="flex justify-center gap-2 mt-6">
+                {pages.map((_, index) => (
+                  <button
+                    key={index}
+                    aria-label={`Go to project page ${index + 1}`}
+                    onClick={() => goToPage(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                      index === currentPage
+                        ? "bg-gray-900 dark:bg-white"
+                        : "bg-gray-300 dark:bg-gray-600"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

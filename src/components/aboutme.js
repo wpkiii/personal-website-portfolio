@@ -37,8 +37,8 @@ export default function AboutMe() {
   }, [currentWordIndex, words]);
 
   return (
-    <section id="about-me" className="flex flex-col items-center space-y-6 px-6 py-16 max-w-7xl mx-auto overflow-hidden">
-      <h2 className="w-full font-heading text-4xl font-bold text-left text-gray-900 dark:text-white">
+    <section id="about-me" className="flex flex-col items-center px-6 py-16 max-w-7xl mx-auto overflow-hidden">
+      <h2 className="w-full font-heading text-4xl font-bold text-left mb-8 lg:mb-16 text-gray-900 dark:text-white">
         About Me
       </h2>
 
