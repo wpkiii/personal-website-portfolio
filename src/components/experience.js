@@ -2,120 +2,133 @@
 
 import { useState } from "react";
 
+const experiences = [
+  {
+    company: "Accenture Federal Services",
+    title: "Associate Manager – AI/ML Engineer",
+    date: "Mar 2026 – Present",
+    location: "Washington, DC",
+    link: "https://www.accenture.com/",
+    bullets: [
+      "AI/ML & Data Engineer specializing in full-stack development, data science, and generative AI solutions to deliver scalable, production-grade systems for federal clients.",
+      "Develops frontend features, backend APIs, and extended database functionality to support new platform capabilities across the application stack.",
+      "Builds data pipelines that weekly process 2TB+ of structured, semi-structured, and unstructured multimodal data, powering AI-driven correlation features across computer vision, data science, and more.",
+      "Manages CI/CD and biweekly deployments (Docker, GitHub Actions, Temporal) in an air-gapped environment using an agile sprint cadence, including feature testing, while serving as direct technical liaison to the client and senior leadership.",
+    ],
+  },
+  {
+    company: "The Kelly Organization, LLC",
+    title: "Founder",
+    date: "Jan 2025 – Present",
+    location: "Remote",
+    bullets: [
+      "Provide consulting and custom software/AI solutions across web & app development, data science, genAI, and computer vision. Delivered freelance web development, ETL, and other consulting projects for 15 additional clients.",
+    ],
+    subRoles: [
+      {
+        company: "Dynasty Futures",
+        title: "Co-Lead Developer",
+        date: "Jan 2026 – Present",
+        location: "Remote",
+        link: "https://www.dynastyfuturesdyn.com",
+        bullets: [
+          "Built a proprietary futures trading platform with over 50 customers.",
+          "Worked on a team of four (two developers) to execute product design, development, CI/CD, and maintenance for the platform.",
+          "The product generates roughly $5,000 weekly in profit.",
+        ],
+      },
+      {
+        company: "CampusCore",
+        title: "Cofounder & CTO",
+        date: "May 2024 – May 2026",
+        location: "Remote",
+        link: "https://campus-core.com/",
+        bullets: [
+          "Built an AI-driven academic advising platform and released on iOS and Android (App Store and Google Play).",
+          "Led a team of 6 through product design, development, deployment, and continuous iteration based on university and advisor feedback.",
+          "Secured $50,000 in funding through Microsoft for Startups.",
+        ],
+      },
+      {
+        company: "OBAI",
+        title: "Contracted Developer",
+        date: "Oct 2025 – Jan 2026",
+        location: "Remote",
+        link: "https://obai.app",
+        bullets: [
+          "Helped develop a proprietary computer vision algorithm for users to detect damage and generate cost estimates from the detected damage.",
+        ],
+      },
+    ],
+  },
+  {
+    company: "The Aerospace Corporation",
+    title: "AI/ML Engineer",
+    date: "Jan 2023 – Mar 2025",
+    location: "Washington, DC",
+    link: "https://www.aerospace.org/",
+    bullets: [
+      "Built and deployed Generative AI, computer vision, and ETL/ELT data pipeline solutions for space and defense mission partners.",
+      "Developed RAG-based AI systems using Python, GPT-4o/Vision Instruct, GTE, Azure Cloud, and vector DBs (Weaviate/Cognitive Search/Pinecone), integrated via LangChain.",
+      "Designed and maintained 15+ automated pipelines (Python/Node.js, Airflow/Jenkins) using Azure and internal relational/NoSQL databases.",
+      "Delivered CV solutions, including real-time YOLO detection on edge devices, Mask-RCNN segmentation for imagery, and document OCR workflows.",
+      "Co-led enterprise cloud data architecture initiative, centralizing datasets and creating standard operating procedures for secure migration protocols and access controls.",
+    ],
+  },
+  {
+    company: "Nordstrom Corporate",
+    title: "Cyber Security Intern (Penetration Tester)",
+    date: "June – Aug 2022",
+    location: "Seattle, WA",
+    link: "https://www.nordstrom.com/",
+    bullets: [
+      "Employed penetration testing techniques to identify and secure vulnerabilities in Nordstrom's application infrastructure.",
+    ],
+  },
+  {
+    company: "Procter & Gamble",
+    title: "Data Science Intern",
+    date: "May – Aug 2021",
+    location: "Boston, MA",
+    link: "https://us.pg.com/",
+    bullets: [
+      "Migrated the production data of 4 global plants to Azure Cloud, improving real-time data availability and allowing for more in-depth global decision-making.",
+    ],
+  },
+];
+
+function SubRole({ role }) {
+  return (
+    <div className="mt-4 pl-4 border-l-2 border-gray-200 dark:border-gray-700">
+      <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+        <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{role.date}</span>
+        <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+          {role.title} · {role.link ? (
+            <a href={role.link} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
+              {role.company}
+            </a>
+          ) : (
+            role.company
+          )}
+        </h4>
+      </div>
+      <ul className="mt-2 space-y-1.5">
+        {role.bullets.map((bullet, index) => (
+          <li key={index} className="flex gap-2 text-sm text-gray-600 dark:text-gray-300">
+            <span className="mt-1 flex-shrink-0 text-blue-500 text-xs">▹</span>
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function Experience() {
-  const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
-  const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
+  const [expandedIndex, setExpandedIndex] = useState(0);
 
-  const handleMouseEnter = (index) => {
-    setHoveredCardIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredCardIndex(null);
-  };
-
-  const experiences = [
-    {
-      title: "The Aerospace Corporation – Systems Engineer",
-      location: "El Segundo, CA",
-      date: "June 2023 – Present",
-      description:
-        "I currently work as a systems engineer completing many data management, data insights and analytics, pipelining, and artificial intelligence-related tasks.",
-      link: "https://www.aerospace.org/",
-      moreInfo: (
-        <>
-          <ul className="list-disc ml-6">
-            <li>
-              Built and automated 10+ data consolidation scripts/pipelines in Python, reducing data consolidation and structuring time by 50% and enhancing data visualization for real-time insights.
-            </li>
-            <li>
-              Designed an ML-driven image parsing and analysis system to process tables from large datasets, increasing data ingestion speed by 40% with automated JSON data transfer to diverse databases.
-            </li>
-            <li>
-              Recreated and enhanced a legacy flight and satellite information system, migrating 300,000+ records using Jira, Python, and SharePoint. Added advanced query functionalities with Python, Pandas, and Tableau, improving data accessibility by 45% and earning a performance bonus.
-            </li>
-            <li>
-              Developed a proprietary web application to streamline customer queries about launch vehicles and component requirements, reducing support queries by 20% across the company.
-            </li>
-            <li>
-              Leveraged AI to analyze historical flight data for a specific launch vehicle. Identified overlooked components with high fault frequencies, reducing inspection times by 25% for the company’s largest launch vehicle.
-            </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      title: "CampusCore – CoFounder & CTO",
-      location: "Remote",
-      date: "May 2024 – Present",
-      description:
-        "Co-founded and developed an AI-powered educational platform that enhances student-advisor communication and support, while streamlining university processes.",
-      link: "https://campus-core.com/",
-      moreInfo: (
-        <>
-          <ul className="list-disc ml-6">
-            <li>
-              Conceptualized and developed a scalable educational platform for universities, enhancing student-advisor communications using React, React Native, Tailwind.css, Node.js, Azure, and MySQL.
-            </li>
-            <li>
-              Built backend services on Azure, providing secure, scalable, and real-time access to educational resources for up to 2,000 students.
-            </li>
-            <li>
-              Led a cross-functional team of 7, overseeing project milestones, feature implementation, and client feedback integration.
-            </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      title: "Nordstrom Corporate – Cyber Security Intern (Penetration Tester)",
-      location: "Seattle, WA",
-      date: "June – August 2022",
-      description:
-        "Conducted penetration testing using tools like BurpSuite and Metasploit to enhance Nordstrom's application security and optimize cybersecurity protocols.",
-      link: "https://www.nordstrom.com/",
-      moreInfo: (
-        <>
-          <ul className="list-disc ml-6">
-            <li>
-              Employed penetration testing tools (BurpSuite, Metasploit, Hydra) to identify and secure vulnerabilities in Nordstrom applications, enhancing cybersecurity protocols.
-            </li>
-            <li>
-              Created a Python-based automation script with Selenium to increase data extraction efficiency, saving over 10 hours per month in manual processing time.
-            </li>
-            <li>
-              Provided comprehensive documentation with solutions for all identified vulnerabilities during penetration testing.
-            </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      title: "Procter & Gamble – IT Data and Analytics Intern",
-      location: "Boston, MA",
-      date: "May – August 2021",
-      description:
-        "Engineered data migration processes and API-based solutions to connect global production facilities and improve real-time access to operational data.",
-      link: "https://us.pg.com/",
-      moreInfo: (
-        <>
-          <ul className="list-disc ml-6">
-            <li>
-              Engineered a process to migrate production data to Azure Cloud using REST APIs and MQTT, improving data accessibility and operational insights for 4 global plants.
-            </li>
-            <li>
-              Developed API-based data solutions to connect distributed facilities, enhancing access to vital real-time production data across the organization.
-            </li>
-          </ul>
-        </>
-      ),
-    },
-  ];
-
-  const openModal = (content) => {
-    setModalContent(content);
-    setShowModal(true);
+  const toggle = (index) => {
+    setExpandedIndex((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -130,75 +143,68 @@ export default function Experience() {
           </h2>
         </div>
 
-        <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-          {experiences.map((job, index) => (
-            <div
-              key={index}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-              className={`relative p-6 rounded-lg shadow-lg transition transform ${
-                hoveredCardIndex === index ? "scale-105" : ""
-  } bg-[url('/experiencebackground.png')] bg-cover bg-center bg-no-repeat dark:bg-gray-800/80 backdrop-blur-md`}
-            >
-              <h3 className="font-heading text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {job.title}
-              </h3>
-              <span className="text-gray-500 dark:text-gray-400">{job.location}</span>
-              <br />
-              <span className="text-gray-500 dark:text-gray-400">{job.date}</span>
-              <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                {job.description}
-              </p>
-
-              <div className="flex justify-between items-center mt-4">
-                <a
-                  href={job.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-blue-500 hover:underline"
-                >
-                  Visit Website
-                </a>
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 border-t border-b border-gray-200 dark:border-gray-700">
+          {experiences.map((job, index) => {
+            const isOpen = expandedIndex === index;
+            return (
+              <div key={job.company}>
                 <button
-                  className="text-blue-500 text-xs hover:underline"
-                  onClick={() => openModal(job.moreInfo)}
+                  onClick={() => toggle(index)}
+                  aria-expanded={isOpen}
+                  className="w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
                 >
-                  More Information
+                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8">
+                    <span className="sm:w-36 flex-shrink-0 text-sm font-mono text-gray-500 dark:text-gray-400">
+                      {job.date}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
+                        {job.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {job.company} · {job.location}
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    className={`flex-shrink-0 text-gray-400 transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    ⌄
+                  </span>
                 </button>
-              </div>
-            </div>
-          ))}
 
-          {showModal && (
-            <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg mx-auto">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-2xl font-semibold dark:text-white">
-                    More About My Role
-                  </h3>
-                  <button
-                    className="text-black dark:text-white"
-                    onClick={() => setShowModal(false)}
-                  >
-                    ✖
-                  </button>
-                </div>
-                <div className="mt-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {modalContent}
-                  </p>
-                </div>
-                <div className="mt-6 flex justify-end">
-                  <button
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                </div>
+                {isOpen && (
+                  <div className="pb-6 sm:pl-44 animate-fadeInUp">
+                    <ul className="space-y-2.5">
+                      {job.bullets.map((bullet, bulletIndex) => (
+                        <li key={bulletIndex} className="flex gap-3 text-gray-600 dark:text-gray-300">
+                          <span className="mt-1 flex-shrink-0 text-blue-500">▹</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {job.subRoles?.map((role) => (
+                      <SubRole key={role.company} role={role} />
+                    ))}
+
+                    {job.link && (
+                      <a
+                        href={job.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-block mt-4 text-sm text-blue-500 hover:underline"
+                      >
+                        Visit Website →
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
-            </div>
-          )}
+            );
+          })}
         </div>
       </div>
     </section>
