@@ -63,21 +63,43 @@ const experiences = [
   },
   {
     company: "The Aerospace Corporation",
-    title: "AI/ML Engineer",
-    date: "Jan 2023 – Mar 2025",
-    location: "Washington, DC",
+    title: "Member of Technical Staff - AI/ML Engineer",
+    date: "May 2023 – Mar 2026",
+    location: "El Segundo, CA / Chantilly, VA",
     link: "https://www.aerospace.org/",
     bullets: [
-      "Built and deployed Generative AI, computer vision, and ETL/ELT data pipeline solutions for space and defense mission partners.",
-      "Developed RAG-based AI systems using Python, GPT-4o/Vision Instruct, GTE, Azure Cloud, and vector DBs (Weaviate/Cognitive Search/Pinecone), integrated via LangChain.",
-      "Designed and maintained 15+ automated pipelines (Python/Node.js, Airflow/Jenkins) using Azure and internal relational/NoSQL databases.",
-      "Delivered CV solutions, including real-time YOLO detection on edge devices, Mask-RCNN segmentation for imagery, and document OCR workflows.",
-      "Co-led enterprise cloud data architecture initiative, centralizing datasets and creating standard operating procedures for secure migration protocols and access controls.",
+      "Progressed from a part-time Systems Engineer role into a full-time Member of Technical Staff position, delivering AI/ML, data, and cloud solutions for space, defense, and national security mission partners.",
+    ],
+    subRoles: [
+      {
+        company: "The Aerospace Corporation",
+        title: "Member of Technical Staff – AI/ML Engineer",
+        date: "Jan 2025 – Mar 2026",
+        location: "Chantilly, VA · Hybrid",
+        bullets: [
+          "Built and deployed Generative AI, computer vision, and ETL/ELT data pipeline solutions for space and defense mission partners.",
+          "Developed RAG-based AI systems using Python, GPT-4o/Vision Instruct, GTE, Azure Cloud, and vector DBs (Weaviate/Cognitive Search/Pinecone), integrated via LangChain.",
+          "Designed and maintained 15+ automated pipelines (Python/Node.js, Airflow/Jenkins) using Azure and internal relational/NoSQL databases.",
+          "Delivered CV solutions, including real-time YOLO detection on edge devices, Mask-RCNN segmentation for imagery, and document OCR workflows.",
+          "Co-led enterprise cloud data architecture initiative, centralizing datasets and creating standard operating procedures for secure migration protocols and access controls.",
+        ],
+      },
+      {
+        company: "The Aerospace Corporation",
+        title: "System Engineer (Part-Time)",
+        date: "May 2023 – Dec 2024",
+        location: "El Segundo, CA · On-site",
+        bullets: [
+          "Created a web application for 3D visualization of launch vehicles at a component level.",
+          "Created ETL scripts processing contract data through to real-time satellite information.",
+          "Used sentiment analysis on legacy flight data to detect potential failures within launch vehicle components.",
+        ],
+      },
     ],
   },
   {
     company: "Nordstrom Corporate",
-    title: "Cyber Security Intern (Penetration Tester)",
+    title: "Cybersecurity Engineer - Penetration Tester",
     date: "June – Aug 2022",
     location: "Seattle, WA",
     link: "https://www.nordstrom.com/",
@@ -97,6 +119,29 @@ const experiences = [
   },
 ];
 
+function Highlights({ items, compact }) {
+  return (
+    <ul
+      className={`relative border-l-2 border-gray-200 dark:border-gray-700 ${
+        compact ? "mt-2 pl-4 space-y-2" : "pl-5 space-y-4"
+      }`}
+    >
+      {items.map((item, index) => (
+        <li key={index} className="relative">
+          <span
+            className={`absolute top-1.5 rounded-full bg-blue-500 ring-4 ring-white dark:ring-gray-900 ${
+              compact ? "-left-[1.15rem] w-2 h-2" : "-left-[1.45rem] w-2.5 h-2.5"
+            }`}
+          />
+          <span className={compact ? "text-sm text-gray-600 dark:text-gray-300" : "text-gray-600 dark:text-gray-300"}>
+            {item}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function SubRole({ role }) {
   return (
     <div className="mt-4 pl-4 border-l-2 border-gray-200 dark:border-gray-700">
@@ -112,14 +157,7 @@ function SubRole({ role }) {
           )}
         </h4>
       </div>
-      <ul className="mt-2 space-y-1.5">
-        {role.bullets.map((bullet, index) => (
-          <li key={index} className="flex gap-2 text-sm text-gray-600 dark:text-gray-300">
-            <span className="mt-1 flex-shrink-0 text-blue-500 text-xs">▹</span>
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
+      <Highlights items={role.bullets} compact />
     </div>
   );
 }
@@ -138,7 +176,7 @@ export default function Experience() {
     >
       <div className="mx-auto max-w-screen-xl">
         <div className="max-w-screen-sm text-left mb-8 lg:mb-16">
-          <h2 className="font-heading mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <h2 className="font-heading mb-4 text-4xl font-bold text-gray-900 dark:text-white">
             Experience
           </h2>
         </div>
@@ -177,17 +215,10 @@ export default function Experience() {
 
                 {isOpen && (
                   <div className="pb-6 sm:pl-44 animate-fadeInUp">
-                    <ul className="space-y-2.5">
-                      {job.bullets.map((bullet, bulletIndex) => (
-                        <li key={bulletIndex} className="flex gap-3 text-gray-600 dark:text-gray-300">
-                          <span className="mt-1 flex-shrink-0 text-blue-500">▹</span>
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <Highlights items={job.bullets} />
 
                     {job.subRoles?.map((role) => (
-                      <SubRole key={role.company} role={role} />
+                      <SubRole key={role.title} role={role} />
                     ))}
 
                     {job.link && (
