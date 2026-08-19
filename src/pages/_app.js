@@ -3,6 +3,25 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Head from "next/head";
 import { DefaultSeo } from 'next-seo';
+import { Montserrat, Inter_Tight, Courier_Prime } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-montserrat",
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter-tight",
+});
+
+const courierPrime = Courier_Prime({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-courier-prime",
+});
 
 export default function App({ Component, pageProps }) {
   return (
@@ -10,7 +29,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         {/* Favicon */}
         <link rel="icon" href="/ok.svg" type="image/svg+xml" />
-        
+
         {/* Global Meta Tags */}
         <title>William Kelly - Digital Portfolio</title>
         <meta
@@ -21,7 +40,9 @@ export default function App({ Component, pageProps }) {
         <meta name="author" content="William Kelly III" />
       </Head>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-        <Component {...pageProps} />
+        <div className={`${montserrat.variable} ${interTight.variable} ${courierPrime.variable} font-sans`}>
+          <Component {...pageProps} />
+        </div>
       </ThemeProvider>
     </>
   );

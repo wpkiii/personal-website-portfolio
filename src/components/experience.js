@@ -1,12 +1,6 @@
 //experience.js
 
 import { useState } from "react";
-import { Press_Start_2P } from "next/font/google";
-
-const pressStart2P = Press_Start_2P({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export default function Experience() {
   const [showModal, setShowModal] = useState(false);
@@ -127,11 +121,11 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className={`bg-transparent dark:bg-transparent py-8 px-4 lg:py-16 lg:px-6 ${pressStart2P.className}`}
+      className="bg-transparent dark:bg-transparent py-8 px-4 lg:py-16 lg:px-6"
     >
       <div className="mx-auto max-w-screen-xl">
         <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <h2 className="font-heading mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Experience
           </h2>
         </div>
@@ -146,7 +140,7 @@ export default function Experience() {
                 hoveredCardIndex === index ? "scale-105" : ""
   } bg-[url('/experiencebackground.png')] bg-cover bg-center bg-no-repeat dark:bg-gray-800/80 backdrop-blur-md`}
             >
-              <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <h3 className="font-heading text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {job.title}
               </h3>
               <span className="text-gray-500 dark:text-gray-400">{job.location}</span>

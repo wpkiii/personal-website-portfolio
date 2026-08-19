@@ -1,11 +1,5 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
-import { Press_Start_2P } from 'next/font/google';
-
-const pressStart2P = Press_Start_2P({
-  subsets: ['latin'],
-  weight: '400',
-});
 
 export default function Hero() {
   const words = useMemo(() => ["Hey ", "there! ", "I'm ", " William ", " Kelly ",".",".","or", "(Trey)"], []);
@@ -24,7 +18,7 @@ export default function Hero() {
   }, [currentWordIndex, words]);
 
   return (
-    <section id="hero" className={`flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto overflow-hidden ${pressStart2P.className}`}>
+    <section id="hero" className="flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto overflow-hidden">
       <div className="flex flex-col md:flex-row items-center md:space-x-8">
         {/* Profile Image */}
         <div className="relative">
@@ -42,7 +36,7 @@ export default function Hero() {
 
         {/* Hero Text */}
         <div className="text-center md:text-left mt-6 md:mt-0">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex flex-wrap space-x-2">
+          <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-white flex flex-wrap space-x-2">
             {visibleWords.map((word, index) => (
               <span key={index}>
                 {word}
@@ -99,7 +93,7 @@ export default function Hero() {
       {/* Tech Stack Section */}
       <div className="mt-10 w-full text-center">
         <div className="flex flex-wrap justify-center items-center space-x-6 py-4">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white whitespace-nowrap">
+          <h2 className="font-heading text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white whitespace-nowrap">
             My tech stack:
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-4 mt-4">

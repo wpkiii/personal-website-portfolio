@@ -1,17 +1,5 @@
 import { useState } from "react";
 import ProjectLayout from "@/components/projectlayout";
-import { Press_Start_2P, VT323 } from "next/font/google";
-
-// Import both fonts
-const pressStart2P = Press_Start_2P({
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const vt323 = VT323({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export default function ProjectsSection() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -63,7 +51,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className={`bg-transparent dark:transparent p-6 max-w-7xl mx-auto relative ${vt323.className}`}
+      className="bg-transparent dark:transparent p-6 max-w-7xl mx-auto relative"
     >
       {showCursorText && (
         <div
@@ -82,7 +70,7 @@ export default function ProjectsSection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Projects Heading */}
         <h2
-          className={`text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white ${pressStart2P.className}`}
+          className="font-heading text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         >
           Projects
         </h2>

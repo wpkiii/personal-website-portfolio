@@ -2,32 +2,10 @@
 import Head from "next/head";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
-import localFont from "next/font/local";
 import Experience from "@/components/experience";
 import ProjectSection from "@/components/projectsection";
 import Education from "@/components/education";
 import ParticlesBackground from "@/components/particlesbackground";
-import { Press_Start_2P } from 'next/font/google';
-
-
-
-// Load custom fonts
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-// Import Press Start 2P
-const pressStart2P = Press_Start_2P({
-  weight: '400', // Available weights for Press Start 2P
-  subsets: ['latin'],
-
-});
 
 export default function Home() {
   return (
@@ -43,7 +21,7 @@ export default function Home() {
       </Head>
 
       <div
-        className={`${pressStart2P.variable} ${geistSans.variable} ${geistMono.variable} bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col relative`}
+        className="bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col relative"
       >
         {/* Add the Particle Background */}
         <ParticlesBackground />
@@ -62,7 +40,7 @@ export default function Home() {
         </main>
 
         {/* Footer */}
-        <footer className="text-center py-6 bg-transparent dark:bg-transparent text-gray-500 relative">
+        <footer className="font-mono text-center py-6 bg-transparent dark:bg-transparent text-gray-500 relative">
           <p>
            Contact me (treypkelly@gmail.com) for all business related inquries  //
             © {new Date().getFullYear()} William (Trey) Kelly | All rights

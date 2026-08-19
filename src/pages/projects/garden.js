@@ -14,7 +14,7 @@ export default function Garden() {
 
  {/* Main Content */}
 <div className="pt-16 p-8 max-w-4xl mx-auto">
-  <h1 className="text-4xl font-extrabold">EZGrow - IoT Closed Garden</h1>
+  <h1 className="font-heading text-4xl font-extrabold">EZGrow - IoT Closed Garden</h1>
   <p className="text-gray-600 dark:text-gray-300 my-4">2023</p>
   <div className="group flex space-x-4">
     <a
@@ -59,7 +59,7 @@ export default function Garden() {
 </div>
 
         {/* Technologies Used Section */}
-        <h2 className="text-xl sm:text-2xl font-semibold mt-6 sm:mt-8">
+        <h2 className="font-heading text-xl sm:text-2xl font-semibold mt-6 sm:mt-8">
           Technologies Used
         </h2>
         <div className="flex flex-wrap gap-2 mt-4">
@@ -87,7 +87,7 @@ export default function Garden() {
         </div>
 
         {/* Image Gallery Section */}
-        <h2 className="text-xl sm:text-2xl font-semibold mt-6 sm:mt-8">
+        <h2 className="font-heading text-xl sm:text-2xl font-semibold mt-6 sm:mt-8">
           Image Gallery
         </h2>
         <div className="grid grid-cols-2 gap-4 mt-6">
@@ -122,7 +122,7 @@ export default function Garden() {
         </div>
 
         {/* The Problem Section */}
-        <h2 className="text-2xl font-semibold mt-8">The Problem</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">The Problem</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           Modern agriculture cannot meet the rising demand for food, especially
           with limited space and resources in urban areas. Existing products
@@ -131,7 +131,7 @@ export default function Garden() {
         </p>
 
         {/* Research Section */}
-        <h2 className="text-2xl font-semibold mt-8">Research</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">Research</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           Extensive research was conducted to determine optimal plant
           conditions, sensor selection, and efficient system design. EZGrow was
@@ -140,7 +140,7 @@ export default function Garden() {
         </p>
 
         {/* Process Section */}
-        <h2 className="text-2xl font-semibold mt-8">Process</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">Process</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           The system uses sensors to monitor environmental factors like
           temperature, humidity, and soil moisture. Actuators respond to these
@@ -150,7 +150,7 @@ export default function Garden() {
         </p>
 
         {/* Outcome / Future of EZGrow Section */}
-        <h2 className="text-2xl font-semibold mt-8">Outcome</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">Outcome</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           EZGrow successfully achieved a functional prototype capable of
           maintaining an optimal environment for plants like basil. The system

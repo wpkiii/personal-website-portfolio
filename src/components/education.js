@@ -1,18 +1,12 @@
 import Image from 'next/image';
-import { Press_Start_2P } from 'next/font/google';
-
-const pressStart2P = Press_Start_2P({
-  subsets: ['latin'],
-  weight: '400',
-});
 
 export default function Education() {
   return (
-    <section id="education" className={`bg-transparent dark:bg-transparent ${pressStart2P.className}`}>
+    <section id="education" className="bg-transparent dark:bg-transparent">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         {/* Title Section */}
         <div className="mx-auto text-center mb-8 lg:mb-16 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-screen-sm">
-          <h2 className="mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <h2 className="font-heading mb-4 text-3xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Education
           </h2>
         </div>
@@ -32,7 +26,7 @@ export default function Education() {
             </div>
             <div className="absolute inset-0 flex items-center justify-end p-6 bg-gray-800 bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <div className="text-white text-right">
-                <h3 className="text-xl font-bold">Northwestern University</h3>
+                <h3 className="font-heading text-xl font-bold">Northwestern University</h3>
                 <p className="text-sm mt-1 font-semibold">Master of Computer Science & Engineering</p>
                 <p className="text-sm font-semibold">Specialization in AI/ML</p>
                 <p className="text-sm font-semibold">Graduated: 2024</p>
@@ -53,7 +47,7 @@ export default function Education() {
             </div>
             <div className="absolute inset-0 flex items-center justify-end p-6 bg-gray-800 bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <div className="text-white text-right">
-                <h3 className="text-xl font-semibold">North Carolina A&T State University</h3>
+                <h3 className="font-heading text-xl font-semibold">North Carolina A&T State University</h3>
                 <p className="text-sm mt-1 font-semibold">Bachelor of Computer Engineering</p>
                 <p className="text-sm font-semibold">Graduated: 2023</p>
               </div>

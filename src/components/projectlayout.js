@@ -32,7 +32,7 @@ export default function ProjectLayout({ title, description, year, techStack, lin
       </div>
       <div className="md:w-1/2 p-4">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
+          <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
           <span className="text-gray-500 dark:text-gray-300">{year}</span>
         </div>
         <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>

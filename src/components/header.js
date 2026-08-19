@@ -2,12 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
-import { Press_Start_2P } from 'next/font/google';
-
-const pressStart2P = Press_Start_2P({
-  subsets: ['latin'],
-  weight: '400',
-});
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
@@ -18,7 +12,7 @@ export default function Header() {
   const logoSrc = theme === 'dark' ? '/ok.svg' : '/darkok.svg';
 
   return (
-    <header className={`bg-white dark:bg-black border-b border-black-200 py-4 px-8 fixed top-0 w-full z-50 shadow-sm ${pressStart2P.className}`}>
+    <header className="font-mono bg-white dark:bg-black border-b border-black-200 py-4 px-8 fixed top-0 w-full z-50 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         <div className="flex items-center space-x-4">

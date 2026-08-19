@@ -1,4 +1,6 @@
 // tailwind.config.js
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
     darkMode: 'class',
     content: [
@@ -6,6 +8,11 @@ module.exports = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			sans: ['var(--font-inter-tight)', ...defaultTheme.fontFamily.sans],
+			heading: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
+			mono: ['var(--font-courier-prime)', ...defaultTheme.fontFamily.mono],
+		},
 		backgroundImage: {
 			'northwestern-gradient': 'linear-gradient(to right, #4E2A84, #FFFFFF)', // Purple to White
 			'ncat-gradient': 'linear-gradient(to right, #FFFFFF, #FFD700)',        // Gold to Navy

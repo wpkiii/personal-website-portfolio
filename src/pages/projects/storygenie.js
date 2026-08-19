@@ -12,7 +12,7 @@ export default function StoryGenie() {
 
       {/* Main Content */}
       <div className="pt-16 p-8 max-w-4xl mx-auto"> {/* Added pt-16 for padding */}
-        <h1 className="text-4xl font-extrabold">StoryGenie</h1>
+        <h1 className="font-heading text-4xl font-extrabold">StoryGenie</h1>
         <p className="text-gray-600 dark:text-gray-300 my-4">2024</p>
         <div className="group flex space-x-4">
               <a href="https://github.com/wpkiii/your--life" target="_blank" rel="noreferrer">
@@ -37,7 +37,7 @@ export default function StoryGenie() {
 
         {/* Technologies Used Section */}
         {/* Technologies Used Section */}
-        <h2 className="text-xl sm:text-2xl font-semibold mt-6 sm:mt-8">Technologies Used</h2>
+        <h2 className="font-heading text-xl sm:text-2xl font-semibold mt-6 sm:mt-8">Technologies Used</h2>
         <div className="flex flex-wrap gap-2 mt-4">
           <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
             Next.js
@@ -61,19 +61,19 @@ export default function StoryGenie() {
 
 
         {/* The Problem Section */}
-        <h2 className="text-2xl font-semibold mt-8">The Problem</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">The Problem</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           Creating high-quality video biographies typically requires substantial time, expertise in video editing, and access to diverse resources. People often lack the tools to tell the stories of notable individuals effectively and creatively. StoryGenie was created to simplify this process, empowering users to produce professional-quality videos effortlessly.
         </p>
 
         {/* Research Section */}
-        <h2 className="text-2xl font-semibold mt-8">Research</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">Research</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           To validate this need, I conducted interviews with educators, historians, and content creators, who confirmed that producing educational and biographical content is time-consuming and costly. Many expressed the need for a solution that would allow them to tell compelling stories without requiring extensive editing skills.
         </p>
 
         {/* Process Section */}
-        <h2 className="text-2xl font-semibold mt-8">Process</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">Process</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           StoryGenie was built using a combination of AI technologies, including script generation algorithms, media selection tools, and video assembly processes. After initial testing, I iterated on the interface to make it simple and intuitive. Users can input a name, and StoryGenie automatically creates a script, selects relevant images, and assembles the video in just a few minutes.
         </p>
@@ -82,7 +82,7 @@ export default function StoryGenie() {
         </p>
 
         {/* Outcome / Future of StoryGenie Section */}
-        <h2 className="text-2xl font-semibold mt-8">Outcome</h2>
+        <h2 className="font-heading text-2xl font-semibold mt-8">Outcome</h2>
         <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
           StoryGenie has become a valuable tool for educators, content creators, and families who want to create high-quality biographies quickly. As of now, the platform has a 90% user satisfaction rate and continues to grow with feedback from users. Moving forward, I plan to integrate more advanced AI features and expand the media library to support a wider range of topics and formats.
         </p>
