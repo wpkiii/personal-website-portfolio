@@ -29,8 +29,11 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         {/* Favicon */}
-        <link rel="icon" href="/window.svg?v=5" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/window.svg?v=5" />
+        <link rel="icon" href="/favicon.ico?v=6" sizes="any" />
+        <link rel="icon" href="/favicon.png?v=6" type="image/png" />
+        <link rel="icon" href="/window.svg?v=6" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.ico?v=6" />
+        <link rel="apple-touch-icon" href="/favicon.png?v=6" />
 
         {/* Global Meta Tags */}
         <title>William Kelly - Digital Portfolio</title>
