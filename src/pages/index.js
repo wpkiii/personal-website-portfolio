@@ -1,6 +1,6 @@
 //index.js
 import Head from "next/head";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import Header from "@/components/header";
 import AboutMe from "@/components/aboutme";
 import Experience from "@/components/experience";
@@ -9,10 +9,19 @@ import Footer from "@/components/footer";
 import ParticlesBackground from "@/components/particlesbackground";
 
 export default function Home() {
-  useEffect(() => {
-    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
+
+    // A previous nav click can leave a hash (e.g. #experience) in the URL,
+    // which makes the browser jump straight to that section on refresh.
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+
     window.scrollTo(0, 0);
   }, []);
 

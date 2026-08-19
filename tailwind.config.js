@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
   	extend: {
+		backgroundImage: {
+			'northwestern-gradient': 'linear-gradient(to right, #FFFFFF, #4E2A84)', // White to Purple
+			'ncat-gradient': 'linear-gradient(to right, #FFFFFF, #FFD700)',        // Gold to Navy
+		  },
 		fontFamily: {
 			sans: ['var(--font-inter-tight)', ...defaultTheme.fontFamily.sans],
 			heading: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],

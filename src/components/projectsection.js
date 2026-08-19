@@ -51,7 +51,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="bg-transparent dark:transparent p-6 max-w-7xl mx-auto relative"
+      className="bg-transparent dark:transparent px-6 py-16 max-w-7xl mx-auto relative"
     >
       {showCursorText && (
         <div
@@ -70,7 +70,7 @@ export default function ProjectsSection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Playground Heading */}
         <h2
-          className="font-heading text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
+          className="font-heading text-4xl font-bold text-left mb-4 text-gray-900 dark:text-white"
         >
           Playground
         </h2>

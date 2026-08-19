@@ -58,7 +58,7 @@ export default function Header() {
             href={CALENDLY_HREF}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors"
           >
             Work With Me
           </a>
@@ -114,7 +114,7 @@ export default function Header() {
             href={CALENDLY_HREF}
             target="_blank"
             rel="noreferrer"
-            className="block py-1 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+            className="block text-center py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors"
           >
             Work With Me
           </a>

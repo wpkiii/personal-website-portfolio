@@ -8,6 +8,7 @@ const education = [
     logoSize: 87,
     detail: 'M.S. Computer Engineering (Focus: AI & ML) · 2024',
     link: 'https://www.mccormick.northwestern.edu/electrical-computer/',
+    gradient: 'bg-northwestern-gradient',
   },
   {
     school: 'North Carolina A&T State University',
@@ -15,6 +16,7 @@ const education = [
     logoSize: 48,
     detail: 'B.S. Computer Engineering · 2023',
     link: 'https://www.ncat.edu/coe/departments/ece/index.php',
+    gradient: 'bg-ncat-gradient',
   },
 ];
 
@@ -35,7 +37,11 @@ export default function AboutMe() {
   }, [currentWordIndex, words]);
 
   return (
-    <section id="about-me" className="flex flex-col items-center space-y-6 p-6 max-w-7xl mx-auto overflow-hidden">
+    <section id="about-me" className="flex flex-col items-center space-y-6 px-6 py-16 max-w-7xl mx-auto overflow-hidden">
+      <h2 className="w-full font-heading text-4xl font-bold text-left text-gray-900 dark:text-white">
+        About Me
+      </h2>
+
       <div className="flex flex-col md:flex-row items-center md:space-x-8">
         {/* Profile Image */}
         <div className="relative">
@@ -113,7 +119,7 @@ export default function AboutMe() {
                 href={school.link}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-800/60 transition-colors hover:bg-white dark:hover:bg-gray-800"
+                className={`flex items-center gap-4 p-4 rounded-lg shadow-lg transition transform hover:scale-105 ${school.gradient}`}
               >
                 <div className="w-24 h-24 flex items-center justify-center flex-shrink-0">
                   <Image
