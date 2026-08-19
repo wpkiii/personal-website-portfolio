@@ -25,22 +25,22 @@ const ParticlesBackground = () => {
       detectsOn: "window",
       events: {
         onClick: { enable: true, mode: "push" },
-        onHover: { enable: true, mode: "attract" }, // Use attract on hover
+        onHover: { enable: true, mode: "attract" },
         resize: { enable: true, delay: 0.5 },
       },
       modes: {
-        attract: { distance: 300, duration: 0.6, speed: 2 }, // Increase attraction distance and speed
+        attract: { distance: 300, duration: 0.6, speed: 2 },
         push: { default: true, quantity: 4 },
         slow: { factor: 2, radius: 150 }, // Adjust slow mode to be less intense
       },
     },
     particles: {
-      number: { value: 80, density: { enable: true, width: 1920, height: 1080 } },
+      number: { value: 35, density: { enable: true, width: 1920, height: 1080 } },
       color: { value: theme === "dark" ? "#ffffff" : "#000000" }, // Contrast with the background
       opacity: { value: 0.6 }, // Slightly increase opacity for visibility
       size: { value: { min: 1, max: 4 } }, // Slightly reduce maximum size
       move: { enable: true, speed: 2, outModes: { default: "out" } }, // Slow particle movement
-      links: { enable: true, distance: 150, opacity: 0.5, color: { value: theme === "dark" ? "#ffffff" : "#000000" } },
+      links: { enable: false, distance: 120, opacity: 0.15, color: { value: theme === "dark" ? "#ffffff" : "#000000" } },
     },
     pauseOnBlur: true,
     pauseOnOutsideViewport: true,

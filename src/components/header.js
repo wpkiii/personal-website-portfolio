@@ -18,15 +18,12 @@ export default function Header() {
 
   // Dynamically apply icons based on theme
   const menuIconSrc = theme === 'dark' ? '/icons/whitemenu.svg' : '/icons/menu.svg';
-  const logoSrc = theme === 'dark' ? '/ok.svg' : '/darkok.svg';
 
   return (
     <header className="font-mono bg-white dark:bg-black border-b border-black-200 py-5 px-6 sm:px-10 fixed top-0 w-full z-50 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center gap-6">
 
         <div className="flex items-center space-x-3">
-          {/* Logo Image */}
-          <Image src={logoSrc} alt="Logo" width={28} height={28} />
           <Link href="/" className="hover:text-blue-600 text-gray-900 dark:text-white tracking-wide">
             William Kelly
           </Link>

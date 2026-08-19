@@ -21,7 +21,7 @@ const education = [
 ];
 
 export default function AboutMe() {
-  const words = useMemo(() => ["Hey ", "there! ", "I'm ", " William ", " Kelly ", ".", ".", "or", "(Trey)"], []);
+  const words = useMemo(() => ["Hi ", "there, ", "I'm ", "William ", '"Trey" ', "Kelly", "."], []);
   const [visibleWords, setVisibleWords] = useState([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
@@ -52,9 +52,6 @@ export default function AboutMe() {
             height={2000}
             className="rounded-lg"
           />
-          <span className="absolute top-2 left-2 bg-black text-white text-sm px-3 py-1 rounded-full shadow-md dark:bg-white dark:text-black">
-            🏅 GEM Fellow
-          </span>
         </div>
 
         {/* Hero Text */}
@@ -131,10 +128,10 @@ export default function AboutMe() {
                   />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-heading text-sm font-bold text-gray-900 dark:text-white">
+                  <h3 className="font-heading text-sm font-bold text-black">
                     {school.school}
                   </h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
+                  <p className="text-xs text-black/70 mt-0.5">
                     {school.detail}
                   </p>
                 </div>
