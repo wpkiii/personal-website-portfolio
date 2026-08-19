@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Head from "next/head";
 import { DefaultSeo } from 'next-seo';
 import { Montserrat, Inter_Tight, Courier_Prime } from "next/font/google";
+import CustomCursor from "@/components/cursor";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <div className={`${montserrat.variable} ${interTight.variable} ${courierPrime.variable} font-sans`}>
+          <CustomCursor />
           <Component {...pageProps} />
         </div>
       </ThemeProvider>

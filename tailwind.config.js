@@ -13,10 +13,6 @@ module.exports = {
 			heading: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
 			mono: ['var(--font-courier-prime)', ...defaultTheme.fontFamily.mono],
 		},
-		backgroundImage: {
-			'northwestern-gradient': 'linear-gradient(to right, #4E2A84, #FFFFFF)', // Purple to White
-			'ncat-gradient': 'linear-gradient(to right, #FFFFFF, #FFD700)',        // Gold to Navy
-		  },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

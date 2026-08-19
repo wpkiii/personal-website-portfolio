@@ -68,11 +68,11 @@ export default function ProjectsSection() {
       )}
 
       <div className="max-w-7xl mx-auto px-6">
-        {/* Projects Heading */}
+        {/* Playground Heading */}
         <h2
           className="font-heading text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         >
-          Projects
+          Playground
         </h2>
 
         {/* Project Cards */}

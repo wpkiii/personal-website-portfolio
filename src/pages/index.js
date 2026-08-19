@@ -1,13 +1,21 @@
 //index.js
 import Head from "next/head";
+import { useEffect } from "react";
 import Header from "@/components/header";
-import Hero from "@/components/hero";
+import AboutMe from "@/components/aboutme";
 import Experience from "@/components/experience";
 import ProjectSection from "@/components/projectsection";
-import Education from "@/components/education";
+import Footer from "@/components/footer";
 import ParticlesBackground from "@/components/particlesbackground";
 
 export default function Home() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Head>
@@ -29,24 +37,14 @@ export default function Home() {
         {/* Render the Header */}
         <Header />
 
-        {/* Main Hero Section */}
+        {/* Main Content */}
         <main className="flex-grow pt-24 px-4 sm:px-6 lg:px-8 relative">
-          <Hero />
-          <br />
-          <br />
-          <Education /> {/* Render Education section here */}
+          <AboutMe /> {/* Render About Me (bio + education) section here */}
           <Experience /> {/* Render Experience section here */}
           <ProjectSection /> {/* Render Projects section here */}
         </main>
 
-        {/* Footer */}
-        <footer className="font-mono text-center py-6 bg-transparent dark:bg-transparent text-gray-500 relative">
-          <p>
-           Contact me (treypkelly@gmail.com) for all business related inquries  //
-            © {new Date().getFullYear()} William (Trey) Kelly | All rights
-            reserved.
-          </p>
-        </footer>
+        <Footer />
       </div>
     </>
   );
