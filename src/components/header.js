@@ -8,7 +8,7 @@ const CALENDLY_HREF = 'https://calendly.com/treypkelly/30min';
 const navLinks = [
   { href: '/#about-me', label: 'About Me' },
   { href: '/#experience', label: 'Experience' },
-  { href: '/#projects', label: 'Playground' },
+  { href: '/#projects', label: 'Projects' },
 ];
 
 export default function Header() {

@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectLayout from "@/components/projectlayout";
 
 export default function ProjectsSection() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [showCursorText, setShowCursorText] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 639px)");
+    setIsMobile(mql.matches);
+    const handleChange = (e) => setIsMobile(e.matches);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
 
   const projects = [
-    {
-      title: "StoryGenie",
-      description:
-        "A Next.js Application that allows you to create a video of any famous biography in one click. 95% User Satisfaction Rate.",
-      year: "2024",
-      techStack: ["Next.js", "AI", "Video Generation"],
-      link: "projects/storygenie",
-      imageSrc: "/storygeniegif.gif",
-    },
     {
       title: "CV-Powered Robotic Hand",
       description:
@@ -43,41 +43,26 @@ export default function ProjectsSection() {
       imageSrc: "/gardengif.gif",
     },
     {
-      title: "Stock Prediction Using Social Media",
+      title: "StoryGenie",
       description:
-        "Used AI sentiment analysis techniques to analyze tweets and predict stock performance, achieving a 78% accuracy rate.",
+        "A Next.js Application that allows you to create a video of any famous biography in one click.",
       year: "2024",
-      techStack: ["AI", "Sentiment Analysis", "Twitter API"],
-    },
-    {
-      title: "MIRA Chatbot",
-      description:
-        "Developed a Python-based chatbot for everyday computing tasks, with strong memory of past conversations.",
-      year: "2024",
-      techStack: ["Python", "Chatbot"],
-    },
-    {
-      title: "Breast Cancer Detection ML Project",
-      description:
-        "Developed an ML model using medical images to detect tumors, achieving 84% accuracy.",
-      year: "2023",
-      techStack: ["Machine Learning", "Medical Imaging"],
-    },
-    {
-      title: "ScholarshipSearcher",
-      description:
-        "Created a React Native app to help students find scholarships, helping 5 IEEE students secure funding.",
-      year: "2022",
-      techStack: ["React Native"],
+      techStack: ["Next.js", "AI", "Video Generation"],
+      link: "projects/storygenie",
+      imageSrc: "/storygeniegif.gif",
     },
   ];
 
-  const PROJECTS_PER_PAGE = 4;
+  const PROJECTS_PER_PAGE = isMobile ? 1 : 4;
   const pages = [];
   for (let i = 0; i < projects.length; i += PROJECTS_PER_PAGE) {
     pages.push(projects.slice(i, i + PROJECTS_PER_PAGE));
   }
   const [currentPage, setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    setCurrentPage((prev) => Math.min(prev, pages.length - 1));
+  }, [pages.length]);
 
   const goToPage = (index) => {
     setCurrentPage((index + pages.length) % pages.length);
@@ -107,11 +92,11 @@ export default function ProjectsSection() {
       )}
 
       <div className="max-w-7xl mx-auto">
-        {/* Playground Heading */}
+        {/* Projects Heading */}
         <h2
           className="font-heading text-4xl font-bold text-left mb-8 lg:mb-16 text-gray-900 dark:text-white"
         >
-          Playground
+          Projects
         </h2>
 
         {/* Project Carousel */}
