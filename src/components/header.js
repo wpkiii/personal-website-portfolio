@@ -18,6 +18,13 @@ export default function Header() {
   // Dynamically apply icons based on theme
   const menuIconSrc = theme === 'dark' ? '/icons/whitemenu.svg' : '/icons/menu.svg';
 
+  // Manual toggles override the automatic sunset-based theme for the
+  // rest of this browser session (see AutoTheme in _app.js).
+  const toggleTheme = () => {
+    sessionStorage.setItem('theme-manual', '1');
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <header className="font-heading font-bold text-[17px] bg-white dark:bg-black border-b border-black-200 py-5 px-6 sm:px-10 fixed top-0 w-full z-50 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-start items-center gap-12">
@@ -52,7 +59,7 @@ export default function Header() {
           </a>
           <button
             aria-label="Toggle Dark Mode"
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            onClick={toggleTheme}
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
           >
             <Image src={theme === 'dark' ? '/icons/lightmode.svg' : '/icons/darkmode.svg'} alt="Dark Mode Icon" width={22} height={22} />
@@ -63,7 +70,7 @@ export default function Header() {
         <div className="flex items-center space-x-4 md:hidden ml-auto">
           <button
             aria-label="Toggle Dark Mode"
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            onClick={toggleTheme}
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
           >
             <Image src={theme === 'dark' ? '/icons/lightmode.svg' : '/icons/darkmode.svg'} alt="Dark Mode Icon" width={22} height={22} />

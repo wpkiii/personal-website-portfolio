@@ -5,6 +5,23 @@ import Head from "next/head";
 import { DefaultSeo } from 'next-seo';
 import { Montserrat, Inter_Tight, Courier_Prime } from "next/font/google";
 import CustomCursor from "@/components/cursor";
+import { useEffect } from "react";
+import { useTheme } from "next-themes";
+
+// Applies a day/night theme based on the visitor's local clock, unless
+// they've manually toggled the theme this session (sessionStorage flag,
+// set by the header's toggle) — a manual choice wins until the tab closes.
+function AutoTheme() {
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("theme-manual")) return;
+    const hour = new Date().getHours();
+    setTheme(hour >= 7 && hour < 19 ? "light" : "dark");
+  }, [setTheme]);
+
+  return null;
+}
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -45,6 +62,7 @@ export default function App({ Component, pageProps }) {
         <meta name="author" content="William Kelly III" />
       </Head>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <AutoTheme />
         <div className={`${montserrat.variable} ${interTight.variable} ${courierPrime.variable} font-sans`}>
           <CustomCursor />
           <Component {...pageProps} />
