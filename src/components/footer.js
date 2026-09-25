@@ -5,6 +5,13 @@ const socialLinks = [
   { href: 'https://github.com/wpkiii', icon: '/icons/github.svg', label: 'GitHub' },
   { href: 'https://www.linkedin.com/in/william-kelly-iii-748409194/', icon: '/icons/LinkedIn_icon.svg', label: 'LinkedIn' },
   { href: 'https://www.youtube.com/@trickswithtrey', icon: '/icons/youtube.svg', label: 'YouTube' },
+  // Spotify icon is brand-colored, so it skips the dark-mode invert
+  {
+    href: 'https://open.spotify.com/user/22cephxvqecscjamivxpra3oy?si=KYQ_U9jNSmayXvpOe7VkAg&utm_source=copy-link&nd=1&dlsi=494ad821af4c4e65',
+    icon: '/icons/spotify.svg',
+    label: 'Spotify',
+    invert: false,
+  },
 ];
 
 export default function Footer() {
@@ -25,7 +32,9 @@ export default function Footer() {
                 alt={link.label}
                 width={22}
                 height={22}
-                className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert"
+                className={`transition-transform transform group-hover:scale-125 duration-200 ${
+                  link.invert === false ? '' : 'dark:filter dark:invert'
+                }`}
               />
             </a>
           ))}
