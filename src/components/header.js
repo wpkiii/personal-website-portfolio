@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
 
-const RESUME_HREF = '/resume.pdf';
 const CALENDLY_HREF = 'https://calendly.com/treypkelly/30min';
 
 const navLinks = [
@@ -20,8 +19,8 @@ export default function Header() {
   const menuIconSrc = theme === 'dark' ? '/icons/whitemenu.svg' : '/icons/menu.svg';
 
   return (
-    <header className="font-mono bg-white dark:bg-black border-b border-black-200 py-5 px-6 sm:px-10 fixed top-0 w-full z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto flex justify-between items-center gap-6">
+    <header className="font-heading font-bold text-[17px] bg-white dark:bg-black border-b border-black-200 py-5 px-6 sm:px-10 fixed top-0 w-full z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto flex justify-start items-center gap-12">
 
         <div className="flex items-center space-x-3">
           <Link href="/" className="hover:text-blue-600 text-gray-900 dark:text-white tracking-wide">
@@ -42,15 +41,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center space-x-6">
-          <a
-            href={RESUME_HREF}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-          >
-            My Resume
-          </a>
+        <div className="hidden md:flex items-center space-x-6 ml-auto">
           <a
             href={CALENDLY_HREF}
             target="_blank"
@@ -69,7 +60,7 @@ export default function Header() {
         </div>
 
         {/* Mobile controls */}
-        <div className="flex items-center space-x-4 md:hidden">
+        <div className="flex items-center space-x-4 md:hidden ml-auto">
           <button
             aria-label="Toggle Dark Mode"
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -99,14 +90,6 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={RESUME_HREF}
-            target="_blank"
-            rel="noreferrer"
-            className="block py-1 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
-          >
-            My Resume
-          </a>
           <a
             href={CALENDLY_HREF}
             target="_blank"
