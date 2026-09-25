@@ -56,7 +56,8 @@ export default function AboutMe() {
 
         {/* Hero Text */}
         <div className="text-center md:text-left mt-6 md:mt-0">
-          <h1 className="font-heading text-3xl font-bold text-gray-900 dark:text-white flex flex-wrap space-x-2">
+          {/* Font scales with viewport width on mobile so the greeting always fits on one line */}
+          <h1 className="font-heading text-[length:min(calc((100vw-5rem)/14),1.875rem)] font-bold text-gray-900 dark:text-white whitespace-nowrap">
             {visibleWords.map((word, index) => (
               <span key={index}>
                 {word}
