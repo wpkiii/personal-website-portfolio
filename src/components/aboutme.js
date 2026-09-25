@@ -46,10 +46,10 @@ export default function AboutMe() {
         {/* Profile Image */}
         <div className="relative">
           <Image
-            src="/ForbesShot.JPG"
+            src="/AggieShirt%20copy.jpg"
             alt="William Kelly"
-            width={2000}
-            height={2000}
+            width={1000}
+            height={1000}
             className="rounded-lg"
           />
         </div>
