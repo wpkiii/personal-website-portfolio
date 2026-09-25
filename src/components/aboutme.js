@@ -21,7 +21,7 @@ const education = [
 ];
 
 export default function AboutMe() {
-  const words = useMemo(() => ["Hi ", "there, ", "I'm ", "William ", '"Trey" ', "Kelly", "."], []);
+  const words = useMemo(() => ["Hi ", "there, ", "I'm ", "William ", "Kelly", "."], []);
   const [visibleWords, setVisibleWords] = useState([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
