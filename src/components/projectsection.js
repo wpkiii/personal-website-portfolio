@@ -142,14 +142,14 @@ export default function ProjectsSection() {
               <button
                 aria-label="Previous projects"
                 onClick={() => goToPage(currentPage - 1)}
-                className="absolute top-1/2 left-0 -translate-y-1/2 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-600 text-white text-2xl leading-none shadow-lg hover:bg-blue-700 hover:scale-110 transition-all"
+                className="absolute top-1/2 left-0 -translate-y-1/2 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-500/40 backdrop-blur-sm text-white text-2xl leading-none shadow-lg hover:bg-gray-500/60 hover:scale-110 transition-all"
               >
                 ‹
               </button>
               <button
                 aria-label="Next projects"
                 onClick={() => goToPage(currentPage + 1)}
-                className="absolute top-1/2 right-0 -translate-y-1/2 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-600 text-white text-2xl leading-none shadow-lg hover:bg-blue-700 hover:scale-110 transition-all"
+                className="absolute top-1/2 right-0 -translate-y-1/2 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-500/40 backdrop-blur-sm text-white text-2xl leading-none shadow-lg hover:bg-gray-500/60 hover:scale-110 transition-all"
               >
                 ›
               </button>
