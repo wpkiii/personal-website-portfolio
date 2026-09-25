@@ -30,8 +30,14 @@ export default function Header() {
       <div className="max-w-7xl mx-auto flex justify-start items-center gap-12">
 
         <div className="flex items-center space-x-3">
-          <Link href="/" className="hover:text-blue-600 text-gray-900 dark:text-white tracking-wide">
-            William Kelly
+          <Link href="/" className="block hover:opacity-80 transition-opacity">
+            <Image
+              src="/icons/signature.png"
+              alt="William Kelly"
+              width={72}
+              height={44}
+              className="object-contain dark:filter dark:invert"
+            />
           </Link>
         </div>
 

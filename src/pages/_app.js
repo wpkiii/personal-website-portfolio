@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
         {/* Favicon */}
         <link rel="icon" href="/icons/signature.svg?v=2" type="image/svg+xml" />
         <link rel="shortcut icon" href="/icons/signature.svg?v=2" />
-        <link rel="apple-touch-icon" href="/icons/signature.svg?v=2" />
+        <link rel="apple-touch-icon" href="/icons/signature.png" />
 
         {/* Global Meta Tags */}
         <title>William Kelly - Digital Portfolio</title>
