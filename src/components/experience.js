@@ -197,8 +197,8 @@ export default function Experience() {
                   aria-expanded={isOpen}
                   className="w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8">
-                    <span className="sm:w-36 flex-shrink-0 self-center text-sm font-mono text-gray-500 dark:text-gray-400">
+                  <div className="flex items-center gap-4 sm:gap-8">
+                    <span className="hidden sm:block sm:w-36 flex-shrink-0 text-sm font-mono text-gray-500 dark:text-gray-400">
                       {job.date}
                     </span>
                     {job.logo && (
@@ -207,18 +207,20 @@ export default function Experience() {
                         alt={`${job.company} logo`}
                         width={36}
                         height={36}
-                        className="flex-shrink-0 self-center -ml-3 rounded-md object-contain bg-white"
+                        className="flex-shrink-0 sm:-ml-3 rounded-md object-contain bg-white"
                       />
                     )}
-                    <div className="flex items-center gap-3">
-                      <div>
-                        <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
-                          {job.title}
-                        </h3>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                          {job.company} · {job.location}
-                        </p>
-                      </div>
+                    <div>
+                      <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
+                        {job.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {job.company} · {job.location}
+                      </p>
+                      {/* On mobile the date column is hidden, so show it under the location */}
+                      <p className="sm:hidden mt-1 text-xs font-mono text-gray-500 dark:text-gray-400">
+                        {job.date}
+                      </p>
                     </div>
                   </div>
                   <span
