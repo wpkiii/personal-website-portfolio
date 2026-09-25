@@ -198,19 +198,19 @@ export default function Experience() {
                   className="w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8">
-                    <span className="sm:w-36 flex-shrink-0 text-sm font-mono text-gray-500 dark:text-gray-400">
+                    <span className="sm:w-36 flex-shrink-0 self-center text-sm font-mono text-gray-500 dark:text-gray-400">
                       {job.date}
                     </span>
+                    {job.logo && (
+                      <Image
+                        src={job.logo}
+                        alt={`${job.company} logo`}
+                        width={36}
+                        height={36}
+                        className="flex-shrink-0 self-center -ml-3 rounded-md object-contain bg-white"
+                      />
+                    )}
                     <div className="flex items-center gap-3">
-                      {job.logo && (
-                        <Image
-                          src={job.logo}
-                          alt={`${job.company} logo`}
-                          width={36}
-                          height={36}
-                          className="flex-shrink-0 rounded-md object-contain bg-white"
-                        />
-                      )}
                       <div>
                         <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
                           {job.title}
