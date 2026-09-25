@@ -1,10 +1,12 @@
 //experience.js
 
 import { useState } from "react";
+import Image from "next/image";
 
 const experiences = [
   {
     company: "Accenture Federal Services",
+    logo: "/Accenture.png",
     title: "Associate Manager – AI/ML Engineer",
     date: "Mar 2026 – Present",
     location: "Washington, DC",
@@ -18,6 +20,7 @@ const experiences = [
   },
   {
     company: "The Kelly Organization, LLC",
+    logo: "/TKO_B_border_box.png",
     title: "Founder",
     date: "Jan 2025 – Present",
     location: "Remote",
@@ -63,6 +66,7 @@ const experiences = [
   },
   {
     company: "The Aerospace Corporation",
+    logo: "/aerospacelogo.png",
     title: "Member of Technical Staff - AI/ML Engineer",
     date: "May 2023 – Mar 2026",
     location: "El Segundo, CA / Chantilly, VA",
@@ -99,6 +103,7 @@ const experiences = [
   },
   {
     company: "Nordstrom Corporate",
+    logo: "/Nordstrom-Symbol.png",
     title: "Cybersecurity Engineer - Penetration Tester",
     date: "June – Aug 2022",
     location: "Seattle, WA",
@@ -109,6 +114,7 @@ const experiences = [
   },
   {
     company: "Procter & Gamble",
+    logo: "/ProctornGamble.png",
     title: "Data Science Intern",
     date: "May – Aug 2021",
     location: "Boston, MA",
@@ -195,13 +201,24 @@ export default function Experience() {
                     <span className="sm:w-36 flex-shrink-0 text-sm font-mono text-gray-500 dark:text-gray-400">
                       {job.date}
                     </span>
-                    <div>
-                      <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
-                        {job.title}
-                      </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {job.company} · {job.location}
-                      </p>
+                    <div className="flex items-center gap-3">
+                      {job.logo && (
+                        <Image
+                          src={job.logo}
+                          alt={`${job.company} logo`}
+                          width={36}
+                          height={36}
+                          className="flex-shrink-0 rounded-md object-contain bg-white"
+                        />
+                      )}
+                      <div>
+                        <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
+                          {job.title}
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          {job.company} · {job.location}
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <span
