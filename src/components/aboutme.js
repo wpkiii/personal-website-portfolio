@@ -76,7 +76,7 @@ export default function AboutMe() {
                 alt="Email"
                 width={40}
                 height={40}
-                className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert"
+                className="transition-transform transform group-hover:scale-125 duration-200"
               />
             </a>
             <a href="https://github.com/wpkiii" target="_blank" rel="noreferrer" className="group">
@@ -104,6 +104,20 @@ export default function AboutMe() {
                 width={40}
                 height={40}
                 className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert"
+              />
+            </a>
+            <a
+              href="https://open.spotify.com/user/22cephxvqecscjamivxpra3oy?si=KYQ_U9jNSmayXvpOe7VkAg&utm_source=copy-link&nd=1&dlsi=494ad821af4c4e65"
+              target="_blank"
+              rel="noreferrer"
+              className="group"
+            >
+              <Image
+                src="/icons/spotify.svg"
+                alt="Spotify"
+                width={40}
+                height={40}
+                className="transition-transform transform group-hover:scale-125 duration-200"
               />
             </a>
           </div>
