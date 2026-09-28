@@ -83,7 +83,7 @@ export default function Climate() {
         </p>
 
         {/* Back button */}
-        <Link href="/#projects" className="text-blue-500 hover:underline mt-8 inline-block">
+        <Link href="/#projects" className="text-blue-700 dark:text-blue-400 hover:underline mt-8 inline-block">
           ← Back to Projects
         </Link>
       </div>

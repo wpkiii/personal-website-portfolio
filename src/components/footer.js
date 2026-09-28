@@ -16,7 +16,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="font-mono py-10 px-6 sm:px-10 bg-transparent dark:bg-transparent text-gray-500 relative border-t border-gray-200 dark:border-gray-800">
+    <footer className="font-mono py-10 px-6 sm:px-10 bg-transparent dark:bg-transparent text-gray-500 dark:text-gray-400 relative border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-5 text-center">
         <div className="flex items-center space-x-6">
           {socialLinks.map((link) => (

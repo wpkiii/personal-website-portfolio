@@ -155,18 +155,22 @@ export default function ProjectsSection() {
                 ›
               </button>
 
-              <div className="flex justify-center gap-2 mt-6">
+              <div className="flex justify-center mt-6">
                 {pages.map((_, index) => (
                   <button
                     key={index}
                     aria-label={`Go to project page ${index + 1}`}
                     onClick={() => goToPage(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                      index === currentPage
-                        ? "bg-gray-900 dark:bg-white"
-                        : "bg-gray-300 dark:bg-gray-600"
-                    }`}
-                  />
+                    className="p-[7px]"
+                  >
+                    <span
+                      className={`block w-2.5 h-2.5 rounded-full transition-colors ${
+                        index === currentPage
+                          ? "bg-gray-900 dark:bg-white"
+                          : "bg-gray-300 dark:bg-gray-600"
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
             </>

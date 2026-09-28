@@ -126,6 +126,7 @@ export default function AboutMe() {
           </div>
 
           {/* Education — compact contact cards */}
+          <h2 className="sr-only">Education</h2>
           <div className="flex flex-col gap-3 mt-14">
             {education.map((school) => (
               <a

@@ -162,7 +162,7 @@ export default function Garden() {
         {/* Back button */}
         <Link
           href="/#projects"
-          className="text-blue-500 hover:underline mt-8 inline-block"
+          className="text-blue-700 dark:text-blue-400 hover:underline mt-8 inline-block"
         >
           ← Back to Projects
         </Link>

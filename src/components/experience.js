@@ -155,7 +155,7 @@ function SubRole({ role }) {
         <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{role.date}</span>
         <h4 className="text-sm font-bold text-gray-900 dark:text-white">
           {role.title} · {role.link ? (
-            <a href={role.link} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
+            <a href={role.link} target="_blank" rel="noreferrer" className="text-blue-700 dark:text-blue-400 hover:underline">
               {role.company}
             </a>
           ) : (
@@ -245,7 +245,7 @@ export default function Experience() {
                         href={job.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-block mt-4 text-sm text-blue-500 hover:underline"
+                        className="inline-block mt-4 text-sm text-blue-700 dark:text-blue-400 hover:underline"
                       >
                         Visit Website →
                       </a>
