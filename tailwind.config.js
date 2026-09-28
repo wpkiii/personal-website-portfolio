@@ -1,5 +1,7 @@
 // tailwind.config.js
 const defaultTheme = require("tailwindcss/defaultTheme");
+// Brand colors are shared with the animation config (src/animations/config.js)
+const tokens = require("./src/animations/tokens.json");
 
 module.exports = {
     darkMode: 'class',
@@ -41,6 +43,7 @@ module.exports = {
 			fadeInUp: 'fadeInUp 0.5s ease-out forwards',
 		  },
   		colors: {
+  			brand: tokens.colors,
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
