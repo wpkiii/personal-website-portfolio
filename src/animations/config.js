@@ -20,6 +20,12 @@ export const easings = {
   snap: 'back.out(1.7)', // magnetic snap-back
 };
 
+// Scroll-driven header (src/components/header.js). Its sizes and colors
+// live in globals.css under .site-header.
+export const header = {
+  scrollRange: 160, // px of scroll over which the gold bar takes over
+};
+
 // Media queries for gsap.matchMedia(). Every animation should branch on
 // `motion` vs `reduced`; pointer-driven effects (tilt, magnetic) also
 // require `finePointer` so touch devices skip them.

@@ -118,7 +118,8 @@ body {
    is hovered, keyboard-focused, or (for accordions) open. Background-based
    so it follows wrapped lines. */
 .hover-underline {
-  background-image: linear-gradient(theme('colors.brand.gold.DEFAULT'), theme('colors.brand.gold.DEFAULT'));
+  /* --underline-color lets a context recolor it (e.g. dark on the gold header bar) */
+  background-image: linear-gradient(var(--underline-color, theme('colors.brand.gold.DEFAULT')), var(--underline-color, theme('colors.brand.gold.DEFAULT')));
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 2px;
@@ -135,4 +136,67 @@ body {
   .hover-underline {
     transition: none;
   }
+}
+
+/* Scroll-driven site header (src/components/header.js) ---------------------
+   GSAP scrubs --p from 0 (top of page) to 1 (scrolled). Everything else is
+   derived from it here, so each theme just sets its start/end colors. */
+.site-header {
+  --p: 0;
+  /* Colors flip over a narrow window just as the gold edge crosses the text
+     (p ≈ 0.42–0.58) instead of fading across the whole range, so the
+     washed-out mid-gray blend lasts only a few pixels of scroll. */
+  --pc: clamp(0, calc((var(--p) - 0.42) / 0.16), 1);
+  --hdr-strip: 10px; /* gold strip visible at the top of the page */
+  --hdr-full: 104px; /* header row height at the top of the page */
+  --hdr-compact: 72px; /* header row height once scrolled */
+  --hdr-bg: #ffffff;
+  --hdr-fill: theme('colors.brand.gold.DEFAULT');
+  --hdr-fg-start: theme('colors.gray.900');
+  --hdr-fg-end: theme('colors.gray.900');
+  --hdr-underline-end: theme('colors.gray.900');
+
+  background-color: var(--hdr-bg);
+  color: color-mix(in srgb, var(--hdr-fg-end) calc(var(--pc) * 100%), var(--hdr-fg-start));
+  /* nav hover underline: gold on the page background, dark once on the gold bar */
+  --underline-color: color-mix(in srgb, var(--hdr-underline-end) calc(var(--pc) * 100%), theme('colors.brand.gold.DEFAULT'));
+  box-shadow: 0 2px 8px rgb(0 0 0 / calc(0.12 * var(--p)));
+}
+@media (min-width: 768px) {
+  .site-header {
+    --hdr-full: 128px;
+  }
+}
+.dark .site-header {
+  /* same gold bar in both themes; only the at-the-top colors differ */
+  --hdr-bg: #000000;
+  --hdr-fg-start: #ffffff;
+}
+/* Dark mode: the signature and icons are white on the black page and turn
+   black as the gold bar fills in. The signature PNG is black, so it starts
+   inverted; the dark-mode icons are already white, so they end inverted. */
+.dark .site-header__logo img {
+  filter: invert(calc(1 - var(--pc)));
+}
+.dark .site-header__icon {
+  filter: invert(var(--pc));
+}
+.site-header__fill {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: calc(var(--hdr-strip) + (100% - var(--hdr-strip)) * var(--p));
+  background-color: var(--hdr-fill);
+}
+.site-header__row {
+  height: calc(var(--hdr-full) - (var(--hdr-full) - var(--hdr-compact)) * var(--p));
+  /* keep the content clear of the strip while the header is tall */
+  padding-top: calc(var(--hdr-strip) * (1 - var(--p)));
+}
+.site-header__logo {
+  transform: scale(calc(1.2 - 0.2 * var(--p)));
+  transform-origin: left center;
+}
+.site-header__nav {
+  font-size: calc(17px + 3px * (1 - var(--p)));
 }

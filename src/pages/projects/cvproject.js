@@ -10,7 +10,7 @@ export default function CVProject() {
       <Header /> <br /><br />
 
       {/* Main Content */}
-      <div className="pt-16 p-8 max-w-4xl mx-auto">
+      <div className="pt-24 p-8 max-w-4xl mx-auto">
         <h1 className="font-heading text-4xl font-extrabold">AI-Powered Robotic Hand: Real-Time Gesture Detection and Control</h1>
         <p className="text-gray-600 dark:text-gray-300 my-4">2024</p>
         <div className="group flex space-x-4">

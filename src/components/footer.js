@@ -39,9 +39,6 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <p className="text-sm">
-          Contact me (treypkelly@gmail.com) for all business related inquiries
-        </p>
         <p className="text-xs">
           © {new Date().getFullYear()} William (Trey) Kelly | All rights reserved.
         </p>

@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { scrollToSection } from '@/animations/lenis';
+import { gsap, ScrollTrigger, useGSAP } from '@/animations/gsap';
+import { header as headerMotion, media } from '@/animations/config';
 
 const CALENDLY_HREF = 'https://calendly.com/treypkelly/30min';
 
@@ -14,9 +16,33 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
+  const headerRef = useRef(null);
+
+  // ZachJordan-style takeover: over the first stretch of scroll, --p goes
+  // 0 → 1 and the CSS in globals.css (.site-header) grows the gold strip into
+  // the full bar, shrinks the header, and blends the text colors. Scrubbed,
+  // so scrolling back up reverses it. Reduced motion: snaps at the threshold.
+  useGSAP(() => {
+    const el = headerRef.current;
+    const mm = gsap.matchMedia();
+    mm.add(media.motion, () => {
+      gsap.fromTo(el, { '--p': 0 }, {
+        '--p': 1,
+        ease: 'none',
+        scrollTrigger: { start: 0, end: headerMotion.scrollRange, scrub: 0.3 },
+      });
+    });
+    mm.add(media.reduced, () => {
+      ScrollTrigger.create({
+        start: headerMotion.scrollRange,
+        onEnter: () => gsap.set(el, { '--p': 1 }),
+        onLeaveBack: () => gsap.set(el, { '--p': 0 }),
+      });
+    });
+  }, { scope: headerRef });
 
   // On the homepage, nav links scroll to their section below the fixed
   // header (gliding with Lenis). From other pages the Link navigates home.
@@ -28,42 +54,45 @@ export default function Header() {
     requestAnimationFrame(() => scrollToSection(href.slice(href.indexOf('#'))));
   };
 
-  // Dynamically apply icons based on theme
-  const menuIconSrc = theme === 'dark' ? '/icons/whitemenu.svg' : '/icons/menu.svg';
-
   // Manual toggles override the automatic sunset-based theme for the
   // rest of this browser session (see AutoTheme in _app.js).
   const toggleTheme = () => {
     sessionStorage.setItem('theme-manual', '1');
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
   return (
-    <header className="font-heading font-bold text-[17px] bg-white dark:bg-black border-b border-black-200 py-5 px-6 sm:px-10 fixed top-0 w-full z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto flex justify-start items-center gap-12">
+    <header
+      ref={headerRef}
+      className="site-header font-heading font-bold text-[17px] px-6 sm:px-10 fixed top-0 w-full z-50"
+    >
+      {/* Gold strip that grows down to become the header bar */}
+      <div aria-hidden="true" className="site-header__fill" />
+
+      <div className="site-header__row relative max-w-7xl mx-auto flex justify-start items-center gap-12">
 
         <div className="flex items-center space-x-3">
-          <Link href="/" className="block hover:opacity-80 transition-opacity">
+          <Link href="/" className="site-header__logo block hover:opacity-80 transition-opacity">
             <Image
               src="/icons/signature.png"
               alt="William Kelly"
               width={72}
               height={44}
-              className="object-contain dark:filter dark:invert"
+              className="object-contain"
             />
           </Link>
         </div>
 
         {/* Show the full nav on desktop */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="site-header__nav hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="group"
             >
-              {link.label}
+              <span className="hover-underline">{link.label}</span>
             </Link>
           ))}
         </nav>
@@ -73,16 +102,19 @@ export default function Header() {
             href={CALENDLY_HREF}
             target="_blank"
             rel="noreferrer"
-            className="px-4 py-2 rounded-md border-2 border-black text-black dark:border-white dark:text-white hover:opacity-70 transition-opacity"
+            className="px-4 py-2 rounded-md border-2 border-current hover:opacity-70 transition-opacity"
           >
             Work With Me
           </a>
           <button
             aria-label="Toggle Dark Mode"
             onClick={toggleTheme}
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+            className="hover:opacity-70 transition-opacity"
           >
-            <Image src={theme === 'dark' ? '/icons/lightmode.svg' : '/icons/darkmode.svg'} alt="Dark Mode Icon" width={22} height={22} />
+            {/* Both icons render; the .dark class picks one. Swapping src from JS
+                showed the wrong icon after hydration in dark mode. */}
+            <Image src="/icons/darkmode.svg" alt="" width={22} height={22} className="dark:hidden" />
+            <Image src="/icons/lightmode.svg" alt="" width={22} height={22} className="site-header__icon hidden dark:block" />
           </button>
         </div>
 
@@ -91,37 +123,38 @@ export default function Header() {
           <button
             aria-label="Toggle Dark Mode"
             onClick={toggleTheme}
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+            className="hover:opacity-70 transition-opacity"
           >
-            <Image src={theme === 'dark' ? '/icons/lightmode.svg' : '/icons/darkmode.svg'} alt="Dark Mode Icon" width={22} height={22} />
+            {/* Both icons render; the .dark class picks one. Swapping src from JS
+                showed the wrong icon after hydration in dark mode. */}
+            <Image src="/icons/darkmode.svg" alt="" width={22} height={22} className="dark:hidden" />
+            <Image src="/icons/lightmode.svg" alt="" width={22} height={22} className="site-header__icon hidden dark:block" />
           </button>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-600 dark:text-gray-300"
-          >
-            <Image src={menuIconSrc} alt="Menu" width={24} height={24} />
+          <button aria-label="Menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+            <Image src="/icons/menu.svg" alt="" width={24} height={24} className="dark:hidden" />
+            <Image src="/icons/whitemenu.svg" alt="" width={24} height={24} className="site-header__icon hidden dark:block" />
           </button>
         </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <nav className="md:hidden mt-4 px-2 flex flex-col space-y-3">
+        <nav className="relative md:hidden pb-4 px-2 flex flex-col space-y-3">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="block py-1 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+              className="group block py-1"
             >
-              {link.label}
+              <span className="hover-underline">{link.label}</span>
             </Link>
           ))}
           <a
             href={CALENDLY_HREF}
             target="_blank"
             rel="noreferrer"
-            className="block text-center py-2 rounded-md border-2 border-black text-black dark:border-white dark:text-white hover:opacity-70 transition-opacity"
+            className="block text-center py-2 rounded-md border-2 border-current hover:opacity-70 transition-opacity"
           >
             Work With Me
           </a>

@@ -38,7 +38,11 @@ export function resetLenis() {
 export function scrollToSection(selector) {
   const target = document.querySelector(selector);
   if (!target) return;
-  const offset = -(document.querySelector('header')?.offsetHeight ?? 0);
+  // Sections sit below the header's compact (scrolled) height, not its
+  // taller at-the-top height
+  const header = document.querySelector('header');
+  const compact = header && parseFloat(getComputedStyle(header).getPropertyValue('--hdr-compact'));
+  const offset = -(compact || header?.offsetHeight || 0);
   if (lenis) {
     lenis.scrollTo(target, { offset });
   } else {
