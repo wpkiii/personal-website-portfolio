@@ -92,7 +92,7 @@ export default function Header() {
               onClick={(e) => handleNavClick(e, link.href)}
               className="group"
             >
-              <span className="hover-underline">{link.label}</span>
+              <span className="nav-mark">{link.label}</span>
             </Link>
           ))}
         </nav>
@@ -147,7 +147,7 @@ export default function Header() {
               onClick={(e) => handleNavClick(e, link.href)}
               className="group block py-1"
             >
-              <span className="hover-underline">{link.label}</span>
+              <span className="nav-mark">{link.label}</span>
             </Link>
           ))}
           <a

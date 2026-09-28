@@ -118,8 +118,7 @@ body {
    is hovered, keyboard-focused, or (for accordions) open. Background-based
    so it follows wrapped lines. */
 .hover-underline {
-  /* --underline-color lets a context recolor it (e.g. dark on the gold header bar) */
-  background-image: linear-gradient(var(--underline-color, theme('colors.brand.gold.DEFAULT')), var(--underline-color, theme('colors.brand.gold.DEFAULT')));
+  background-image: linear-gradient(theme('colors.brand.gold.DEFAULT'), theme('colors.brand.gold.DEFAULT'));
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 2px;
@@ -154,12 +153,9 @@ body {
   --hdr-fill: theme('colors.brand.gold.DEFAULT');
   --hdr-fg-start: theme('colors.gray.900');
   --hdr-fg-end: theme('colors.gray.900');
-  --hdr-underline-end: theme('colors.gray.900');
 
   background-color: var(--hdr-bg);
   color: color-mix(in srgb, var(--hdr-fg-end) calc(var(--pc) * 100%), var(--hdr-fg-start));
-  /* nav hover underline: gold on the page background, dark once on the gold bar */
-  --underline-color: color-mix(in srgb, var(--hdr-underline-end) calc(var(--pc) * 100%), theme('colors.brand.gold.DEFAULT'));
   box-shadow: 0 2px 8px rgb(0 0 0 / calc(0.12 * var(--p)));
 }
 @media (min-width: 768px) {
@@ -199,4 +195,31 @@ body {
 }
 .site-header__nav {
   font-size: calc(17px + 3px * (1 - var(--p)));
+}
+
+/* Nav links: a highlighter bar that always sits behind the bottom of the
+   word (ZachJordan-style) and fills up to cover the whole word on hover or
+   keyboard focus. Gold over the page, white once on the gold header bar. */
+.nav-mark {
+  --nav-mark-color: color-mix(in srgb, #ffffff calc(var(--pc, 0) * 100%), theme('colors.brand.gold.DEFAULT'));
+  background-image: linear-gradient(var(--nav-mark-color), var(--nav-mark-color));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.35em;
+  padding: 0 0.12em;
+  margin: 0 -0.12em; /* bar overhangs the word slightly without shifting it */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), color 0.2s ease;
+}
+.group:hover .nav-mark,
+.group:focus-visible .nav-mark {
+  background-size: 100% 100%;
+  /* dark text stays readable on the gold/white fill in both themes */
+  color: theme('colors.gray.900');
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-mark {
+    transition: none;
+  }
 }
