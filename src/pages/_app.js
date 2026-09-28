@@ -1,10 +1,12 @@
 // src/pages/_app.js
 import "@/styles/globals.css";
+import "lenis/dist/lenis.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Head from "next/head";
 import { DefaultSeo } from 'next-seo';
 import { Montserrat, Inter_Tight, Courier_Prime } from "next/font/google";
 import CustomCursor from "@/components/cursor";
+import SmoothScroll from "@/components/smoothscroll";
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
 
@@ -61,6 +63,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <AutoTheme />
+        <SmoothScroll />
         <div className={`${montserrat.variable} ${interTight.variable} ${courierPrime.variable} font-sans`}>
           <CustomCursor />
           <Component {...pageProps} />

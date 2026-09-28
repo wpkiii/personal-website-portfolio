@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { scrollToSection } from '@/animations/lenis';
 
 const CALENDLY_HREF = 'https://calendly.com/treypkelly/30min';
 
@@ -14,6 +16,17 @@ const navLinks = [
 export default function Header() {
   const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+
+  // On the homepage, nav links scroll to their section below the fixed
+  // header (gliding with Lenis). From other pages the Link navigates home.
+  const handleNavClick = (e, href) => {
+    setMenuOpen(false);
+    if (router.pathname !== '/') return;
+    e.preventDefault();
+    // Wait a frame so the closed mobile menu no longer counts toward the header offset
+    requestAnimationFrame(() => scrollToSection(href.slice(href.indexOf('#'))));
+  };
 
   // Dynamically apply icons based on theme
   const menuIconSrc = theme === 'dark' ? '/icons/whitemenu.svg' : '/icons/menu.svg';
@@ -47,6 +60,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
               {link.label}
@@ -97,7 +111,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="block py-1 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
             >
               {link.label}
