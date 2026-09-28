@@ -50,6 +50,8 @@ export default function AboutMe() {
             alt="William Kelly"
             width={1000}
             height={1000}
+            priority
+            sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
             className="rounded-lg"
           />
         </div>
