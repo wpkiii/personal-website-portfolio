@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import SectionHeader from "@/components/sectionheader";
 
 const experiences = [
   {
@@ -178,14 +179,10 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="bg-transparent dark:bg-transparent py-16 px-4 lg:py-24 lg:px-6"
+      className="bg-transparent dark:bg-transparent px-6 py-16 lg:py-24 max-w-7xl mx-auto"
     >
-      <div className="mx-auto max-w-screen-xl">
-        <div className="max-w-screen-sm text-left mb-8 lg:mb-16">
-          <h2 className="font-heading mb-4 text-4xl font-bold text-gray-900 dark:text-white">
-            Experience
-          </h2>
-        </div>
+      <div>
+        <SectionHeader index="02" title="Experience" />
 
         <div className="divide-y divide-gray-200 dark:divide-gray-700 border-t border-b border-gray-200 dark:border-gray-700">
           {experiences.map((job, index) => {
@@ -195,7 +192,7 @@ export default function Experience() {
                 <button
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
-                  className="w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
+                  className="group w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
                 >
                   <div className="flex items-center gap-4 sm:gap-8">
                     <span className="hidden sm:block sm:w-36 flex-shrink-0 text-sm font-mono text-gray-500 dark:text-gray-400">
@@ -212,7 +209,7 @@ export default function Experience() {
                     )}
                     <div>
                       <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
-                        {job.title}
+                        <span className="hover-underline">{job.title}</span>
                       </h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400">
                         {job.company} · {job.location}

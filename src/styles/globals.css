@@ -100,3 +100,39 @@ body {
   top: 0;
   left: 0;
 }
+
+/* Gold underlines (see src/components/sectionheader.js) --------------------- */
+
+/* Section headings: collapsed until GSAP draws it in on scroll. Only hidden
+   when motion is allowed, so reduced-motion visitors always see it. */
+.section-underline {
+  transform-origin: left center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .section-underline {
+    transform: scaleX(0);
+  }
+}
+
+/* Item titles: a gold line grows under the text while its card/row (.group)
+   is hovered, keyboard-focused, or (for accordions) open. Background-based
+   so it follows wrapped lines. */
+.hover-underline {
+  background-image: linear-gradient(theme('colors.brand.gold.DEFAULT'), theme('colors.brand.gold.DEFAULT'));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  padding-bottom: 2px;
+  transition: background-size 0.35s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.group:hover .hover-underline,
+.group:focus-visible .hover-underline,
+.group:has(:focus-visible) .hover-underline,
+.group[aria-expanded='true'] .hover-underline {
+  background-size: 100% 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-underline {
+    transition: none;
+  }
+}

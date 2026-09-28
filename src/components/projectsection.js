@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProjectLayout from "@/components/projectlayout";
+import SectionHeader from "@/components/sectionheader";
 
 export default function ProjectsSection() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -92,12 +93,7 @@ export default function ProjectsSection() {
       )}
 
       <div className="max-w-7xl mx-auto">
-        {/* Projects Heading */}
-        <h2
-          className="font-heading text-4xl font-bold text-left mb-8 lg:mb-16 text-gray-900 dark:text-white"
-        >
-          Projects
-        </h2>
+        <SectionHeader index="03" title="Projects" />
 
         {/* Project Carousel */}
         <div className="relative px-12 md:px-16">

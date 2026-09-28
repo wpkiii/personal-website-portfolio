@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
+import SectionHeader from '@/components/sectionheader';
 
 const education = [
   {
@@ -38,9 +39,7 @@ export default function AboutMe() {
 
   return (
     <section id="about-me" className="flex flex-col items-center px-6 pt-16 pb-28 lg:pb-32 max-w-7xl mx-auto overflow-hidden">
-      <h2 className="w-full font-heading text-4xl font-bold text-left mb-8 lg:mb-16 text-gray-900 dark:text-white">
-        About Me
-      </h2>
+      <SectionHeader index="01" title="About Me" />
 
       <div className="flex flex-col md:flex-row items-center md:space-x-8">
         {/* Profile Image */}
@@ -134,7 +133,7 @@ export default function AboutMe() {
                 href={school.link}
                 target="_blank"
                 rel="noreferrer"
-                className={`flex items-center gap-4 p-4 rounded-lg shadow-lg transition transform hover:scale-105 ${school.gradient}`}
+                className={`group flex items-center gap-4 p-4 rounded-lg shadow-lg transition transform hover:scale-105 ${school.gradient}`}
               >
                 <div className="w-24 h-24 flex items-center justify-center flex-shrink-0">
                   <Image
@@ -147,7 +146,7 @@ export default function AboutMe() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-heading text-sm font-bold text-black">
-                    {school.school}
+                    <span className="hover-underline">{school.school}</span>
                   </h3>
                   <p className="text-xs text-black/70 mt-0.5">
                     {school.detail}

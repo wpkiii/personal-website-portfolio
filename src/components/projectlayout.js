@@ -35,7 +35,7 @@ export default function ProjectLayout({ title, description, year, techStack, lin
       </div>
       <div className="md:w-1/2 p-3">
         <div className="flex justify-between items-center mb-1.5">
-          <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">{title}</h3>
+          <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white"><span className="hover-underline">{title}</span></h3>
           <span className="text-sm text-gray-500 dark:text-gray-300">{year}</span>
         </div>
         <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 line-clamp-3">{description}</p>
