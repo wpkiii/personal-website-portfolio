@@ -22,7 +22,7 @@ export default function ProjectsSection() {
       year: "2024",
       techStack: ["OpenCV", "VHDL", "Computer Vision"],
       link: "projects/cvproject",
-      imageSrc: "/detectiongif.gif",
+      video: "detection",
     },
     {
       title: "Climate Change Analysis and Prediction",
@@ -31,7 +31,7 @@ export default function ProjectsSection() {
       year: "2024",
       techStack: ["Machine Learning", "Jupyter", "NASA GISTEMP"],
       link: "projects/climate",
-      imageSrc: "/climate.mp4",
+      video: "climate",
     },
     {
       title: "IoT Automated Garden Project",
@@ -40,7 +40,7 @@ export default function ProjectsSection() {
       year: "2023",
       techStack: ["IoT", "React Native", "Sensors"],
       link: "projects/garden",
-      imageSrc: "/gardengif.gif",
+      video: "garden",
     },
     {
       title: "StoryGenie",
@@ -49,7 +49,7 @@ export default function ProjectsSection() {
       year: "2024",
       techStack: ["Next.js", "AI", "Video Generation"],
       link: "projects/storygenie",
-      imageSrc: "/storygeniegif.gif",
+      video: "storygenie",
     },
   ];
 
@@ -129,6 +129,7 @@ export default function ProjectsSection() {
                         techStack={project.techStack}
                         link={project.link}
                         imageSrc={project.imageSrc}
+                        video={project.video}
                       />
                     </div>
                   ))}

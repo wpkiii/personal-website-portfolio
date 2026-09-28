@@ -25,12 +25,15 @@ export default function Climate() {
         {/* Display the video representing the project */}
         <div className="my-6">
           <video
-            src="/climate.mp4" // Ensure this video is in the public directory
             width={800}
-            height={450}
             controls
+            playsInline
+            preload="metadata"
+            poster="/media/climate-poster.webp"
             className="rounded-lg shadow-lg"
           >
+            <source src="/media/climate.webm" type="video/webm" />
+            <source src="/media/climate.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

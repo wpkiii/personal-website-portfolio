@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header"; // Adjust path if needed
+import LoopVideo from "@/components/loopvideo";
 
 export default function Garden() {
   return (
@@ -48,11 +49,10 @@ export default function Garden() {
 
   {/* Image Section */}
   <div className="flex-1">
-    <Image
-      src="/gardengif.gif" // Ensure this image is in the public/images folder
-      alt="EZGrow Prototype"
+    <LoopVideo
+      name="garden"
+      aria-label="EZGrow Prototype"
       width={350}
-      height={300}
       className="rounded-lg shadow-lg"
     />
   </div>

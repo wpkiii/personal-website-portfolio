@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header"; // Adjust path if needed
+import LoopVideo from "@/components/loopvideo";
 
 export default function StoryGenie() {
   return (
@@ -26,11 +27,10 @@ export default function StoryGenie() {
 
         {/* Display an image representing the project */}
         <div className="my-6">
-          <Image
-            src="/storygeniegif.gif" // Ensure this GIF is in the public/images folder
-            alt="StoryGenie Project Thumbnail"
+          <LoopVideo
+            name="storygenie"
+            aria-label="StoryGenie Project Thumbnail"
             width={800}
-            height={450}
             className="rounded-lg shadow-lg"
           />
         </div>

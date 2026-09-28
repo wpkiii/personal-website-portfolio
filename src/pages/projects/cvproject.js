@@ -1,19 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header"; // Adjust path if needed
-import { useRef } from "react";
+import LoopVideo from "@/components/loopvideo";
 
 export default function CVProject() {
-  const video1Ref = useRef(null);
-  const video2Ref = useRef(null);
-
-  // Event handler to play the second video when the first one ends
-  const handleVideoEnd = () => {
-    if (video2Ref.current) {
-      video2Ref.current.play();
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
       {/* Include Header */}
@@ -38,19 +28,20 @@ export default function CVProject() {
 
         {/* Display two videos */}
         <div className="flex flex-col sm:flex-row sm:gap-4 my-6">
-          <Image
-            ref={video1Ref}
-            src="/detectiongif.gif" // Replace with the path to your first video
-            controls
-            onEnded={handleVideoEnd}
+          <LoopVideo
+            name="detection"
+            aria-label="Gesture detection demo"
             className="w-full sm:w-1/2 h-auto rounded-lg shadow-lg mb-4 sm:mb-0"
           />
           <video
-            ref={video2Ref}
-            src="/robotichand.mov" // Replace with the path to your second video
             controls
+            playsInline
+            preload="metadata"
+            poster="/media/robotichand-poster.webp"
             className="w-full sm:w-1/2 h-auto rounded-lg shadow-lg"
-          />
+          >
+            <source src="/media/robotichand.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* Technologies Used Section */}
