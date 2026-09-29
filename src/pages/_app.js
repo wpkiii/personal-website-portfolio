@@ -47,10 +47,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {/* Favicon */}
-        <link rel="icon" href="/icons/signature.svg?v=2" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/icons/signature.svg?v=2" />
-        <link rel="apple-touch-icon" href="/icons/signature.png" />
+        {/* Favicon: SVG for modern browsers, .ico for Safari/bookmarks/search
+            results, square PNG for iOS home screens. Bump ?v= when they change
+            so browsers drop their cached copy. */}
+        <link rel="icon" href="/icons/favicon.svg?v=3" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico?v=3" sizes="16x16 32x32 48x48" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
 
         {/* Global Meta Tags */}
         <title>William Kelly - Digital Portfolio</title>
