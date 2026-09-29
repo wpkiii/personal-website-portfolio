@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { scrollToSection } from '@/animations/lenis';
 import { gsap, ScrollTrigger, useGSAP } from '@/animations/gsap';
+import { useMagnetic } from '@/animations/useMagnetic';
 import { header as headerMotion, media } from '@/animations/config';
 import { features } from '@/lib/features';
 
@@ -22,6 +23,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const headerRef = useRef(null);
+  const ctaRef = useRef(null);
+  useMagnetic(ctaRef);
 
   // ZachJordan-style takeover: over the first stretch of scroll, --p goes
   // 0 → 1 and the CSS in globals.css (.site-header) grows the gold strip into
@@ -101,10 +104,11 @@ export default function Header() {
 
         <div className="hidden md:flex items-center space-x-6 ml-auto">
           <a
+            ref={ctaRef}
             href={CALENDLY_HREF}
             target="_blank"
             rel="noreferrer"
-            className="px-4 py-2 rounded-md border-2 border-current hover:opacity-70 transition-opacity"
+            className="btn-liquid px-4 py-2 rounded-md border-2 border-current"
           >
             Work With Me
           </a>
@@ -156,7 +160,7 @@ export default function Header() {
             href={CALENDLY_HREF}
             target="_blank"
             rel="noreferrer"
-            className="block text-center py-2 rounded-md border-2 border-current hover:opacity-70 transition-opacity"
+            className="btn-liquid !block text-center py-2 rounded-md border-2 border-current"
           >
             Work With Me
           </a>

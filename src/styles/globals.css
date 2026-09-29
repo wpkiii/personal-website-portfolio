@@ -158,6 +158,8 @@ body {
   background-color: var(--hdr-bg);
   color: color-mix(in srgb, var(--hdr-fg-end) calc(var(--pc) * 100%), var(--hdr-fg-start));
   box-shadow: 0 2px 8px rgb(0 0 0 / calc(0.12 * var(--p)));
+  /* button liquid fill: gold over the page, white once on the gold bar */
+  --liquid: color-mix(in srgb, #ffffff calc(var(--pc) * 100%), theme('colors.brand.gold.DEFAULT'));
 }
 @media (min-width: 768px) {
   .site-header {
@@ -412,5 +414,72 @@ body {
 @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
   .tilt-card:hover .tilt-glare {
     opacity: 1;
+  }
+}
+
+/* Liquid-fill button (e.g. "Work With Me" in header.js). Two big rounded
+   blobs wait just below the button, slowly rotating; their tops read as a
+   sloshing liquid surface (they swirl continuously; it's a cheap GPU
+   transform). On hover they rise and fill the button bottom-up
+   like goo, and drain back down on leave. The second, lighter blob turns
+   out of step for depth. Text goes dark so it reads on the fill. */
+.btn-liquid {
+  /* must not be inline: inline boxes can't be transformed (magnetic pull) */
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease;
+}
+.btn-liquid::before,
+.btn-liquid::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  /* parked just below the button (hidden anyway via opacity when not hovered) */
+  top: calc(100% + 0.25rem);
+  width: max(220%, 12rem);
+  aspect-ratio: 1;
+  margin-left: calc(max(220%, 12rem) / -2);
+  border-radius: 42%;
+  background-color: var(--liquid, theme('colors.brand.gold.DEFAULT'));
+  /* invisible whenever not hovered: fades out smoothly over the tail of the
+     drain (no pop), and keeps swirling while it drains (no freeze) */
+  opacity: 0;
+  transition: top 0.8s cubic-bezier(0.3, 0.7, 0.4, 1), opacity 0.35s ease 0.45s;
+  animation: liquid-spin 5s linear infinite;
+}
+.btn-liquid::after {
+  border-radius: 38%;
+  animation-duration: 7s;
+  animation-direction: reverse;
+}
+.btn-liquid:hover,
+.btn-liquid:focus-visible {
+  color: theme('colors.gray.900');
+}
+.btn-liquid:hover::before,
+.btn-liquid:focus-visible::before {
+  top: -0.9rem;
+  opacity: 1;
+  transition: top 0.8s cubic-bezier(0.3, 0.7, 0.4, 1), opacity 0s;
+}
+.btn-liquid:hover::after,
+.btn-liquid:focus-visible::after {
+  top: -1.4rem;
+  opacity: 0.45;
+  transition: top 0.8s cubic-bezier(0.3, 0.7, 0.4, 1), opacity 0s;
+}
+@keyframes liquid-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-liquid::before,
+  .btn-liquid::after {
+    transition: none;
+    animation: none;
   }
 }
