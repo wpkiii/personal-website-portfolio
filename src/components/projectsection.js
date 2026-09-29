@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import ProjectLayout from "@/components/projectlayout";
 import SectionHeader from "@/components/sectionheader";
 import { useReveal } from "@/animations/useReveal";
+import { features } from "@/lib/features";
 
 export default function ProjectsSection() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -97,7 +98,7 @@ export default function ProjectsSection() {
       )}
 
       <div className="max-w-7xl mx-auto">
-        <SectionHeader index="03" title="Projects" />
+        <SectionHeader index={features.skills ? "04" : "03"} title="Projects" />
 
         {/* Project Carousel */}
         <div className="relative px-12 md:px-16">

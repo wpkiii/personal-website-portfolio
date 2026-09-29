@@ -5,6 +5,8 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import Header from "@/components/header";
 import AboutMe from "@/components/aboutme";
 import Experience from "@/components/experience";
+import Skills from "@/components/skills";
+import { features } from "@/lib/features";
 import ProjectSection from "@/components/projectsection";
 import Footer from "@/components/footer";
 
@@ -65,6 +67,7 @@ export default function Home() {
         <main className="flex-grow pt-24 px-4 sm:px-6 lg:px-8 relative">
           <AboutMe /> {/* Render About Me (bio + education) section here */}
           <Experience /> {/* Render Experience section here */}
+          {features.skills && <Skills />}
           <ProjectSection /> {/* Render Projects section here */}
         </main>
 

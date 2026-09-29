@@ -108,7 +108,7 @@ const experiences = [
   {
     company: "Nordstrom Corporate",
     logo: "/Nordstrom-Symbol.png",
-    title: "Cybersecurity Engineer - Penetration Tester",
+    title: "Cybersecurity Intern - Penetration Tester",
     date: "June – Aug 2022",
     location: "Seattle, WA",
     link: "https://www.nordstrom.com/",

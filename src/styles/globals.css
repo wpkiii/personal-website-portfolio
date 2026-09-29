@@ -337,3 +337,62 @@ body {
   border-color: theme('colors.gray.600');
   background-color: theme('colors.gray.900');
 }
+
+/* Skills pipeline connectors (src/components/skills.js) ----------------------
+   A thin line between stages with a small dot traveling along it. Horizontal
+   between the stage cards on desktop, vertical when they stack on mobile.
+   The section sets data-pulsing while on screen; otherwise it's paused. */
+.skills-connector {
+  position: relative;
+  flex: none;
+  align-self: center;
+  width: 1px;
+  height: 2.5rem;
+  background-color: theme('colors.gray.300');
+}
+.dark .skills-connector {
+  background-color: theme('colors.gray.600');
+}
+.skills-pulse {
+  position: absolute;
+  left: -2.5px;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: theme('colors.gray.900');
+  opacity: 0;
+  animation: skills-pulse-y 2.4s ease-in-out var(--pulse-delay, 0s) infinite paused;
+}
+.dark .skills-pulse {
+  background-color: theme('colors.gray.200');
+}
+[data-pulsing='true'] .skills-pulse {
+  animation-play-state: running;
+}
+@media (min-width: 1024px) {
+  .skills-connector {
+    width: 3rem;
+    height: 1px;
+  }
+  .skills-pulse {
+    left: 0;
+    top: -2.5px;
+    animation-name: skills-pulse-x;
+  }
+}
+@keyframes skills-pulse-y {
+  0% { transform: translateY(0); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translateY(calc(2.5rem - 6px)); opacity: 0; }
+}
+@keyframes skills-pulse-x {
+  0% { transform: translateX(0); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translateX(calc(3rem - 6px)); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skills-pulse {
+    display: none;
+  }
+}

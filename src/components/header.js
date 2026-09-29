@@ -6,14 +6,16 @@ import { useRouter } from 'next/router';
 import { scrollToSection } from '@/animations/lenis';
 import { gsap, ScrollTrigger, useGSAP } from '@/animations/gsap';
 import { header as headerMotion, media } from '@/animations/config';
+import { features } from '@/lib/features';
 
 const CALENDLY_HREF = 'https://calendly.com/treypkelly/30min';
 
 const navLinks = [
   { href: '/#about-me', label: 'About Me' },
   { href: '/#experience', label: 'Experience' },
+  features.skills && { href: '/#skills', label: 'Skills' },
   { href: '/#projects', label: 'Projects' },
-];
+].filter(Boolean);
 
 export default function Header() {
   const { resolvedTheme, setTheme } = useTheme();
