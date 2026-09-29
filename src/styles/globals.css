@@ -158,6 +158,8 @@ body {
   background-color: var(--hdr-bg);
   color: color-mix(in srgb, var(--hdr-fg-end) calc(var(--pc) * 100%), var(--hdr-fg-start));
   box-shadow: 0 2px 8px rgb(0 0 0 / calc(0.12 * var(--p)));
+  /* nav highlighter color: gold over the page, pale gold on the gold bar */
+  --nav-mark-color: color-mix(in srgb, theme('colors.brand.gold.pale') calc(var(--pc) * 100%), theme('colors.brand.gold.DEFAULT'));
 }
 @media (min-width: 768px) {
   .site-header {
@@ -203,7 +205,6 @@ body {
    keyboard focus. Gold over the page, pale gold (#FFDEAD) on the gold header
    bar. Text stays dark on the fill in every state. */
 .nav-mark {
-  --nav-mark-color: color-mix(in srgb, theme('colors.brand.gold.pale') calc(var(--pc, 0) * 100%), theme('colors.brand.gold.DEFAULT'));
   background-image: linear-gradient(var(--nav-mark-color), var(--nav-mark-color));
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -215,7 +216,8 @@ body {
   transition: background-size 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), color 0.2s ease;
 }
 .group:hover .nav-mark,
-.group:focus-visible .nav-mark {
+.group:focus-visible .nav-mark,
+.md\:hidden [aria-current] .nav-mark {
   background-size: 100% 100%;
   color: theme('colors.gray.900');
 }
@@ -223,4 +225,19 @@ body {
   .nav-mark {
     transition: none;
   }
+}
+
+/* Active nav indicator: one block behind the current section's word that
+   GSAP slides between words (header.js). The active word's text goes dark
+   to sit on it, like a hovered word. */
+.nav-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--nav-mark-color);
+}
+[aria-current] .nav-mark {
+  color: theme('colors.gray.900');
 }
