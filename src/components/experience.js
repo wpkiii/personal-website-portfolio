@@ -1,8 +1,9 @@
 //experience.js
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import SectionHeader from "@/components/sectionheader";
+import { useReveal } from "@/animations/useReveal";
 
 const experiences = [
   {
@@ -171,6 +172,8 @@ function SubRole({ role }) {
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState(0);
+  const sectionRef = useRef(null);
+  useReveal(sectionRef);
 
   const toggle = (index) => {
     setExpandedIndex((prev) => (prev === index ? null : index));
@@ -178,6 +181,7 @@ export default function Experience() {
 
   return (
     <section
+      ref={sectionRef}
       id="experience"
       className="bg-transparent dark:bg-transparent px-6 py-16 lg:py-24 max-w-7xl mx-auto"
     >
@@ -188,7 +192,7 @@ export default function Experience() {
           {experiences.map((job, index) => {
             const isOpen = expandedIndex === index;
             return (
-              <div key={job.company}>
+              <div key={job.company} data-reveal>
                 <button
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}

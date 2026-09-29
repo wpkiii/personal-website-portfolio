@@ -45,10 +45,10 @@ export default function AboutMe() {
         {/* Profile Image */}
         <div className="relative">
           <Image
-            src="/AggieShirt%20copy.jpg"
+            src="/headshot.jpg"
             alt="William Kelly"
             width={1000}
-            height={1000}
+            height={1266}
             priority
             sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
             className="rounded-lg"

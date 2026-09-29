@@ -1,4 +1,6 @@
+import { useRef } from 'react';
 import Image from 'next/image';
+import { useReveal } from '@/animations/useReveal';
 
 const socialLinks = [
   { href: 'mailto:treypkelly@gmail.com', icon: '/icons/mail.svg', label: 'Email' },
@@ -15,13 +17,17 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const footerRef = useRef(null);
+  useReveal(footerRef, { start: 'top bottom' });
+
   return (
-    <footer className="font-mono py-10 px-6 sm:px-10 bg-transparent dark:bg-transparent text-gray-500 dark:text-gray-400 relative border-t border-gray-200 dark:border-gray-800">
+    <footer ref={footerRef} className="font-mono py-10 px-6 sm:px-10 bg-transparent dark:bg-transparent text-gray-500 dark:text-gray-400 relative border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-5 text-center">
         <div className="flex items-center space-x-6">
           {socialLinks.map((link) => (
             <a
               key={link.label}
+              data-reveal
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel="noreferrer"
@@ -39,7 +45,7 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <p className="text-xs">
+        <p data-reveal className="text-xs">
           © {new Date().getFullYear()} William (Trey) Kelly | All rights reserved.
         </p>
       </div>

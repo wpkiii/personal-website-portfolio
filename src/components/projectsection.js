@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProjectLayout from "@/components/projectlayout";
 import SectionHeader from "@/components/sectionheader";
+import { useReveal } from "@/animations/useReveal";
 
 export default function ProjectsSection() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [showCursorText, setShowCursorText] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef(null);
+  useReveal(sectionRef);
 
   useEffect(() => {
     const mql = window.matchMedia("(max-width: 639px)");
@@ -75,6 +78,7 @@ export default function ProjectsSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="projects"
       className="bg-transparent dark:transparent px-6 py-16 max-w-7xl mx-auto relative"
     >
@@ -108,25 +112,26 @@ export default function ProjectsSection() {
                   className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4"
                 >
                   {pageProjects.map((project, index) => (
-                    <div
-                      key={index}
-                      className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-2 dark:bg-black"
-                      style={{
-                        cursor: "url(/middlefinger.png), auto",
-                      }}
-                      onMouseEnter={() => setShowCursorText(true)}
-                      onMouseLeave={() => setShowCursorText(false)}
-                      onMouseMove={handleMouseMove}
-                    >
-                      <ProjectLayout
-                        title={project.title}
-                        description={project.description}
-                        year={project.year}
-                        techStack={project.techStack}
-                        link={project.link}
-                        imageSrc={project.imageSrc}
-                        video={project.video}
-                      />
+                    <div key={index} data-reveal>
+                      <div
+                        className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-2 dark:bg-black"
+                        style={{
+                          cursor: "url(/middlefinger.png), auto",
+                        }}
+                        onMouseEnter={() => setShowCursorText(true)}
+                        onMouseLeave={() => setShowCursorText(false)}
+                        onMouseMove={handleMouseMove}
+                      >
+                        <ProjectLayout
+                          title={project.title}
+                          description={project.description}
+                          year={project.year}
+                          techStack={project.techStack}
+                          link={project.link}
+                          imageSrc={project.imageSrc}
+                          video={project.video}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -151,7 +156,7 @@ export default function ProjectsSection() {
                 ›
               </button>
 
-              <div className="flex justify-center mt-6">
+              <div data-reveal className="flex justify-center mt-6">
                 {pages.map((_, index) => (
                   <button
                     key={index}

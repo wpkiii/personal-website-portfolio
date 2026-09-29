@@ -114,11 +114,12 @@ body {
   }
 }
 
-/* Item titles: a gold line grows under the text while its card/row (.group)
+/* Item titles: a line in the text's own color (black on light backgrounds,
+   white in dark mode) grows under the text while its card/row (.group)
    is hovered, keyboard-focused, or (for accordions) open. Background-based
    so it follows wrapped lines. */
 .hover-underline {
-  background-image: linear-gradient(theme('colors.brand.gold.DEFAULT'), theme('colors.brand.gold.DEFAULT'));
+  background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0% 2px;
@@ -199,9 +200,10 @@ body {
 
 /* Nav links: a highlighter bar that always sits behind the bottom of the
    word (ZachJordan-style) and fills up to cover the whole word on hover or
-   keyboard focus. Gold over the page, white once on the gold header bar. */
+   keyboard focus. Gold over the page, pale gold (#FFDEAD) on the gold header
+   bar. Text stays dark on the fill in every state. */
 .nav-mark {
-  --nav-mark-color: color-mix(in srgb, #ffffff calc(var(--pc, 0) * 100%), theme('colors.brand.gold.DEFAULT'));
+  --nav-mark-color: color-mix(in srgb, theme('colors.brand.gold.pale') calc(var(--pc, 0) * 100%), theme('colors.brand.gold.DEFAULT'));
   background-image: linear-gradient(var(--nav-mark-color), var(--nav-mark-color));
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -215,7 +217,6 @@ body {
 .group:hover .nav-mark,
 .group:focus-visible .nav-mark {
   background-size: 100% 100%;
-  /* dark text stays readable on the gold/white fill in both themes */
   color: theme('colors.gray.900');
 }
 @media (prefers-reduced-motion: reduce) {

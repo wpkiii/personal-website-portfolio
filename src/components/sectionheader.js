@@ -26,7 +26,7 @@ export default function SectionHeader({ index, title }) {
   );
 
   return (
-    <div ref={ref} className="w-full mb-10 lg:mb-16">
+    <div ref={ref} data-reveal className="w-full mb-10 lg:mb-16">
       <p className="font-mono text-sm tracking-wider text-gray-600 dark:text-gray-400 mb-2">
         {index}
       </p>
