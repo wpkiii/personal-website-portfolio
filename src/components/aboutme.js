@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import SectionHeader from '@/components/sectionheader';
+import SocialLinks from '@/components/sociallinks';
 
 const education = [
   {
@@ -73,58 +74,7 @@ export default function AboutMe() {
           </p>
 
           {/* Social Media Links */}
-          <div className="flex justify-center md:justify-start space-x-4 mt-6">
-            <a href="mailto:treypkelly@gmail.com" className="group">
-              <Image
-                src="/icons/mail.svg"
-                alt="Email"
-                width={40}
-                height={40}
-                className="transition-transform transform group-hover:scale-125 duration-200"
-              />
-            </a>
-            <a href="https://github.com/wpkiii" target="_blank" rel="noreferrer" className="group">
-              <Image
-                src="/icons/github.svg"
-                alt="GitHub"
-                width={40}
-                height={40}
-                className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert"
-              />
-            </a>
-            <a href="https://www.linkedin.com/in/william-kelly-iii-748409194/" target="_blank" rel="noreferrer" className="group">
-              <Image
-                src="/icons/LinkedIn_icon.svg"
-                alt="LinkedIn"
-                width={40}
-                height={40}
-                className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert"
-              />
-            </a>
-            <a href="https://www.youtube.com/@trickswithtrey" target="_blank" rel="noreferrer" className="group">
-              <Image
-                src="/icons/youtube.svg"
-                alt="YouTube"
-                width={40}
-                height={40}
-                className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert"
-              />
-            </a>
-            <a
-              href="https://open.spotify.com/user/22cephxvqecscjamivxpra3oy?si=KYQ_U9jNSmayXvpOe7VkAg&utm_source=copy-link&nd=1&dlsi=494ad821af4c4e65"
-              target="_blank"
-              rel="noreferrer"
-              className="group"
-            >
-              <Image
-                src="/icons/spotify.svg"
-                alt="Spotify"
-                width={40}
-                height={40}
-                className="transition-transform transform group-hover:scale-125 duration-200"
-              />
-            </a>
-          </div>
+          <SocialLinks size={40} className="justify-center md:justify-start gap-4 mt-6" />
 
           {/* Education — compact contact cards */}
           <h2 className="sr-only">Education</h2>
