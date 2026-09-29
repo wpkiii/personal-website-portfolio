@@ -1,18 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { scrollToSection } from '@/animations/lenis';
 import { gsap, ScrollTrigger, useGSAP } from '@/animations/gsap';
-import { durations, easings, header as headerMotion, media, prefersReducedMotion } from '@/animations/config';
+import { header as headerMotion, media } from '@/animations/config';
 
 const CALENDLY_HREF = 'https://calendly.com/treypkelly/30min';
 
 const navLinks = [
-  { href: '/#about-me', id: 'about-me', label: 'About Me' },
-  { href: '/#experience', id: 'experience', label: 'Experience' },
-  { href: '/#projects', id: 'projects', label: 'Projects' },
+  { href: '/#about-me', label: 'About Me' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#projects', label: 'Projects' },
 ];
 
 export default function Header() {
@@ -20,9 +20,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const headerRef = useRef(null);
-  const navRef = useRef(null);
-  const sliderRef = useRef(null);
-  const [activeId, setActiveId] = useState(null);
 
   // ZachJordan-style takeover: over the first stretch of scroll, --p goes
   // 0 → 1 and the CSS in globals.css (.site-header) grows the gold strip into
@@ -46,57 +43,6 @@ export default function Header() {
       });
     });
   }, { scope: headerRef });
-
-  // Active nav indicator: track which section is at the middle of the
-  // viewport. Only the homepage has these sections, so elsewhere nothing
-  // is active and the slider stays hidden.
-  useGSAP(() => {
-    navLinks.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (!section) return;
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top center',
-        end: 'bottom center',
-        onToggle: (self) => self.isActive && setActiveId(id),
-      });
-    });
-  }, { scope: headerRef });
-
-  // One highlight block sits behind the active nav word and slides to the
-  // next one. It re-measures whenever the words resize (the header shrinks
-  // them while scrolling) so it always covers the word exactly.
-  useEffect(() => {
-    const nav = navRef.current;
-    const slider = sliderRef.current;
-    const word = nav?.querySelector(`[data-nav-id="${activeId}"] .nav-mark`);
-    if (!word) {
-      gsap.set(slider, { opacity: 0 });
-      return;
-    }
-    const place = (animate) => {
-      const n = nav.getBoundingClientRect();
-      const w = word.getBoundingClientRect();
-      gsap.to(slider, {
-        x: w.left - n.left,
-        y: w.top - n.top,
-        width: w.width,
-        height: w.height,
-        opacity: 1,
-        duration: animate ? durations.base : 0,
-        ease: easings.inOut,
-        overwrite: true,
-      });
-    };
-    // Slide only when moving from one word to another; appear in place the first time
-    place(!prefersReducedMotion() && gsap.getProperty(slider, 'opacity') > 0);
-    // Keep an in-flight slide going toward the new size; otherwise just follow.
-    // Observe the links, not the inline .nav-mark spans: ResizeObserver never
-    // reports size changes for inline elements.
-    const ro = new ResizeObserver(() => place(gsap.isTweening(slider)));
-    nav.querySelectorAll('a').forEach((el) => ro.observe(el));
-    return () => ro.disconnect();
-  }, [activeId]);
 
   // On the homepage, nav links scroll to their section below the fixed
   // header (gliding with Lenis). From other pages the Link navigates home.
@@ -138,16 +84,13 @@ export default function Header() {
         </div>
 
         {/* Show the full nav on desktop */}
-        <nav ref={navRef} className="site-header__nav relative hidden md:flex items-center space-x-8">
-          <span ref={sliderRef} aria-hidden="true" className="nav-slider" />
+        <nav className="site-header__nav hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              data-nav-id={link.id}
-              aria-current={activeId === link.id ? 'true' : undefined}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="group relative"
+              className="group"
             >
               <span className="nav-mark">{link.label}</span>
             </Link>
@@ -201,7 +144,6 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={activeId === link.id ? 'true' : undefined}
               onClick={(e) => handleNavClick(e, link.href)}
               className="group block py-1"
             >
