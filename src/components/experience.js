@@ -127,7 +127,11 @@ const experiences = [
   },
 ];
 
-function Highlights({ items, compact }) {
+// Opened rows cascade their contents in one by one: each piece gets an
+// order index (--i) that globals.css turns into a transition delay.
+const cascade = (i) => ({ "--i": i });
+
+function Highlights({ items, compact, start = 0 }) {
   return (
     <ul
       className={`relative border-l-2 border-gray-200 dark:border-gray-700 ${
@@ -135,7 +139,7 @@ function Highlights({ items, compact }) {
       }`}
     >
       {items.map((item, index) => (
-        <li key={index} className="relative">
+        <li key={index} className="accordion-item relative" style={cascade(start + index)}>
           <span
             className={`absolute top-1.5 rounded-full bg-blue-500 ring-4 ring-white dark:ring-gray-900 ${
               compact ? "-left-[1.15rem] w-2 h-2" : "-left-[1.45rem] w-2.5 h-2.5"
@@ -150,10 +154,10 @@ function Highlights({ items, compact }) {
   );
 }
 
-function SubRole({ role }) {
+function SubRole({ role, start }) {
   return (
     <div className="mt-4 pl-4 border-l-2 border-gray-200 dark:border-gray-700">
-      <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+      <div className="accordion-item flex flex-col sm:flex-row sm:items-baseline sm:gap-3" style={cascade(start)}>
         <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{role.date}</span>
         <h4 className="text-sm font-bold text-gray-900 dark:text-white">
           {role.title} · {role.link ? (
@@ -165,7 +169,7 @@ function SubRole({ role }) {
           )}
         </h4>
       </div>
-      <Highlights items={role.bullets} compact />
+      <Highlights items={role.bullets} compact start={start + 1} />
     </div>
   );
 }
@@ -191,11 +195,19 @@ export default function Experience() {
         <div className="divide-y divide-gray-200 dark:divide-gray-700 border-t border-b border-gray-200 dark:border-gray-700">
           {experiences.map((job, index) => {
             const isOpen = expandedIndex === index;
+            // cascade order: main bullets, then each sub-role (title + bullets), then the link
+            let order = job.bullets.length;
+            const subStarts = (job.subRoles ?? []).map((role) => {
+              const at = order;
+              order += 1 + role.bullets.length;
+              return at;
+            });
             return (
               <div key={job.company} data-reveal>
                 <button
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
+                  aria-controls={`experience-panel-${index}`}
                   className="group w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
                 >
                   <div className="flex items-center gap-4 sm:gap-8">
@@ -225,7 +237,8 @@ export default function Experience() {
                     </div>
                   </div>
                   <span
-                    className={`flex-shrink-0 text-gray-400 transition-transform duration-300 ${
+                    aria-hidden="true"
+                    className={`flex-shrink-0 text-gray-400 transition-transform duration-300 motion-reduce:transition-none ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
@@ -233,26 +246,37 @@ export default function Experience() {
                   </span>
                 </button>
 
-                {isOpen && (
-                  <div className="pb-6 sm:pl-44 animate-fadeInUp">
-                    <Highlights items={job.bullets} />
+                {/* Always rendered so it can animate open/closed (grid rows
+                    0fr ↔ 1fr in globals.css); inert while closed so hidden
+                    links can't be tabbed to. */}
+                <div
+                  id={`experience-panel-${index}`}
+                  data-open={isOpen}
+                  inert={isOpen ? undefined : "true"}
+                  className="accordion-panel"
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <div className="pb-6 sm:pl-44">
+                      <Highlights items={job.bullets} />
 
-                    {job.subRoles?.map((role) => (
-                      <SubRole key={role.title} role={role} />
-                    ))}
+                      {job.subRoles?.map((role, i) => (
+                        <SubRole key={role.title} role={role} start={subStarts[i]} />
+                      ))}
 
-                    {job.link && (
-                      <a
-                        href={job.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-block mt-4 text-sm text-blue-700 dark:text-blue-400 hover:underline"
-                      >
-                        Visit Website →
-                      </a>
-                    )}
+                      {job.link && (
+                        <a
+                          href={job.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={cascade(order)}
+                          className="accordion-item inline-block mt-4 text-sm text-blue-700 dark:text-blue-400 hover:underline"
+                        >
+                          Visit Website →
+                        </a>
+                      )}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

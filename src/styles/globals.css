@@ -241,3 +241,32 @@ body {
 [aria-current] .nav-mark {
   color: theme('colors.gray.900');
 }
+
+/* Experience accordions (src/components/experience.js) ---------------------
+   The panel animates its height by transitioning grid rows 0fr ↔ 1fr, and
+   its contents cascade in by order index (--i, capped so long lists don't
+   drag). Closing is immediate: everything fades out together. */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-panel[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+.accordion-item {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.accordion-panel[data-open='true'] .accordion-item {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.12s + min(var(--i, 0), 10) * 0.06s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-panel,
+  .accordion-item {
+    transition: none;
+  }
+}
