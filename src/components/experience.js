@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import SectionHeader from "@/components/sectionheader";
 import { useReveal } from "@/animations/useReveal";
+import { gsap, ScrollTrigger, useGSAP } from "@/animations/gsap";
+import { media } from "@/animations/config";
 
 const experiences = [
   {
@@ -179,6 +181,38 @@ export default function Experience() {
   const sectionRef = useRef(null);
   useReveal(sectionRef);
 
+  // Career timeline: the line draws down the list as you scroll, its tip
+  // pinned to the middle of the viewport, and each role's node lights up as
+  // the tip reaches it. Reduced motion keeps the CSS default: line fully
+  // drawn, every node lit.
+  const timelineRef = useRef(null);
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(media.motion, () => {
+        gsap.fromTo(
+          ".timeline-progress",
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: { trigger: timelineRef.current, start: "top center", end: "bottom center", scrub: true },
+          }
+        );
+        gsap.utils.toArray(".timeline-node", timelineRef.current).forEach((node) => {
+          gsap.set(node, { attr: { "data-lit": "false" } });
+          ScrollTrigger.create({
+            trigger: node,
+            start: "center center",
+            onEnter: () => gsap.set(node, { attr: { "data-lit": "true" } }),
+            onLeaveBack: () => gsap.set(node, { attr: { "data-lit": "false" } }),
+          });
+        });
+      });
+    },
+    { scope: timelineRef }
+  );
+
   const toggle = (index) => {
     setExpandedIndex((prev) => (prev === index ? null : index));
   };
@@ -191,6 +225,11 @@ export default function Experience() {
     >
       <div>
         <SectionHeader index="02" title="Experience" />
+
+        <div ref={timelineRef} className="relative pl-6 sm:pl-8">
+        {/* timeline track + the progress line drawn over it */}
+        <span aria-hidden="true" className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-gray-200 dark:bg-gray-700" />
+        <span aria-hidden="true" className="timeline-progress absolute left-[7px] top-0 bottom-0 w-[2px] origin-top bg-gray-900 dark:bg-gray-300" />
 
         <div className="divide-y divide-gray-200 dark:divide-gray-700 border-t border-b border-gray-200 dark:border-gray-700">
           {experiences.map((job, index) => {
@@ -208,8 +247,10 @@ export default function Experience() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={`experience-panel-${index}`}
-                  className="group w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
+                  className="group relative w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
                 >
+                  {/* this role's node on the timeline (centered on the track at 8px) */}
+                  <span aria-hidden="true" className="timeline-node absolute top-1/2 -translate-y-1/2 -left-[14px] sm:-left-[22px]" />
                   <div className="flex items-center gap-4 sm:gap-8">
                     <span className="hidden sm:block sm:w-36 flex-shrink-0 text-sm font-mono text-gray-500 dark:text-gray-400">
                       {job.date}
@@ -280,6 +321,7 @@ export default function Experience() {
               </div>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

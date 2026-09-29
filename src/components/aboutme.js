@@ -10,6 +10,7 @@ const education = [
     detail: 'M.S. Computer Engineering (Focus: AI & ML) · 2024',
     link: 'https://www.mccormick.northwestern.edu/electrical-computer/',
     gradient: 'bg-northwestern-gradient',
+    swirl: 'edu-card--nu',
   },
   {
     school: 'North Carolina A&T State University',
@@ -18,6 +19,7 @@ const education = [
     detail: 'B.S. Computer Engineering · 2023',
     link: 'https://www.ncat.edu/coe/departments/ece/index.php',
     gradient: 'bg-ncat-gradient',
+    swirl: 'edu-card--ncat',
   },
 ];
 
@@ -133,9 +135,10 @@ export default function AboutMe() {
                 href={school.link}
                 target="_blank"
                 rel="noreferrer"
-                className={`group flex items-center gap-4 p-4 rounded-lg shadow-lg transition transform hover:scale-105 ${school.gradient}`}
+                className={`edu-card ${school.swirl} group flex items-center gap-4 p-4 rounded-lg shadow-lg transition transform hover:scale-105 ${school.gradient}`}
               >
-                <div className="w-24 h-24 flex items-center justify-center flex-shrink-0">
+                <span aria-hidden="true" className="edu-card__swirl" />
+                <div className="relative w-24 h-24 flex items-center justify-center flex-shrink-0">
                   <Image
                     src={school.logo}
                     alt={school.school}
@@ -144,11 +147,11 @@ export default function AboutMe() {
                     className="rounded-md object-contain"
                   />
                 </div>
-                <div className="text-left">
+                <div className="relative text-left">
                   <h3 className="font-heading text-sm font-bold text-black">
                     <span className="hover-underline">{school.school}</span>
                   </h3>
-                  <p className="text-xs text-black/70 mt-0.5">
+                  <p className="text-xs text-black mt-0.5">
                     {school.detail}
                   </p>
                 </div>

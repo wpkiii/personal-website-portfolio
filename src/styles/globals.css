@@ -270,3 +270,87 @@ body {
     transition: none;
   }
 }
+
+/* Education card hover (src/components/aboutme.js) --------------------------
+   A cone of the school's own shades slowly rotates behind the right side of
+   the card, blurred into a liquid swirl. The masking layer stays still while
+   the colors turn inside it, so the logo + text side stays calm. Paused (not
+   removed) when not hovered, so it never jumps while fading out. */
+.edu-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.edu-card__swirl {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent var(--edu-mask-from, 15%), #000 var(--edu-mask-to, 55%));
+  mask-image: linear-gradient(to right, transparent var(--edu-mask-from, 15%), #000 var(--edu-mask-to, 55%));
+  transition: opacity 0.6s ease;
+}
+.edu-card__swirl::before {
+  content: '';
+  position: absolute;
+  inset: -60%;
+  background: var(--edu-swirl);
+  filter: blur(18px);
+  animation: edu-swirl 9s linear infinite paused;
+}
+.edu-card:hover .edu-card__swirl,
+.edu-card:focus-visible .edu-card__swirl {
+  opacity: var(--edu-strength, 1);
+}
+.edu-card:hover .edu-card__swirl::before,
+.edu-card:focus-visible .edu-card__swirl::before {
+  animation-play-state: running;
+}
+/* Lavenders only: every shade keeps black text at ≥ 5:1 contrast, so the
+   swirl can reach behind the text. Deeper purples would make it unreadable. */
+.edu-card--nu {
+  --edu-swirl: conic-gradient(from 0deg at 62% 45%, #8e70c8, #b9a3dc, #9b7fd0, #d6c8ee, #a58ad6, #8e70c8);
+}
+.edu-card--ncat {
+  --edu-swirl: conic-gradient(from 0deg at 62% 45%, theme('colors.brand.gold.DEFAULT'), theme('colors.brand.gold.light'), theme('colors.brand.gold.dark'), #ffe08a, theme('colors.brand.gold.DEFAULT'));
+}
+@keyframes edu-swirl {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .edu-card__swirl::before {
+    animation: none;
+  }
+}
+
+/* Career timeline nodes (src/components/experience.js). Neutral for now:
+   near-black in light mode, light gray in dark mode, with a soft ring.
+   Lit by default so reduced-motion / no-JS visitors see a complete
+   timeline; GSAP marks them data-lit="false" and lights each as the line
+   reaches it. */
+.timeline-node {
+  --node: theme('colors.gray.900');
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  border: 2px solid var(--node);
+  background-color: var(--node);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--node) 18%, transparent);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.dark .timeline-node {
+  --node: theme('colors.gray.300');
+}
+.timeline-node[data-lit='false'] {
+  border-color: theme('colors.gray.300');
+  background-color: #ffffff;
+  box-shadow: 0 0 0 0 transparent;
+}
+.dark .timeline-node[data-lit='false'] {
+  border-color: theme('colors.gray.600');
+  background-color: theme('colors.gray.900');
+}
