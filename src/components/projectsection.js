@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ProjectLayout from "@/components/projectlayout";
+import TiltCard from "@/components/tiltcard";
 import SectionHeader from "@/components/sectionheader";
 import { useReveal } from "@/animations/useReveal";
 import { features } from "@/lib/features";
@@ -123,15 +124,17 @@ export default function ProjectsSection() {
                         onMouseLeave={() => setShowCursorText(false)}
                         onMouseMove={handleMouseMove}
                       >
-                        <ProjectLayout
-                          title={project.title}
-                          description={project.description}
-                          year={project.year}
-                          techStack={project.techStack}
-                          link={project.link}
-                          imageSrc={project.imageSrc}
-                          video={project.video}
-                        />
+                        <TiltCard>
+                          <ProjectLayout
+                            title={project.title}
+                            description={project.description}
+                            year={project.year}
+                            techStack={project.techStack}
+                            link={project.link}
+                            imageSrc={project.imageSrc}
+                            video={project.video}
+                          />
+                        </TiltCard>
                       </div>
                     </div>
                   ))}

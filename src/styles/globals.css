@@ -396,3 +396,21 @@ body {
     display: none;
   }
 }
+
+/* Project card tilt glare (src/components/tiltcard.js): a soft light spot
+   that follows the cursor while the card is hovered. Mouse/trackpad only. */
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgb(255 255 255 / 0.35), transparent 55%);
+  mix-blend-mode: soft-light;
+  transition: opacity 0.3s ease;
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .tilt-card:hover .tilt-glare {
+    opacity: 1;
+  }
+}
