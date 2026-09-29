@@ -495,3 +495,37 @@ body {
 ::view-transition-new(root) {
   z-index: 1;
 }
+
+/* Hero ASCII scanner frame (src/components/asciiframe.js) -------------------
+   A ring of character cells around the photo; JS positions the cells and
+   animates the scanner head. The photo sits inside the ring, one cell in. */
+.ascii-frame {
+  position: relative;
+  max-width: 100%;
+  padding: calc(var(--cell) + 6px);
+}
+.ascii-frame > img {
+  max-width: 100%;
+  height: auto;
+}
+.ascii-frame__ring {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: theme('fontFamily.mono');
+  font-size: calc(var(--cell) - 1px);
+  color: theme('colors.gray.400');
+}
+.dark .ascii-frame__ring {
+  color: theme('colors.gray.600');
+}
+.ascii-frame__ring span {
+  position: absolute;
+  text-align: center;
+}
+.ascii-frame__ring span.is-hot {
+  color: theme('colors.brand.gold.dark');
+}
+.dark .ascii-frame__ring span.is-hot {
+  color: theme('colors.brand.gold.DEFAULT');
+}

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import SectionHeader from '@/components/sectionheader';
 import SocialLinks from '@/components/sociallinks';
+import AsciiFrame from '@/components/asciiframe';
 
 const education = [
   {
@@ -47,15 +48,17 @@ export default function AboutMe() {
       <div className="flex flex-col md:flex-row items-center md:space-x-8">
         {/* Profile Image */}
         <div className="relative">
-          <Image
-            src="/headshot.jpg"
-            alt="William Kelly"
-            width={1000}
-            height={1266}
-            priority
-            sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
-            className="rounded-lg"
-          />
+          <AsciiFrame>
+            <Image
+              src="/headshot.jpg"
+              alt="William Kelly"
+              width={1000}
+              height={1266}
+              priority
+              sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
+              className="block rounded-lg"
+            />
+          </AsciiFrame>
         </div>
 
         {/* Hero Text */}
