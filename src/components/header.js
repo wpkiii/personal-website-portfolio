@@ -2,11 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { useRouter } from 'next/router';
 import { scrollToSection } from '@/animations/lenis';
 import { gsap, ScrollTrigger, useGSAP } from '@/animations/gsap';
 import { useMagnetic } from '@/animations/useMagnetic';
-import { header as headerMotion, media } from '@/animations/config';
+import { header as headerMotion, media, prefersReducedMotion } from '@/animations/config';
 import { features } from '@/lib/features';
 
 const CALENDLY_HREF = 'https://calendly.com/treypkelly/30min';
@@ -24,6 +25,11 @@ export default function Header() {
   const router = useRouter();
   const headerRef = useRef(null);
   const ctaRef = useRef(null);
+  // Theme a reveal is currently switching to, so a quick second press
+  // (e.g. Enter twice on the focused toggle) toggles from that rather than
+  // from the not-yet-updated React state. Mouse clicks can't land mid-reveal:
+  // the browser routes them to the page root while a transition runs.
+  const pendingThemeRef = useRef(null);
   useMagnetic(ctaRef);
 
   // ZachJordan-style takeover: over the first stretch of scroll, --p goes
@@ -61,9 +67,47 @@ export default function Header() {
 
   // Manual toggles override the automatic sunset-based theme for the
   // rest of this browser session (see AutoTheme in _app.js).
-  const toggleTheme = () => {
+  //
+  // The new theme is revealed as a circle expanding from the toggle, using
+  // the View Transitions API. Browsers without it, and reduced motion, get
+  // the instant swap.
+  const toggleTheme = (e) => {
     sessionStorage.setItem('theme-manual', '1');
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+    const current = pendingThemeRef.current ?? resolvedTheme;
+    const next = current === 'dark' ? 'light' : 'dark';
+    if (!document.startViewTransition || prefersReducedMotion()) {
+      setTheme(next);
+      return;
+    }
+
+    // Keyboard clicks have no pointer position, so start from the button's center
+    const btn = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX || btn.left + btn.width / 2;
+    const y = e.clientY || btn.top + btn.height / 2;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+    pendingThemeRef.current = next;
+    const transition = document.startViewTransition(() => {
+      // next-themes applies its class in an effect; apply it here too so the
+      // browser's "after" snapshot is guaranteed to be the new theme
+      document.documentElement.classList.toggle('dark', next === 'dark');
+      document.documentElement.classList.toggle('light', next === 'light');
+      document.documentElement.style.colorScheme = next;
+      flushSync(() => setTheme(next));
+    });
+    transition.ready
+      .then(() => {
+        document.documentElement.animate(
+          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+          { duration: 550, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' }
+        );
+      })
+      // A skipped transition (e.g. a rapid second click) rejects `ready`; the
+      // theme still changes, it just isn't animated
+      .catch(() => {});
+    transition.finished.finally(() => {
+      if (pendingThemeRef.current === next) pendingThemeRef.current = null;
+    });
   };
 
   return (

@@ -483,3 +483,15 @@ body {
     animation: none;
   }
 }
+
+/* Theme toggle circular reveal (header.js). Replace the browser's default
+   cross-fade: the new theme is clipped to a circle that JS grows from the
+   toggle, over the old theme. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
