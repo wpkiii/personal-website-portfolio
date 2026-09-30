@@ -33,7 +33,7 @@ export default function ProjectsSection() {
     {
       title: "Climate Change Analysis and Prediction",
       description:
-        "Visualized climate data and used ML techniques to predict future outcomes, achieving 90% accuracy on sea rise predictions.",
+        "Visualized NASA GISTEMP temperature and EPA sea-level records from the 1880s on to separate long-term climate trends from short-term variability, then fit a linear regression to project future sea-level rise.",
       year: "2024",
       techStack: ["Machine Learning", "Jupyter", "NASA GISTEMP"],
       link: "projects/climate",
