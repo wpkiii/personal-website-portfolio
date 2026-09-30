@@ -511,15 +511,38 @@ body {
   pointer-events: none;
   font-family: theme('fontFamily.mono');
   font-size: calc(var(--cell) - 1px);
-  color: theme('colors.gray.400');
+  font-weight: 700;
+  /* the rings read as a solid dark border in light mode, light in dark mode */
+  color: theme('colors.gray.900');
 }
 .dark .ascii-frame__ring {
-  color: theme('colors.gray.600');
+  color: theme('colors.gray.400');
 }
 .ascii-frame__ring span {
   position: absolute;
   line-height: 1;
   transform: translate(-50%, -50%);
+  transition: color 0.12s linear;
+}
+/* shimmer glint sweeping around the ring */
+.ascii-frame__ring span.is-shine {
+  color: theme('colors.gray.400');
+}
+.dark .ascii-frame__ring span.is-shine {
+  color: #ffffff;
+}
+/* scanner head (gold) and its fading gold trail */
+.ascii-frame__ring span.is-hot {
+  color: theme('colors.brand.gold.ink');
+}
+.dark .ascii-frame__ring span.is-hot {
+  color: theme('colors.brand.gold.DEFAULT');
+}
+.ascii-frame__ring span.is-warm {
+  color: color-mix(in srgb, theme('colors.brand.gold.ink') 60%, theme('colors.gray.900'));
+}
+.dark .ascii-frame__ring span.is-warm {
+  color: color-mix(in srgb, theme('colors.brand.gold.DEFAULT') 55%, theme('colors.gray.400'));
 }
 .ascii-frame--oval > img {
   border-radius: 50%;

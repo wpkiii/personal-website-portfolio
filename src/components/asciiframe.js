@@ -3,8 +3,9 @@ import { prefersReducedMotion } from '@/animations/config';
 
 // Hex scanner frame around the hero photo: one or more concentric rings of
 // hex characters (0-9A-F) following the photo's outline (rectangle or
-// oval). The characters flip now and then like live data, and a scanner
-// head orbits the rings with a gold, fading trail.
+// oval). The characters churn constantly like live data, a scanner head
+// orbits the rings with a gold, fading trail, and a bright glint shimmers
+// around the other way.
 //
 // Hover turns every character into shimmering blocks (█▓▒░) until the
 // pointer leaves; a click/tap does the same for a moment (so touch devices
@@ -13,12 +14,14 @@ import { prefersReducedMotion } from '@/animations/config';
 
 const HEX = '0123456789ABCDEF';
 const BLOCKS = '█▓▒░';
-const FLIP_P = 0.05; // chance per tick that a hex cell changes value
+const FLIP_P = 0.3; // chance per tick that a hex cell changes value
 const SHIMMER_P = 0.5; // chance per tick that a block cell changes shade
 const TRAIL_LEN = 10; // outer-ring cells lit behind the head
 const HOT_LEN = 3; // of those, drawn in gold
-const TICK_MS = 70;
-const TAP_TICKS = 22; // ~1.5s of blocks after a click/tap
+const SHINE_LEN = 7; // half-width (outer-ring cells) of the shimmer glint
+const SHINE_SPEED = 2; // glint moves this many cells per tick, opposite the head
+const TICK_MS = 50;
+const TAP_TICKS = 30; // ~1.5s of blocks after a click/tap
 
 const pick = (chars) => chars[(Math.random() * chars.length) | 0];
 
@@ -72,6 +75,7 @@ export default function AsciiFrame({ children, cell = 14, rings = 1, shape = 're
     const layer = ringRef.current;
     let bands = []; // one array of { el, ch } per ring, outermost first
     let headFrac = 0; // scanner position, 0..1 around the ring
+    let shineFrac = 0.5; // shimmer glint position, starts opposite the head
     let hovering = false;
     let tap = 0;
     let timer = null;
@@ -86,6 +90,8 @@ export default function AsciiFrame({ children, cell = 14, rings = 1, shape = 're
         const head = Math.floor(headFrac * n);
         const trail = Math.max(2, Math.round((TRAIL_LEN * n) / outerN));
         const hot = Math.max(1, Math.round((HOT_LEN * n) / outerN));
+        const shine = Math.floor(shineFrac * n);
+        const shineLen = Math.max(2, Math.round((SHINE_LEN * n) / outerN));
         band.forEach((cellState, i) => {
           if (blocks) {
             if (!BLOCKS.includes(cellState.ch) || (animate && Math.random() < SHIMMER_P)) cellState.ch = pick(BLOCKS);
@@ -95,8 +101,10 @@ export default function AsciiFrame({ children, cell = 14, rings = 1, shape = 're
           const d = (head - i + n) % n; // distance behind the head
           const { el } = cellState;
           if (el.textContent !== cellState.ch) el.textContent = cellState.ch;
+          const sd = Math.min((i - shine + n) % n, (shine - i + n) % n); // distance from the glint
           el.classList.toggle('is-hot', d < hot);
           el.classList.toggle('is-warm', d >= hot && d < trail);
+          el.classList.toggle('is-shine', d >= trail && sd < shineLen);
         });
       });
     };
@@ -125,7 +133,9 @@ export default function AsciiFrame({ children, cell = 14, rings = 1, shape = 're
     };
 
     const tick = () => {
-      headFrac = (headFrac + 1 / (bands[0]?.length || 1)) % 1;
+      const outerN = bands[0]?.length || 1;
+      headFrac = (headFrac + 1 / outerN) % 1;
+      shineFrac = (shineFrac - SHINE_SPEED / outerN + 1) % 1;
       if (tap > 0) tap--;
       draw(true);
     };
