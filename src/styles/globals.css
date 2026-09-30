@@ -148,8 +148,8 @@ body {
      washed-out mid-gray blend lasts only a few pixels of scroll. */
   --pc: clamp(0, calc((var(--p) - 0.42) / 0.16), 1);
   --hdr-strip: 10px; /* gold strip visible at the top of the page */
-  --hdr-full: 104px; /* header row height at the top of the page */
-  --hdr-compact: 72px; /* header row height once scrolled */
+  --hdr-full: 112px; /* header row height at the top of the page */
+  --hdr-compact: 80px; /* header row height once scrolled */
   --hdr-bg: #ffffff;
   --hdr-fill: theme('colors.brand.gold.DEFAULT');
   --hdr-fg-start: theme('colors.gray.900');
@@ -163,7 +163,8 @@ body {
 }
 @media (min-width: 768px) {
   .site-header {
-    --hdr-full: 128px;
+    --hdr-full: 140px;
+    --hdr-compact: 88px;
   }
 }
 .dark .site-header {
@@ -192,13 +193,8 @@ body {
   /* keep the content clear of the strip while the header is tall */
   padding-top: calc(var(--hdr-strip) * (1 - var(--p)));
 }
-.site-header__logo {
-  transform: scale(calc(1.2 - 0.2 * var(--p)));
-  transform-origin: left center;
-}
-.site-header__nav {
-  font-size: calc(17px + 3px * (1 - var(--p)));
-}
+/* Signature and nav keep one size in both header states (ZachJordan-style:
+   the bar changes color and height, the links don't shrink) */
 
 /* Nav links: a highlighter bar that always sits behind the bottom of the
    word (ZachJordan-style) and fills up to cover the whole word on hover or

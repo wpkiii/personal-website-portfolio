@@ -120,20 +120,21 @@ export default function Header() {
 
       <div className="site-header__row relative max-w-7xl mx-auto flex justify-start items-center gap-12">
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 flex-shrink-0">
           <Link href="/" className="site-header__logo block hover:opacity-80 transition-opacity">
             <Image
               src="/icons/signature.png"
               alt="William Kelly"
-              width={72}
-              height={44}
-              className="object-contain"
+              width={110}
+              height={66}
+              className="object-contain w-[92px] md:w-[110px] h-auto"
             />
           </Link>
         </div>
 
         {/* Show the full nav on desktop */}
-        <nav className="site-header__nav hidden md:flex items-center space-x-8">
+        {/* Full nav from 1024px up (30px from 1280px, like zachjordan.io); below that the menu button */}
+        <nav className="site-header__nav hidden lg:flex items-center space-x-8 xl:space-x-10 text-2xl xl:text-[30px] font-extrabold whitespace-nowrap">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -146,13 +147,13 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center space-x-6 ml-auto">
+        <div className="hidden lg:flex items-center space-x-6 ml-auto">
           <a
             ref={ctaRef}
             href={CALENDLY_HREF}
             target="_blank"
             rel="noreferrer"
-            className="btn-liquid px-4 py-2 rounded-md border-2 border-current"
+            className="btn-liquid px-4 py-2 xl:px-5 xl:py-2.5 text-lg xl:text-xl rounded-md border-2 border-current"
           >
             Work With Me
           </a>
@@ -169,7 +170,7 @@ export default function Header() {
         </div>
 
         {/* Mobile controls */}
-        <div className="flex items-center space-x-4 md:hidden ml-auto">
+        <div className="flex items-center space-x-4 lg:hidden ml-auto">
           <button
             aria-label="Toggle Dark Mode"
             onClick={toggleTheme}
@@ -189,7 +190,7 @@ export default function Header() {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <nav className="relative md:hidden pb-4 px-2 flex flex-col space-y-3">
+        <nav className="relative lg:hidden pb-4 px-2 flex flex-col space-y-3">
           {navLinks.map((link) => (
             <Link
               key={link.href}

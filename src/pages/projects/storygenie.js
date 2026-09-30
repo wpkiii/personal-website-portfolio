@@ -12,7 +12,7 @@ export default function StoryGenie() {
       <Header /> <br/><br/>
 
       {/* Main Content */}
-      <div className="pt-24 p-8 max-w-4xl mx-auto"> {/* Added pt-16 for padding */}
+      <div className="pt-28 p-8 max-w-4xl mx-auto"> {/* Added pt-16 for padding */}
         <h1 className="font-heading text-4xl font-extrabold">StoryGenie</h1>
         <p className="text-gray-600 dark:text-gray-300 my-4">2024</p>
         <div className="group flex space-x-4">

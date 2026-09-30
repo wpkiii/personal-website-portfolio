@@ -9,7 +9,7 @@ export default function Climate() {
       <Header /> <br/><br/>
 
       {/* Main Content */}
-      <div className="pt-24 p-8 max-w-4xl mx-auto">
+      <div className="pt-28 p-8 max-w-4xl mx-auto">
         <h1 className="font-heading text-4xl font-extrabold">Visualizing Climate Change Data using AI</h1>
         <p className="text-gray-600 dark:text-gray-300 my-4"> 2024</p>
         <div className="group flex space-x-4">
