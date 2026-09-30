@@ -51,7 +51,7 @@ export default function ProjectsSection() {
     {
       title: "StoryGenie",
       description:
-        "A Next.js Application that allows you to create a video of any famous biography in one click.",
+        "A Next.js app that turns a notable person’s name into a narrated biography video in one click: an LLM writes the script, then images, Google Cloud text-to-speech, and Remotion assemble it.",
       year: "2024",
       techStack: ["Next.js", "AI", "Video Generation"],
       link: "projects/storygenie",

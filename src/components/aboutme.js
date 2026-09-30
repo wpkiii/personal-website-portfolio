@@ -41,19 +41,19 @@ export default function AboutMe() {
           />
         </AsciiFrame>
 
-        {/* Two balanced lines on desktop, spanning wider than the paragraph: the
-            size tracks the section width (~24px at 1024 wide → 32px at ~1300+) */}
-        <h1 className="mt-8 w-full font-heading text-2xl lg:text-[length:min(calc((100vw-7rem)/37.5),2rem)] font-extrabold leading-tight tracking-tight text-balance text-ink">
+        {/* Two balanced lines on desktop, spanning wider than the paragraph
+            (36px from 1024 wide, 40px from 1280) */}
+        <h1 className="mt-8 w-full font-heading text-2xl lg:text-[2.25rem] xl:text-[2.5rem] font-extrabold leading-tight tracking-tight text-balance text-ink">
           Hey, I&apos;m{' '}
-          {/* gold-ink passes large-text contrast on white; bright gold on dark */}
+          {/* the palette's accent-as-text color: passes contrast in both modes */}
           <span className="text-signal-ink">William Kelly</span>. This is where I document what I&apos;m
-          building, what I&apos;m learning, and what I&apos;m figuring out along the way.
+          building and learning.
         </h1>
         <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
-          I&apos;m a full-stack AI developer and entrepreneur. I build full-stack software, generative AI, computer
-          vision, and data systems for national security and commercial clients, and I&apos;ve shipped my own
-          products to real users across web, iOS, and Android. I thrive on solving complex problems and building
-          innovative products that push humanity forward.
+          I&apos;m a software engineer who builds AI products, from the backend to the interface. I&apos;ve built
+          generative AI and computer vision tools for government and commercial clients, and I&apos;ve shipped my own
+          apps to real users on web, iOS, and Android. I love solving hard problems and building things that make a
+          real difference.
         </p>
 
         <SocialLinks size={40} className="justify-center gap-4 mt-8" />

@@ -86,7 +86,7 @@ const experiences = [
         location: "Chantilly, VA · Hybrid",
         bullets: [
           "Built and deployed Generative AI, computer vision, and ETL/ELT data pipeline solutions for space and defense mission partners.",
-          "Developed RAG-based AI systems using Python, GPT-4o/Vision Instruct, GTE, Azure Cloud, and vector DBs (Weaviate/Cognitive Search/Pinecone), integrated via LangChain.",
+          "Developed RAG-based AI systems using Python, GPT-4o/Vision Instruct, GTE embeddings, and Azure Cloud, integrated via LangChain, with Weaviate as the vector database (open-source, so no licensing cost).",
           "Designed and maintained 15+ automated pipelines (Python/Node.js, Airflow/Jenkins) using Azure and internal relational/NoSQL databases.",
           "Delivered CV solutions, including real-time YOLO detection on edge devices, Mask-RCNN segmentation for imagery, and document OCR workflows.",
           "Co-led enterprise cloud data architecture initiative, centralizing datasets and creating standard operating procedures for secure migration protocols and access controls.",
@@ -100,7 +100,7 @@ const experiences = [
         bullets: [
           "Created a web application for 3D visualization of launch vehicles at a component level.",
           "Created ETL scripts processing contract data through to real-time satellite information.",
-          "Used sentiment analysis on legacy flight data to detect potential failures within launch vehicle components.",
+          "Applied sentiment analysis to the full history of U.S. launch flight records to rank launch-vehicle components by likelihood of failure, flagging which needed more engineering attention.",
         ],
       },
     ],

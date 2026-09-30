@@ -22,7 +22,7 @@ export default function StoryGenie() {
               
             </div><br/>
         <p className="text-lg text-ink-muted my-4">
-          StoryGenie is a Next.js application that enables users to create a video biography of any person of notoriety with a single click. The platform uses AI to generate a script, select appropriate visuals, and create a cohesive, professional video. StoryGenie has achieved a 90% success rate, even with niche figures.
+          StoryGenie is a Next.js application that enables users to create a video biography of any person of notoriety with a single click. The platform uses AI to generate a script, select appropriate visuals, and create a cohesive, professional video.
         </p>
 
         {/* Display an image representing the project */}
@@ -84,7 +84,7 @@ export default function StoryGenie() {
         {/* Outcome / Future of StoryGenie Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Outcome</h2>
         <p className="text-md text-ink-muted mt-4">
-          StoryGenie has become a valuable tool for educators, content creators, and families who want to create high-quality biographies quickly. As of now, the platform has a 90% user satisfaction rate and continues to grow with feedback from users. Moving forward, I plan to integrate more advanced AI features and expand the media library to support a wider range of topics and formats.
+          StoryGenie turns a single name into a finished, narrated biography video in a few minutes. Moving forward, I plan to integrate more advanced AI features and expand the media library to support a wider range of topics and formats.
         </p>
 
         {/* Back button */}
