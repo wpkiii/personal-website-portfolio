@@ -224,7 +224,7 @@ export default function Experience() {
       className="bg-transparent dark:bg-transparent px-6 py-16 lg:py-24 max-w-7xl mx-auto"
     >
       <div>
-        <SectionHeader index="02" title="Experience" />
+        <SectionHeader index="01" title="Experience" />
 
         <div ref={timelineRef} className="relative pl-6 sm:pl-8">
         {/* timeline track + the progress line drawn over it */}

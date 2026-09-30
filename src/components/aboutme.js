@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import { useEffect, useState, useMemo } from 'react';
-import SectionHeader from '@/components/sectionheader';
 import SocialLinks from '@/components/sociallinks';
 import AsciiFrame from '@/components/asciiframe';
 
@@ -8,7 +6,6 @@ const education = [
   {
     school: 'Northwestern University',
     logo: '/northwestern.png',
-    logoSize: 87,
     detail: 'M.S. Computer Engineering (Focus: AI & ML) · 2024',
     link: 'https://www.mccormick.northwestern.edu/electrical-computer/',
     gradient: 'bg-northwestern-gradient',
@@ -17,7 +14,6 @@ const education = [
   {
     school: 'North Carolina A&T State University',
     logo: '/ncat2.png',
-    logoSize: 48,
     detail: 'B.S. Computer Engineering · 2023',
     link: 'https://www.ncat.edu/coe/departments/ece/index.php',
     gradient: 'bg-ncat-gradient',
@@ -26,91 +22,71 @@ const education = [
 ];
 
 export default function AboutMe() {
-  const words = useMemo(() => ["Hi ", "there, ", "I'm ", "William ", "Kelly", "."], []);
-  const [visibleWords, setVisibleWords] = useState([]);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentWordIndex < words.length) {
-      const interval = setInterval(() => {
-        setVisibleWords((prev) => [...prev, words[currentWordIndex]]);
-        setCurrentWordIndex((prevIndex) => prevIndex + 1);
-      }, 350); // Adjust delay as needed
-
-      return () => clearInterval(interval);
-    }
-  }, [currentWordIndex, words]);
-
   return (
     <section id="about-me" className="flex flex-col items-center px-6 pt-16 pb-28 lg:pb-32 max-w-7xl mx-auto overflow-hidden">
-      <SectionHeader index="01" title="About Me" />
+      {/* Hero: centered circular photo in the ASCII scanner ring, story below */}
+      <div className="flex flex-col items-center text-center w-full">
+        {/* Circle sized like zachjordan.io's (384px); 240px on phones, the most
+            that fits with the double hex ring. Square crop kept a little above
+            center so the face sits in the middle. */}
+        <AsciiFrame shape="oval" rings={2} className="w-[308px] md:w-[452px]">
+          <Image
+            src="/headshot.jpg"
+            alt="William Kelly"
+            width={1000}
+            height={1266}
+            priority
+            sizes="(min-width: 768px) 384px, 240px"
+            className="block w-full aspect-square object-cover object-[center_30%]"
+          />
+        </AsciiFrame>
 
-      <div className="flex flex-col md:flex-row items-center md:space-x-8">
-        {/* Profile Image */}
-        <div className="relative">
-          <AsciiFrame>
-            <Image
-              src="/headshot.jpg"
-              alt="William Kelly"
-              width={1000}
-              height={1266}
-              priority
-              sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw"
-              className="block rounded-lg"
-            />
-          </AsciiFrame>
-        </div>
+        {/* Two balanced lines on desktop, spanning wider than the paragraph: the
+            size tracks the section width (~24px at 1024 wide → 32px at ~1300+) */}
+        <h1 className="mt-8 w-full font-heading text-2xl lg:text-[length:min(calc((100vw-7rem)/37.5),2rem)] font-extrabold leading-tight tracking-tight text-balance text-gray-900 dark:text-white">
+          Hey, I&apos;m{' '}
+          {/* gold-ink passes large-text contrast on white; bright gold on dark */}
+          <span className="text-brand-gold-ink dark:text-brand-gold">William Kelly</span>. This is where I document what I&apos;m
+          building, what I&apos;m learning, and what I&apos;m figuring out along the way.
+        </h1>
+        <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          I&apos;m a full-stack AI developer and entrepreneur. I build full-stack software, generative AI, computer
+          vision, and data systems for national security and commercial clients, and I&apos;ve shipped my own
+          products to real users across web, iOS, and Android. I thrive on solving complex problems and building
+          innovative products that push humanity forward.
+        </p>
 
-        {/* Hero Text */}
-        <div className="text-center md:text-left mt-6 md:mt-0">
-          {/* Font scales with viewport width on mobile so the greeting always fits on one line */}
-          <h1 className="font-heading text-[length:min(calc((100vw-5rem)/14),1.875rem)] font-bold text-gray-900 dark:text-white whitespace-nowrap">
-            {visibleWords.map((word, index) => (
-              <span key={index}>
-                {word}
-              </span>
-            ))}
-          </h1>
-          <p className="mt-4 text-medium text-gray-600 dark:text-gray-400">
-            I&apos;m a dedicated developer, engineer, and designer passionate about crafting innovative solutions that make a difference. <br /><br />
-            A critical thinker and adaptable team player, I thrive on solving complex problems and building innovative products that push technology forward.
-          </p>
+        <SocialLinks size={40} className="justify-center gap-4 mt-8" />
 
-          {/* Social Media Links */}
-          <SocialLinks size={40} className="justify-center md:justify-start gap-4 mt-6" />
-
-          {/* Education — compact contact cards */}
-          <h2 className="sr-only">Education</h2>
-          <div className="flex flex-col gap-3 mt-14">
-            {education.map((school) => (
-              <a
-                key={school.school}
-                href={school.link}
-                target="_blank"
-                rel="noreferrer"
-                className={`edu-card ${school.swirl} group flex items-center gap-4 p-4 rounded-lg shadow-lg transition transform hover:scale-105 ${school.gradient}`}
-              >
-                <span aria-hidden="true" className="edu-card__swirl" />
-                <div className="relative w-24 h-24 flex items-center justify-center flex-shrink-0">
-                  <Image
-                    src={school.logo}
-                    alt={school.school}
-                    width={school.logoSize}
-                    height={school.logoSize}
-                    className="rounded-md object-contain"
-                  />
-                </div>
-                <div className="relative text-left">
-                  <h3 className="font-heading text-sm font-bold text-black">
-                    <span className="hover-underline">{school.school}</span>
-                  </h3>
-                  <p className="text-xs text-black mt-0.5">
-                    {school.detail}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
+        {/* Education: compact cards, side by side on wider screens */}
+        <h2 className="sr-only">Education</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-10 w-full max-w-2xl">
+          {education.map((school) => (
+            <a
+              key={school.school}
+              href={school.link}
+              target="_blank"
+              rel="noreferrer"
+              className={`edu-card ${school.swirl} group flex items-center gap-3 p-3 rounded-lg shadow-md transition transform hover:scale-105 ${school.gradient}`}
+            >
+              <span aria-hidden="true" className="edu-card__swirl" />
+              <div className="relative w-10 h-10 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={school.logo}
+                  alt={school.school}
+                  width={40}
+                  height={40}
+                  className="rounded-md object-contain"
+                />
+              </div>
+              <div className="relative text-left min-w-0">
+                <h3 className="font-heading text-xs font-bold text-black">
+                  <span className="hover-underline">{school.school}</span>
+                </h3>
+                <p className="text-[11px] leading-snug text-black mt-0.5">{school.detail}</p>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

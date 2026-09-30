@@ -99,7 +99,7 @@ export default function ProjectsSection() {
       )}
 
       <div className="max-w-7xl mx-auto">
-        <SectionHeader index={features.skills ? "04" : "03"} title="Projects" />
+        <SectionHeader index={features.skills ? "03" : "02"} title="Projects" />
 
         {/* Project Carousel */}
         <div className="relative px-12 md:px-16">

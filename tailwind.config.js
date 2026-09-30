@@ -11,7 +11,8 @@ module.exports = {
   theme: {
   	extend: {
 		backgroundImage: {
-			'northwestern-gradient': 'linear-gradient(to right, #FFFFFF, #4E2A84)', // White to Purple
+			// ends on a mid lavender so the black card text stays ≥ 4.5:1 across the whole card
+			'northwestern-gradient': 'linear-gradient(to right, #FFFFFF, #9B7FD0)', // White to Purple
 			'ncat-gradient': 'linear-gradient(to right, #FFFFFF, #FFD700)',        // Gold to Navy
 		  },
 		fontFamily: {

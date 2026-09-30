@@ -75,7 +75,7 @@ export default function Skills() {
       data-pulsing={onScreen}
       className="px-6 py-16 lg:py-24 max-w-7xl mx-auto"
     >
-      <SectionHeader index="03" title="Skills" />
+      <SectionHeader index="02" title="Skills" />
 
       {/* Pipeline: stages side by side on desktop, stacked on mobile */}
       <div className="flex flex-col lg:flex-row lg:items-stretch">

@@ -492,13 +492,14 @@ body {
   z-index: 1;
 }
 
-/* Hero ASCII scanner frame (src/components/asciiframe.js) -------------------
-   A ring of character cells around the photo; JS positions the cells and
-   animates the scanner head. The photo sits inside the ring, one cell in. */
+/* Hero hex scanner frame (src/components/asciiframe.js) ---------------------
+   Concentric rings of hex characters around the photo (rectangle or oval);
+   JS places each cell and animates the scanner head. The photo sits just
+   inside the innermost ring. */
 .ascii-frame {
   position: relative;
   max-width: 100%;
-  padding: calc(var(--cell) + 6px);
+  padding: calc(var(--cell) * var(--rings, 1) + 6px);
 }
 .ascii-frame > img {
   max-width: 100%;
@@ -517,7 +518,17 @@ body {
 }
 .ascii-frame__ring span {
   position: absolute;
-  text-align: center;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+}
+.ascii-frame--oval > img {
+  border-radius: 50%;
+}
+.ascii-frame__ring span.is-warm {
+  color: theme('colors.gray.600');
+}
+.dark .ascii-frame__ring span.is-warm {
+  color: theme('colors.gray.300');
 }
 .ascii-frame__ring span.is-hot {
   color: theme('colors.brand.gold.dark');
