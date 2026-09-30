@@ -136,18 +136,18 @@ const cascade = (i) => ({ "--i": i });
 function Highlights({ items, compact, start = 0 }) {
   return (
     <ul
-      className={`relative border-l-2 border-gray-200 dark:border-gray-700 ${
+      className={`relative border-l-2 border-rule ${
         compact ? "mt-2 pl-4 space-y-2" : "pl-5 space-y-4"
       }`}
     >
       {items.map((item, index) => (
         <li key={index} className="accordion-item relative" style={cascade(start + index)}>
           <span
-            className={`absolute top-1.5 rounded-full bg-blue-500 ring-4 ring-white dark:ring-gray-900 ${
+            className={`absolute top-1.5 rounded-full bg-signal ring-4 ring-page ${
               compact ? "-left-[1.15rem] w-2 h-2" : "-left-[1.45rem] w-2.5 h-2.5"
             }`}
           />
-          <span className={compact ? "text-sm text-gray-600 dark:text-gray-300" : "text-gray-600 dark:text-gray-300"}>
+          <span className={compact ? "text-sm text-ink-muted" : "text-ink-muted"}>
             {item}
           </span>
         </li>
@@ -158,12 +158,12 @@ function Highlights({ items, compact, start = 0 }) {
 
 function SubRole({ role, start }) {
   return (
-    <div className="mt-4 pl-4 border-l-2 border-gray-200 dark:border-gray-700">
+    <div className="mt-4 pl-4 border-l-2 border-rule">
       <div className="accordion-item flex flex-col sm:flex-row sm:items-baseline sm:gap-3" style={cascade(start)}>
-        <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{role.date}</span>
-        <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+        <span className="text-xs font-mono text-ink-muted">{role.date}</span>
+        <h4 className="text-sm font-bold text-ink">
           {role.title} · {role.link ? (
-            <a href={role.link} target="_blank" rel="noreferrer" className="text-blue-700 dark:text-blue-400 hover:underline">
+            <a href={role.link} target="_blank" rel="noreferrer" className="text-signal-ink hover:underline">
               {role.company}
             </a>
           ) : (
@@ -228,10 +228,10 @@ export default function Experience() {
 
         <div ref={timelineRef} className="relative pl-6 sm:pl-8">
         {/* timeline track + the progress line drawn over it */}
-        <span aria-hidden="true" className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-gray-200 dark:bg-gray-700" />
-        <span aria-hidden="true" className="timeline-progress absolute left-[7px] top-0 bottom-0 w-[2px] origin-top bg-gray-900 dark:bg-gray-300" />
+        <span aria-hidden="true" className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-rule" />
+        <span aria-hidden="true" className="timeline-progress absolute left-[7px] top-0 bottom-0 w-[2px] origin-top bg-signal" />
 
-        <div className="divide-y divide-gray-200 dark:divide-gray-700 border-t border-b border-gray-200 dark:border-gray-700">
+        <div className="divide-y divide-rule border-t border-b border-rule">
           {experiences.map((job, index) => {
             const isOpen = expandedIndex === index;
             // cascade order: main bullets, then each sub-role (title + bullets), then the link
@@ -247,12 +247,12 @@ export default function Experience() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={`experience-panel-${index}`}
-                  className="group relative w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors px-2 -mx-2 rounded-md"
+                  className="group relative w-full flex items-center justify-between gap-4 py-5 text-left hover:bg-panel-2 transition-colors px-2 -mx-2 rounded-md"
                 >
                   {/* this role's node on the timeline (centered on the track at 8px) */}
                   <span aria-hidden="true" className="timeline-node absolute top-1/2 -translate-y-1/2 -left-[14px] sm:-left-[22px]" />
                   <div className="flex items-center gap-4 sm:gap-8">
-                    <span className="hidden sm:block sm:w-36 flex-shrink-0 text-sm font-mono text-gray-500 dark:text-gray-400">
+                    <span className="hidden sm:block sm:w-36 flex-shrink-0 text-sm font-mono text-ink-muted">
                       {job.date}
                     </span>
                     {job.logo && (
@@ -265,21 +265,21 @@ export default function Experience() {
                       />
                     )}
                     <div>
-                      <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white">
+                      <h3 className="font-heading text-lg font-bold text-ink">
                         <span className="hover-underline">{job.title}</span>
                       </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-ink-muted">
                         {job.company} · {job.location}
                       </p>
                       {/* On mobile the date column is hidden, so show it under the location */}
-                      <p className="sm:hidden mt-1 text-xs font-mono text-gray-500 dark:text-gray-400">
+                      <p className="sm:hidden mt-1 text-xs font-mono text-ink-muted">
                         {job.date}
                       </p>
                     </div>
                   </div>
                   <span
                     aria-hidden="true"
-                    className={`flex-shrink-0 text-gray-400 transition-transform duration-300 motion-reduce:transition-none ${
+                    className={`flex-shrink-0 text-ink-muted transition-transform duration-300 motion-reduce:transition-none ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
@@ -310,7 +310,7 @@ export default function Experience() {
                           target="_blank"
                           rel="noreferrer"
                           style={cascade(order)}
-                          className="accordion-item inline-block mt-4 text-sm text-blue-700 dark:text-blue-400 hover:underline"
+                          className="accordion-item inline-block mt-4 text-sm text-signal-ink hover:underline"
                         >
                           Visit Website →
                         </a>

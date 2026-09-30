@@ -7,16 +7,16 @@ import LoopVideo from "@/components/loopvideo";
 
 export default function Garden() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-page text-ink">
       {/* Include Header */}
       <Header />
       <br />
       <br />
 
  {/* Main Content */}
-<div className="pt-28 p-8 max-w-4xl mx-auto">
+<div role="main" className="pt-28 p-8 max-w-4xl mx-auto">
   <h1 className="font-heading text-4xl font-extrabold">EZGrow - IoT Closed Garden</h1>
-  <p className="text-gray-600 dark:text-gray-300 my-4">2023</p>
+  <p className="text-ink-muted my-4">2023</p>
   <div className="group flex space-x-4">
     <a
       href="/GardenDoc.docx" // Replace with the actual path to your file in the public folder
@@ -37,7 +37,7 @@ export default function Garden() {
         <div className="flex flex-col sm:flex-row items-center gap-4 my-6">
   {/* Text Section */}
   <div className="flex-1">
-    <p className="text-lg text-gray-700 dark:text-gray-300 my-4">
+    <p className="text-lg text-ink-muted my-4">
       EZGrow is an automated plant growth system designed to grow crops
       indoors without human intervention. By combining IoT and embedded
       systems, EZGrow integrates multiple sensors and actuators to maintain
@@ -63,25 +63,25 @@ export default function Garden() {
           Technologies Used
         </h2>
         <div className="flex flex-wrap gap-2 mt-4">
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full text-sm flex items-center justify-center w-24 h-10">
             React Native
           </span>
-          <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full text-sm flex items-center justify-center w-24 h-10">
             ESP32
           </span>
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full text-sm flex items-center justify-center w-24 h-10">
             Sensors
           </span>
-          <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full text-sm flex items-center justify-center w-24 h-10">
            Actuators
           </span>
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full text-sm flex items-center justify-center w-24 h-10">
             Circuit Design
           </span>
-          <span className="px-3 py-1 bg-green-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full text-sm flex items-center justify-center w-24 h-10">
             Circuit Analysis
           </span>
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full text-sm flex items-center justify-center w-24 h-10">
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full text-sm flex items-center justify-center w-24 h-10">
             Carpentry
           </span>
         </div>
@@ -123,7 +123,7 @@ export default function Garden() {
 
         {/* The Problem Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">The Problem</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           Modern agriculture cannot meet the rising demand for food, especially
           with limited space and resources in urban areas. Existing products
           for indoor farming are often expensive, lack versatility, or require
@@ -132,7 +132,7 @@ export default function Garden() {
 
         {/* Research Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Research</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           Extensive research was conducted to determine optimal plant
           conditions, sensor selection, and efficient system design. EZGrow was
           benchmarked against commercial products like the Gardyn Homekit 2.0,
@@ -141,7 +141,7 @@ export default function Garden() {
 
         {/* Process Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Process</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           The system uses sensors to monitor environmental factors like
           temperature, humidity, and soil moisture. Actuators respond to these
           inputs, ensuring plants receive water, light, and ideal growing
@@ -151,7 +151,7 @@ export default function Garden() {
 
         {/* Outcome / Future of EZGrow Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Outcome</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           EZGrow successfully achieved a functional prototype capable of
           maintaining an optimal environment for plants like basil. The system
           can serve as a sustainable and accessible solution for urban farming,
@@ -162,7 +162,7 @@ export default function Garden() {
         {/* Back button */}
         <Link
           href="/#projects"
-          className="text-blue-700 dark:text-blue-400 hover:underline mt-8 inline-block"
+          className="text-signal-ink hover:underline mt-8 inline-block"
         >
           ← Back to Projects
         </Link>

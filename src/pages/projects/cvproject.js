@@ -5,14 +5,14 @@ import LoopVideo from "@/components/loopvideo";
 
 export default function CVProject() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-page text-ink">
       {/* Include Header */}
       <Header /> <br /><br />
 
       {/* Main Content */}
-      <div className="pt-28 p-8 max-w-4xl mx-auto">
+      <div role="main" className="pt-28 p-8 max-w-4xl mx-auto">
         <h1 className="font-heading text-4xl font-extrabold">AI-Powered Robotic Hand: Real-Time Gesture Detection and Control</h1>
-        <p className="text-gray-600 dark:text-gray-300 my-4">2024</p>
+        <p className="text-ink-muted my-4">2024</p>
         <div className="group flex space-x-4">
               <a href="https://github.com/wpkiii/HandGestureDetector" target="_blank" rel="noreferrer">
                 <Image src="/icons/github.svg" alt="GitHub" width={30} height={30} className="transition-transform transform group-hover:scale-125 duration-200 dark:filter dark:invert" />
@@ -22,7 +22,7 @@ export default function CVProject() {
               </a>
             </div>
             <br/>
-        <p className="text-lg text-gray-700 dark:text-gray-300 my-4">
+        <p className="text-lg text-ink-muted my-4">
           In this project, I designed a system to control servos on each finger of a robotic hand, enabling eight distinct gestures and assigning an LED to each gesture using three switches on the DE-Nano10. Additionally, I developed gesture detection software using Python, enabling real-time gesture and movement detection.
         </p>
 
@@ -47,38 +47,38 @@ export default function CVProject() {
         {/* Technologies Used Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Technologies Used</h2>
         <div className="flex flex-wrap gap-2 mt-4">
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full">Python</span>
-          <span className="px-3 py-1 bg-green-500 text-white rounded-full">OpenCV</span>
-          <span className="px-3 py-1 bg-blue-500 text-white rounded-full">Arduino</span>
-          <span className="px-3 py-1 bg-green-500 text-white rounded-full">DE-Nano10 FPGA</span>
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full">Python</span>
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full">OpenCV</span>
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full">Arduino</span>
+          <span className="px-3 py-1 bg-panel-2 text-ink border border-rule rounded-full">DE-Nano10 FPGA</span>
         </div>
 
         {/* The Problem Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">The Problem</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           Developing an interactive robotic hand that responds accurately to human gestures requires real-time gesture detection and precise motor control. This project aimed to address this challenge, enabling a robotic hand to mimic human gestures with high accuracy.
         </p>
 
         {/* Research Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Research</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           I explored various computer vision techniques to achieve reliable gesture detection. After validating the system with multiple test subjects under different lighting conditions, I optimized the algorithm for real-time performance.
         </p>
 
         {/* Process Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Process</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           Using Python and OpenCV, I built a gesture recognition model that detects hand positions and sends signals to control the robotic hand&apos;s servos. The DE-Nano10 FPGA board allowed precise control of the servo motors, while Arduino was used to manage LED indicators for each gesture.
         </p>
 
         {/* Outcome Section */}
         <h2 className="font-heading text-2xl font-semibold mt-8">Outcome</h2>
-        <p className="text-md text-gray-700 dark:text-gray-300 mt-4">
+        <p className="text-md text-ink-muted mt-4">
           This project demonstrates the potential for AI-driven computer vision to control robotic movements with precision. Future work will focus on refining the gesture recognition model and exploring applications in assistive robotics.
         </p>
 
         {/* Back button */}
-        <Link href="/#projects" className="text-blue-700 dark:text-blue-400 hover:underline mt-8 inline-block">
+        <Link href="/#projects" className="text-signal-ink hover:underline mt-8 inline-block">
           ← Back to Projects
         </Link>
       </div>

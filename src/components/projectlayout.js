@@ -9,7 +9,7 @@ import LoopVideo from '@/components/loopvideo';
 export default function ProjectLayout({ title, description, year, techStack, link, imageSrc, video }) {
 
   const content = (
-    <Card className="flex flex-col md:flex-row bg-white dark:bg-black p-3 rounded-lg shadow-md cursor-pointer">
+    <Card className="flex flex-col md:flex-row bg-panel p-3 rounded-lg shadow-md cursor-pointer">
       <div className="md:w-1/2 flex-shrink-0 h-36 md:h-48 overflow-hidden">
         {video ? (
           <LoopVideo
@@ -18,8 +18,8 @@ export default function ProjectLayout({ title, description, year, techStack, lin
             className="rounded-lg object-cover w-full h-full"
           />
         ) : !imageSrc ? (
-          <div className="w-full h-full rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-            <span className="font-heading text-3xl font-bold text-gray-300 dark:text-gray-600">
+          <div className="w-full h-full rounded-lg bg-panel-2 flex items-center justify-center">
+            <span className="font-heading text-3xl font-bold text-ink-muted">
               {title.charAt(0)}
             </span>
           </div>
@@ -35,14 +35,14 @@ export default function ProjectLayout({ title, description, year, techStack, lin
       </div>
       <div className="md:w-1/2 p-3">
         <div className="flex justify-between items-center mb-1.5">
-          <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white"><span className="hover-underline">{title}</span></h3>
-          <span className="text-sm text-gray-500 dark:text-gray-300">{year}</span>
+          <h3 className="font-heading text-lg font-bold text-ink"><span className="hover-underline">{title}</span></h3>
+          <span className="text-sm text-ink-muted">{year}</span>
         </div>
-        <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 line-clamp-3">{description}</p>
+        <p className="text-sm text-ink-muted mb-3 line-clamp-3">{description}</p>
         {techStack && (
           <div className="flex flex-wrap gap-1.5 mt-1">
             {techStack.map((tech, index) => (
-              <Badge key={index} className="text-xs bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+              <Badge key={index} className="text-xs bg-panel-2 text-ink">
                 {tech}
               </Badge>
             ))}

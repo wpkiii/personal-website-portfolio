@@ -10,8 +10,8 @@ import { features } from "@/lib/features";
 import ProjectSection from "@/components/projectsection";
 import Footer from "@/components/footer";
 
-// Particles are decorative, so their JS loads only once the page is idle
-const ParticlesBackground = dynamic(() => import("@/components/particlesbackground"), { ssr: false });
+// The scanline background is decorative, so its JS loads only once the page is idle
+const ScanlineBackground = dynamic(() => import("@/components/scanlinebackground"), { ssr: false });
 
 export default function Home() {
   const [showParticles, setShowParticles] = useState(false);
@@ -55,10 +55,10 @@ export default function Home() {
       </Head>
 
       <div
-        className="bg-white dark:bg-gray-900 dark:text-white min-h-screen flex flex-col relative"
+        className="text-ink min-h-screen flex flex-col relative"
       >
         {/* Add the Particle Background */}
-        {showParticles && <ParticlesBackground />}
+        {showParticles && <ScanlineBackground />}
 
         {/* Render the Header */}
         <Header />

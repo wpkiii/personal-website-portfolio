@@ -27,12 +27,12 @@ export default function SectionHeader({ index, title }) {
 
   return (
     <div ref={ref} data-reveal className="w-full mb-10 lg:mb-16">
-      <p className="font-mono text-sm tracking-wider text-gray-600 dark:text-gray-400 mb-2">
+      <p className="font-mono text-sm tracking-wider text-ink-muted mb-2">
         {index}
       </p>
-      <h2 className="relative inline-block font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white pb-3">
+      <h2 className="relative inline-block font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-ink pb-3">
         {title}
-        <span aria-hidden="true" className="section-underline absolute left-0 bottom-0 h-1 w-full rounded-full bg-brand-gold" />
+        <span aria-hidden="true" className="section-underline absolute left-0 bottom-0 h-1 w-full rounded-full bg-signal" />
       </h2>
     </div>
   );

@@ -36,6 +36,13 @@ module.exports = {
 		  },
   		colors: {
   			brand: tokens.colors,
+  			// Site palette (Patina). Values are CSS variables set per theme in
+  			// globals.css, so every class here flips with light/dark mode.
+  			page: 'var(--c-page)',
+  			panel: { DEFAULT: 'var(--c-panel)', 2: 'var(--c-panel-2)' },
+  			ink: { DEFAULT: 'var(--c-ink)', muted: 'var(--c-ink-muted)' },
+  			rule: 'var(--c-rule)',
+  			signal: { DEFAULT: 'var(--c-signal)', ink: 'var(--c-signal-ink)', on: 'var(--c-on-signal)' },
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

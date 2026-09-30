@@ -5,6 +5,34 @@
 @tailwind utilities;
 
 @layer base {
+  /* Site palette: Patina (charcoal / stone with an oxidized-copper teal).
+     Every text pairing is ≥ 4.5:1 in both modes. Used through the Tailwind
+     names page / panel / ink / rule / signal (tailwind.config.js). */
+  :root {
+    --c-page: #ECEAE6;
+    --c-panel: #F7F6F3;
+    --c-panel-2: #E2E0DB;
+    --c-ink: #15191A;
+    --c-ink-muted: #4C5456;
+    --c-rule: #D3D1CC;
+    --c-signal: #4FB39A;      /* accent fill (header bar, highlights) */
+    --c-signal-ink: #1F6E5C;  /* accent used as text */
+    --c-on-signal: #15191A;   /* text on the accent fill */
+    --c-particle: #1F6E5C;
+  }
+  .dark {
+    --c-page: #101314;
+    --c-panel: #181D1E;
+    --c-panel-2: #1F2627;
+    --c-ink: #E2E5E3;
+    --c-ink-muted: #9AA3A2;
+    --c-rule: #2A3132;
+    --c-signal: #5CC2A7;
+    --c-signal-ink: #5CC2A7;
+    --c-on-signal: #101314;
+    --c-particle: #5CC2A7;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
@@ -88,18 +116,11 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #000; /* Optional: matches your preferred color */
+  background-color: var(--c-page);
+  color: var(--c-ink);
   overflow: auto;
 }
 
-#tsparticles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  top: 0;
-  left: 0;
-}
 
 /* Gold underlines (see src/components/sectionheader.js) --------------------- */
 
@@ -150,27 +171,22 @@ body {
   --hdr-strip: 10px; /* gold strip visible at the top of the page */
   --hdr-full: 112px; /* header row height at the top of the page */
   --hdr-compact: 80px; /* header row height once scrolled */
-  --hdr-bg: #ffffff;
-  --hdr-fill: theme('colors.brand.gold.DEFAULT');
-  --hdr-fg-start: theme('colors.gray.900');
-  --hdr-fg-end: theme('colors.gray.900');
+  --hdr-bg: var(--c-page);
+  --hdr-fill: var(--c-signal);
+  --hdr-fg-start: var(--c-ink);
+  --hdr-fg-end: var(--c-on-signal);
 
   background-color: var(--hdr-bg);
   color: color-mix(in srgb, var(--hdr-fg-end) calc(var(--pc) * 100%), var(--hdr-fg-start));
   box-shadow: 0 2px 8px rgb(0 0 0 / calc(0.12 * var(--p)));
-  /* button liquid fill: gold over the page, white once on the gold bar */
-  --liquid: color-mix(in srgb, #ffffff calc(var(--pc) * 100%), theme('colors.brand.gold.DEFAULT'));
+  /* button liquid fill: the accent over the page, pale once on the accent bar */
+  --liquid: color-mix(in srgb, #ffffff calc(var(--pc) * 70%), var(--c-signal));
 }
 @media (min-width: 768px) {
   .site-header {
     --hdr-full: 140px;
     --hdr-compact: 88px;
   }
-}
-.dark .site-header {
-  /* same gold bar in both themes; only the at-the-top colors differ */
-  --hdr-bg: #000000;
-  --hdr-fg-start: #ffffff;
 }
 /* Dark mode: the signature and icons are white on the black page and turn
    black as the gold bar fills in. The signature PNG is black, so it starts
@@ -201,7 +217,7 @@ body {
    keyboard focus. Gold over the page, pale gold (#FFDEAD) on the gold header
    bar. Text stays dark on the fill in every state. */
 .nav-mark {
-  --nav-mark-color: color-mix(in srgb, theme('colors.brand.gold.pale') calc(var(--pc, 0) * 100%), theme('colors.brand.gold.DEFAULT'));
+  --nav-mark-color: color-mix(in srgb, color-mix(in srgb, #ffffff 55%, var(--c-signal)) calc(var(--pc, 0) * 100%), var(--c-signal));
   background-image: linear-gradient(var(--nav-mark-color), var(--nav-mark-color));
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -215,7 +231,7 @@ body {
 .group:hover .nav-mark,
 .group:focus-visible .nav-mark {
   background-size: 100% 100%;
-  color: theme('colors.gray.900');
+  color: var(--c-on-signal);
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-mark {
@@ -308,13 +324,12 @@ body {
   }
 }
 
-/* Career timeline nodes (src/components/experience.js). Neutral for now:
-   near-black in light mode, light gray in dark mode, with a soft ring.
-   Lit by default so reduced-motion / no-JS visitors see a complete
-   timeline; GSAP marks them data-lit="false" and lights each as the line
-   reaches it. */
+/* Career timeline nodes (src/components/experience.js), in the palette's
+   accent with a soft ring. Lit by default so reduced-motion / no-JS visitors
+   see a complete timeline; GSAP marks them data-lit="false" and lights each
+   as the line reaches it. */
 .timeline-node {
-  --node: theme('colors.gray.900');
+  --node: var(--c-signal);
   width: 12px;
   height: 12px;
   border-radius: 9999px;
@@ -323,17 +338,10 @@ body {
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--node) 18%, transparent);
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.dark .timeline-node {
-  --node: theme('colors.gray.300');
-}
 .timeline-node[data-lit='false'] {
-  border-color: theme('colors.gray.300');
-  background-color: #ffffff;
+  border-color: var(--c-rule);
+  background-color: var(--c-page);
   box-shadow: 0 0 0 0 transparent;
-}
-.dark .timeline-node[data-lit='false'] {
-  border-color: theme('colors.gray.600');
-  background-color: theme('colors.gray.900');
 }
 
 /* Skills pipeline connectors (src/components/skills.js) ----------------------
@@ -346,10 +354,7 @@ body {
   align-self: center;
   width: 1px;
   height: 2.5rem;
-  background-color: theme('colors.gray.300');
-}
-.dark .skills-connector {
-  background-color: theme('colors.gray.600');
+  background-color: var(--c-rule);
 }
 .skills-pulse {
   position: absolute;
@@ -358,12 +363,9 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 9999px;
-  background-color: theme('colors.gray.900');
+  background-color: var(--c-ink);
   opacity: 0;
   animation: skills-pulse-y 2.4s ease-in-out var(--pulse-delay, 0s) infinite paused;
-}
-.dark .skills-pulse {
-  background-color: theme('colors.gray.200');
 }
 [data-pulsing='true'] .skills-pulse {
   animation-play-state: running;
@@ -439,7 +441,7 @@ body {
   aspect-ratio: 1;
   margin-left: calc(max(220%, 12rem) / -2);
   border-radius: 42%;
-  background-color: var(--liquid, theme('colors.brand.gold.DEFAULT'));
+  background-color: var(--liquid, var(--c-signal));
   /* invisible whenever not hovered: fades out smoothly over the tail of the
      drain (no pop), and keeps swirling while it drains (no freeze) */
   opacity: 0;
@@ -453,7 +455,7 @@ body {
 }
 .btn-liquid:hover,
 .btn-liquid:focus-visible {
-  color: theme('colors.gray.900');
+  color: var(--c-on-signal);
 }
 .btn-liquid:hover::before,
 .btn-liquid:focus-visible::before {
@@ -513,10 +515,13 @@ body {
   font-size: calc(var(--cell) - 1px);
   font-weight: 700;
   /* the rings read as a solid dark border in light mode, light in dark mode */
-  color: theme('colors.gray.900');
+  --ring-base: var(--c-ink);
+  --ring-glint: var(--c-ink-muted);
+  color: var(--ring-base);
 }
 .dark .ascii-frame__ring {
-  color: theme('colors.gray.400');
+  --ring-base: var(--c-ink-muted);
+  --ring-glint: var(--c-ink);
 }
 .ascii-frame__ring span {
   position: absolute;
@@ -526,36 +531,15 @@ body {
 }
 /* shimmer glint sweeping around the ring */
 .ascii-frame__ring span.is-shine {
-  color: theme('colors.gray.400');
+  color: var(--ring-glint);
 }
-.dark .ascii-frame__ring span.is-shine {
-  color: #ffffff;
-}
-/* scanner head (gold) and its fading gold trail */
+/* scanner head (accent) and its trail fading back into the ring color */
 .ascii-frame__ring span.is-hot {
-  color: theme('colors.brand.gold.ink');
-}
-.dark .ascii-frame__ring span.is-hot {
-  color: theme('colors.brand.gold.DEFAULT');
+  color: var(--c-signal-ink);
 }
 .ascii-frame__ring span.is-warm {
-  color: color-mix(in srgb, theme('colors.brand.gold.ink') 60%, theme('colors.gray.900'));
-}
-.dark .ascii-frame__ring span.is-warm {
-  color: color-mix(in srgb, theme('colors.brand.gold.DEFAULT') 55%, theme('colors.gray.400'));
+  color: color-mix(in srgb, var(--c-signal-ink) 60%, var(--ring-base));
 }
 .ascii-frame--oval > img {
   border-radius: 50%;
-}
-.ascii-frame__ring span.is-warm {
-  color: theme('colors.gray.600');
-}
-.dark .ascii-frame__ring span.is-warm {
-  color: theme('colors.gray.300');
-}
-.ascii-frame__ring span.is-hot {
-  color: theme('colors.brand.gold.dark');
-}
-.dark .ascii-frame__ring span.is-hot {
-  color: theme('colors.brand.gold.DEFAULT');
 }

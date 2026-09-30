@@ -37,7 +37,7 @@ function Chips({ items }) {
       {items.map((skill) => (
         <li
           key={skill}
-          className="px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-900/70 text-sm text-gray-800 dark:text-gray-200"
+          className="px-3 py-1 rounded-full border border-rule bg-panel text-sm text-ink"
         >
           {skill}
         </li>
@@ -82,11 +82,11 @@ export default function Skills() {
         {pipeline.map((step, i) => (
           <Fragment key={step.stage}>
             {i > 0 && <Connector delay={`${(i - 1) * 1.2}s`} />}
-            <div data-reveal className="flex-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 p-5">
-              <p className="font-mono text-xs tracking-wider text-gray-600 dark:text-gray-400">
+            <div data-reveal className="flex-1 rounded-lg border border-rule bg-panel p-5">
+              <p className="font-mono text-xs tracking-wider text-ink-muted">
                 {String(i + 1).padStart(2, "0")} · {step.blurb}
               </p>
-              <h3 className="font-heading text-2xl font-bold text-gray-900 dark:text-white mt-1 mb-4">{step.stage}</h3>
+              <h3 className="font-heading text-2xl font-bold text-ink mt-1 mb-4">{step.stage}</h3>
               <Chips items={step.skills} />
             </div>
           </Fragment>
@@ -97,7 +97,7 @@ export default function Skills() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
         {supporting.map(({ group, skills }) => (
           <div key={group} data-reveal>
-            <h3 className="font-heading text-lg font-bold text-gray-900 dark:text-white mb-3">{group}</h3>
+            <h3 className="font-heading text-lg font-bold text-ink mb-3">{group}</h3>
             <Chips items={skills} />
           </div>
         ))}

@@ -43,11 +43,11 @@ export default function CustomCursor() {
     <>
       <div
         ref={ringRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] w-8 h-8 rounded-full border border-gray-900/40 dark:border-white/40 hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] w-8 h-8 rounded-full border border-ink/40 hidden md:block"
       />
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] w-1.5 h-1.5 rounded-full bg-ink hidden md:block"
       />
     </>
   );

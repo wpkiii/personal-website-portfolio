@@ -92,7 +92,7 @@ export default function ProjectsSection() {
             left: `${cursorPosition.x + 20}px`,
           }}
         >
-          <span className="px-2 py-1 text-xs bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-semibold rounded-md">
+          <span className="px-2 py-1 text-xs bg-panel-2 text-ink font-semibold rounded-md">
             Click here to learn more
           </span>
         </div>
@@ -116,7 +116,7 @@ export default function ProjectsSection() {
                   {pageProjects.map((project, index) => (
                     <div key={index} data-reveal>
                       <div
-                        className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-2 dark:bg-black"
+                        className="relative group transform transition-transform duration-300 hover:scale-105 rounded-lg p-2"
                         style={{
                           cursor: "url(/middlefinger.png), auto",
                         }}
@@ -171,8 +171,8 @@ export default function ProjectsSection() {
                     <span
                       className={`block w-2.5 h-2.5 rounded-full transition-colors ${
                         index === currentPage
-                          ? "bg-gray-900 dark:bg-white"
-                          : "bg-gray-300 dark:bg-gray-600"
+                          ? "bg-ink"
+                          : "bg-rule"
                       }`}
                     />
                   </button>

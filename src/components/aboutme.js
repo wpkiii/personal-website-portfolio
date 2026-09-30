@@ -43,13 +43,13 @@ export default function AboutMe() {
 
         {/* Two balanced lines on desktop, spanning wider than the paragraph: the
             size tracks the section width (~24px at 1024 wide → 32px at ~1300+) */}
-        <h1 className="mt-8 w-full font-heading text-2xl lg:text-[length:min(calc((100vw-7rem)/37.5),2rem)] font-extrabold leading-tight tracking-tight text-balance text-gray-900 dark:text-white">
+        <h1 className="mt-8 w-full font-heading text-2xl lg:text-[length:min(calc((100vw-7rem)/37.5),2rem)] font-extrabold leading-tight tracking-tight text-balance text-ink">
           Hey, I&apos;m{' '}
           {/* gold-ink passes large-text contrast on white; bright gold on dark */}
-          <span className="text-brand-gold-ink dark:text-brand-gold">William Kelly</span>. This is where I document what I&apos;m
+          <span className="text-signal-ink">William Kelly</span>. This is where I document what I&apos;m
           building, what I&apos;m learning, and what I&apos;m figuring out along the way.
         </h1>
-        <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+        <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-ink-muted">
           I&apos;m a full-stack AI developer and entrepreneur. I build full-stack software, generative AI, computer
           vision, and data systems for national security and commercial clients, and I&apos;ve shipped my own
           products to real users across web, iOS, and Android. I thrive on solving complex problems and building
